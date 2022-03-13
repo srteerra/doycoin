@@ -61,39 +61,39 @@
       footer-text-variant="dark"
       footer-border-variant="light"
     >
-      <template #modal-header>
-        <div class="w-100">
-          <b-button variant="light" size="md" class="float-right" @click="showconnectWalletModal=false">
-            <b-icon-x></b-icon-x>
-          </b-button>
-        </div>
-      </template>
-      <b-container class="px-5">
-        <b-row class="pb-4">
-          <b-col>
-            <h4>Select your wallet extension</h4>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <b-button
-              variant="light"
-              class="border px-4 py-3"
-              v-on:click="connectMetamask"
-            >
-              <span class="pr-3"><img id="wallet-ico" src="../assets/metamask-icon.png" alt=""></span>
-              <span class="font-weight-regular">Metamask</span>
+      <b-overlay :show="loading" rounded="sm">
+        <template #modal-header>
+          <div class="w-100">
+            <b-button variant="light" size="md" class="float-right" @click="showconnectWalletModal=false">
+              <b-icon-x></b-icon-x>
             </b-button>
-          </b-col>
-        </b-row>
-      </b-container>
-      <template #modal-footer>
-        <div class="w-100">
-          <b-button variant="dark" size="md" class="float-right" @click="showconnectWalletModal=false">
-            Close
-          </b-button>
-        </div>
-      </template>
+          </div>
+        </template>
+        <b-container class="px-5">
+          <b-row class="pb-4">
+            <b-col>
+              <h4>Select your wallet extension</h4>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col>
+              <b-button
+                variant="light"
+                class="border px-4 py-3"
+                v-on:click="connectMetamask"
+              >
+                <span class="pr-3"><img id="wallet-ico" src="../assets/metamask-icon.png" alt=""></span>
+                <span class="font-weight-regular">Metamask</span>
+              </b-button>
+            </b-col>
+          </b-row>
+        </b-container>
+        <template #modal-footer>
+          <div class="w-100">
+            <b-button variant="dark" size="md" class="float-right" @click="showconnectWalletModal=false">Close</b-button>
+          </div>
+        </template>
+      </b-overlay>
     </b-modal>
   </div>
 </template>
@@ -110,6 +110,7 @@ export default {
   data () {
     return {
       currentAccount: null,
+      loading: false,
       addMeta: null,
       showconnectWalletModal: false
     }
@@ -135,28 +136,34 @@ export default {
     //   }
     // },
     async connectMetamask () {
-      ethereum
-        .request({
-          method: 'wallet_requestPermissions',
-          params: [{ eth_accounts: {} }]
-        })
-        .then((permissions) => {
-          const accountsPermission = permissions.find(
-            (permission) => permission.parentCapability === 'eth_accounts'
-          )
-          if (accountsPermission) {
-            console.log('eth_accounts permission successfully requested!')
-            this.getAcc()
-          }
-        })
-        .catch((error) => {
-          if (error.code === 4001) {
-            // EIP-1193 userRejectedRequest error
-            console.log('Permissions needed to continue.')
-          } else {
-            console.error(error)
-          }
-        })
+      if (provider) {
+        ethereum
+          .request({
+            method: 'wallet_requestPermissions',
+            params: [{ eth_accounts: {} }]
+          })
+          .then((permissions) => {
+            const accountsPermission = permissions.find(
+              (permission) => permission.parentCapability === 'eth_accounts'
+            )
+            if (accountsPermission) {
+              this.loading = true
+              console.log('eth_accounts permission successfully requested!')
+              this.getAcc()
+            }
+          })
+          .catch((error) => {
+            if (error.code === 4001) {
+              // EIP-1193 userRejectedRequest error
+              console.log('Permissions needed to continue.')
+            } else {
+              console.error(error)
+            }
+          })
+      } else {
+        this.loading = true
+        console.log('Please install metamask')
+      }
     },
     async handleChainChanged (_chainId) {
       // We recommend reloading the page, unless you must do otherwise
