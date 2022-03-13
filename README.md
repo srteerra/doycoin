@@ -1,24 +1,17 @@
-# dyc-web
+# :deciduous_tree:  DoyCoin
+#### Plant trees with your Crypto!
 
-## Project setup
-```
-npm install
-```
+![](https://img.shields.io/github/stars/srteerra/doycoin)![](https://img.shields.io/github/forks/srteerra/doycoin)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Goals
+- Plant more trees
+- Create an impact in the society to take care of our planet
+- Accept crypto assets as payment method
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Features
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Pure design
+- Connection with Metamask
+- Leaderboard to thank all our contributors and make this planet better
+- Easy UI and a beautiful UX Design
+- The only place you can donate your Cryptos to plant trees around the world
