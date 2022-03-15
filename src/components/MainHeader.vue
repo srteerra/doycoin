@@ -53,6 +53,47 @@
         </b-dropdown>
       </b-collapse>
     </b-navbar>
+    <b-modal id="modal-installMetamask" v-model="showinstallMetaModal" centered size="lg"
+      header-bg-variant="light"
+      header-text-variant="dark"
+      header-border-variant="light"
+      footer-bg-variant="light"
+      footer-text-variant="dark"
+      footer-border-variant="light"
+    >
+      <template #modal-header>
+        <div class="w-100">
+          <b-button variant="light" size="md" class="float-right" @click="showinstallMetaModal=false">
+            <b-icon-x></b-icon-x>
+          </b-button>
+        </div>
+      </template>
+      <b-container class="px-5">
+        <b-row class="pb-4">
+          <b-col>
+            <h4>Please install Metamask</h4>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <b-button
+              variant="light"
+              class="border px-4 py-3"
+              v-on:click="connectMetamask"
+            >
+              <span class="pr-3"><img id="wallet-ico" src="../assets/metamask-icon.png" alt=""></span>
+              <span class="font-weight-regular">Install it </span>
+              <span class="font-weight-regular"> <a href="/">here</a> </span>
+            </b-button>
+          </b-col>
+        </b-row>
+      </b-container>
+      <template #modal-footer>
+        <div class="w-100">
+          <b-button variant="dark" size="md" class="float-right" @click="showinstallMetaModal=false">Close</b-button>
+        </div>
+      </template>
+    </b-modal>
     <b-modal id="modal-connectWallet" v-model="showconnectWalletModal" centered size="lg"
       header-bg-variant="light"
       header-text-variant="dark"
@@ -61,14 +102,14 @@
       footer-text-variant="dark"
       footer-border-variant="light"
     >
+      <template #modal-header>
+        <div class="w-100">
+          <b-button variant="light" size="md" class="float-right" @click="showconnectWalletModal=false">
+            <b-icon-x></b-icon-x>
+          </b-button>
+        </div>
+      </template>
       <b-overlay :show="loading" rounded="sm">
-        <template #modal-header>
-          <div class="w-100">
-            <b-button variant="light" size="md" class="float-right" @click="showconnectWalletModal=false">
-              <b-icon-x></b-icon-x>
-            </b-button>
-          </div>
-        </template>
         <b-container class="px-5">
           <b-row class="pb-4">
             <b-col>
@@ -88,12 +129,12 @@
             </b-col>
           </b-row>
         </b-container>
-        <template #modal-footer>
-          <div class="w-100">
-            <b-button variant="dark" size="md" class="float-right" @click="showconnectWalletModal=false">Close</b-button>
-          </div>
-        </template>
       </b-overlay>
+      <template #modal-footer>
+        <div class="w-100">
+          <b-button variant="dark" size="md" class="float-right" @click="showconnectWalletModal=false">Close</b-button>
+        </div>
+      </template>
     </b-modal>
   </div>
 </template>
@@ -104,7 +145,11 @@ import detectEthereumProvider from '@metamask/detect-provider'
 const provider = await detectEthereumProvider()
 const ethereum = window.ethereum
 
-console.log(provider)
+if (provider) {
+  console.log(provider)
+} else {
+  console.log("There's not a provider")
+}
 
 export default {
   data () {
@@ -112,7 +157,8 @@ export default {
       currentAccount: null,
       loading: false,
       addMeta: null,
-      showconnectWalletModal: false
+      showconnectWalletModal: false,
+      showinstallMetaModal: false
     }
   },
   computed: {
@@ -153,6 +199,7 @@ export default {
             }
           })
           .catch((error) => {
+            this.loading = false
             if (error.code === 4001) {
               // EIP-1193 userRejectedRequest error
               console.log('Permissions needed to continue.')
@@ -161,7 +208,9 @@ export default {
             }
           })
       } else {
-        this.loading = true
+        this.loading = false
+        this.showconnectWalletModal = false
+        this.showinstallMetaModal = true
         console.log('Please install metamask')
       }
     },
