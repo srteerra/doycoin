@@ -53,7 +53,7 @@
         </b-dropdown>
       </b-collapse>
     </b-navbar>
-    <b-modal id="modal-installMetamask" v-model="showinstallMetaModal" centered size="lg"
+    <b-modal id="modal-installMetamask" v-model="showinstallMetaModal" centered size="md"
       header-bg-variant="light"
       header-text-variant="dark"
       header-border-variant="light"
@@ -70,21 +70,17 @@
       </template>
       <b-container class="px-5">
         <b-row class="pb-4">
-          <b-col>
-            <h4>Please install Metamask</h4>
+          <b-col class="text-center">
+            <img src="../assets/icons/advertencia.png" class="pb-4" style="max-width:80px;max-height:80px;">
+            <h4>Something is missing!</h4>
           </b-col>
         </b-row>
         <b-row>
-          <b-col>
-            <b-button
-              variant="light"
-              class="border px-4 py-3"
-              v-on:click="connectMetamask"
-            >
-              <span class="pr-3"><img id="wallet-ico" src="../assets/metamask-icon.png" alt=""></span>
-              <span class="font-weight-regular">Install it </span>
-              <span class="font-weight-regular"> <a href="/">here</a> </span>
-            </b-button>
+          <b-col class="text-center">
+            <p class="font-weight-regular">
+              You must to have <span class="font-weight-bold">Metamask</span> on your browser to connect. Install it
+              <span class="font-weight-regular text-primary"> <a href="https://metamask.io/" target="_blank">here</a> </span>
+            </p>
           </b-col>
         </b-row>
       </b-container>
@@ -116,7 +112,7 @@
               <h4>Select your wallet extension</h4>
             </b-col>
           </b-row>
-          <b-row>
+          <b-row class="pb-5">
             <b-col>
               <b-button
                 variant="light"
@@ -126,6 +122,11 @@
                 <span class="pr-3"><img id="wallet-ico" src="../assets/metamask-icon.png" alt=""></span>
                 <span class="font-weight-regular">Metamask</span>
               </b-button>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col>
+              <p class="font-weight-light">*If you're using <span class="font-weight-bold">Brave</span> as your browser, it might be a problem selecting a wallet. We recommend you move to another browser or change the <span class="font-weight-bold">"Default cryptocurrency wallet"</span> on your settings to have the best experience.</p>
             </b-col>
           </b-row>
         </b-container>
@@ -149,6 +150,10 @@ if (provider) {
   console.log(provider)
 } else {
   console.log("There's not a provider")
+}
+
+if (provider !== window.ethereum) {
+  console.log('Do you have multiple wallets installed?')
 }
 
 export default {
