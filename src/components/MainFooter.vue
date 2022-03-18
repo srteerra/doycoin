@@ -42,7 +42,7 @@
                         <b-form inline class="d-flex justify-content-center">
                           <label class="sr-only" for="inline-form-input-username">Username</label>
                           <b-input-group class="mb-2 mr-sm-2 mb-sm-0">
-                            <b-form-input id="inline-form-input-username" class="rounded-pill px-4" size="md" placeholder="Enter your email address here..."></b-form-input>
+                            <b-form-input id="inline-form-input-username" class="rounded-pill px-4" size="md" placeholder="Enter your email..."></b-form-input>
                           </b-input-group>
                           <b-button pill variant="dark" class="px-4 mt-3 mt-sm-0">Subscribe</b-button>
                         </b-form>
