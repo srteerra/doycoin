@@ -1,5 +1,5 @@
 <template>
-  <div class="px-3">
+  <div class="px-2">
     <b-card id="member-card" class="text-center p-5" border-variant="light">
       <div class="px-4">
         <div class="pb-4">

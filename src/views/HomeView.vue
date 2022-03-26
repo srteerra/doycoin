@@ -17,7 +17,7 @@
             </b-row>
             <b-row>
               <b-col class="text-center">
-                <b-button id="donate-btn" class="py-3 px-5 text-white" pill variant="primary" @click="this.$store.state.showDonateModal=true"><span>Donate here</span></b-button>
+                <b-button id="donate-btn" class="py-3 px-5 text-white" pill variant="primary" @click="showDonateModal()"><span>Donate here</span></b-button>
               </b-col>
             </b-row>
             <b-row class="py-4 px-2 px-md-5">
@@ -58,11 +58,7 @@
 <script>
 import LeaderBoard from '../components/LeaderBoard.vue'
 import DonationDash from '../components/DonationDash.vue'
-import detectEthereumProvider from '@metamask/detect-provider'
-
-// eslint-disable-next-line
-const provider = await detectEthereumProvider()
-const ethereum = window.ethereum
+import { mapActions } from 'vuex'
 
 export default {
   data () {
@@ -86,9 +82,7 @@ export default {
     // }
   },
   methods: {
-    testMeta () {
-      console.log(ethereum.selectedAddress)
-    }
+    ...mapActions(['showDonateModal'])
   }
 }
 </script>

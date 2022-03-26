@@ -3,8 +3,8 @@
     <b-container>
       <b-row>
         <b-col cols lg="8" xl="6" class="mx-auto">
-          <div class="my-5 shadow-lg rounded-3">
-            <b-card>
+          <div>
+            <b-card id="LeadBoard-cointainer" class="my-5 shadow-lg rounded-3">
               <b-card-body>
                 <b-tabs pills align="center">
                   <b-tab title="Most Recent" active>
@@ -70,6 +70,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+  #LeadBoard-cointainer {
+    border: none;
+    border-radius: 80px;
+  }
 </style>

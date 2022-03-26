@@ -24,29 +24,9 @@
       </b-row>
       <b-row class="container py-5">
         <b-col class="d-flex justify-content-around flex-wrap">
-          <MemberCard nickName="Angel Lopez" position="CEO" facebookURL="https://www.instagram.com/" twitterURL="https://www.instagram.com/" instaURL="https://www.instagram.com/"/>
-          <div class="px-3">
-            <b-card id="member-card" class="text-center p-5" border-variant="light">
-              <div class="px-4">
-                <div class="pb-4">
-                  <b-avatar src="https://i.pravatar.cc/300?4" size='4rem'></b-avatar>
-                </div>
-                <b-card-title>Angel Lopez</b-card-title>
-                <b-card-text>CEO & Founder</b-card-text>
-                <div class="d-flex justify-content-around">
-                  <a href="">
-                    <b-icon-facebook></b-icon-facebook>
-                  </a>
-                  <a href="">
-                    <b-icon-twitter></b-icon-twitter>
-                  </a>
-                  <a href="">
-                    <b-icon-instagram></b-icon-instagram>
-                  </a>
-                </div>
-              </div>
-            </b-card>
-          </div>
+          <MemberCard nickName="Angel Lopez" position="Founder & CEO" facebookURL="https://www.instagram.com/" twitterURL="https://www.instagram.com/" instaURL="https://www.instagram.com/"/>
+          <MemberCard nickName="Angel Lopez" position="Founder & CEO" facebookURL="https://www.instagram.com/" twitterURL="https://www.instagram.com/" instaURL="https://www.instagram.com/"/>
+          <MemberCard nickName="Angel Lopez" position="Founder & CEO" facebookURL="https://www.instagram.com/" twitterURL="https://www.instagram.com/" instaURL="https://www.instagram.com/"/>
         </b-col>
       </b-row>
       <b-row class="py-5">
