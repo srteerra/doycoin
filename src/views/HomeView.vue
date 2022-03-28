@@ -27,7 +27,7 @@
             </b-row>
             <b-row class="pb-5 px-2 px-md-5">
               <b-col cols="6" sm="8" lg="4" class="text-center mx-auto pb-5">
-                <p class="pb-5 text-dark">Start planting trees around the world with your favorites cryptocurrencies.</p>
+                <p class="pb-5 text-dark">Start planting trees around the world with your favorite cryptocurrencies.</p>
               </b-col>
             </b-row>
           </b-col>

@@ -14,6 +14,7 @@
         <b-navbar-nav class="ml-auto text-center text-dark font-weight-bold">
           <router-link to="/" class="px-2">Home</router-link>
           <router-link to="/about" class="px-2">About us</router-link>
+          <router-link to="/token" class="px-2">Our token</router-link>
           <router-link to="/how" class="px-2">How it works?</router-link>
           <router-link to="/contact" class="px-2">Contact us</router-link>
         </b-navbar-nav>
@@ -161,7 +162,7 @@ export default {
     },
     walletConnectText () {
       if (this.$store.state.address === null) {
-        return 'Connect Address'
+        return 'Connect Wallet'
       } else {
         return this.$store.state.address
       }

@@ -1,7 +1,7 @@
 export default {
   fetchingData: true,
   error: null,
-  address: 'Connect Wallet',
+  address: null,
   isconnected: false,
   connectBtnState: false,
   disconnectBtnState: true,
