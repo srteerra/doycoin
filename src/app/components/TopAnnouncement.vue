@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '../custom.scss';
+  @import '../assets/variables.scss';
 
   #TopAd {
     background-color: $success;

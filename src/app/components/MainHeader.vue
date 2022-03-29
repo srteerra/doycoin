@@ -2,8 +2,8 @@
   <div class="container-fluid px-5 py-4">
     <b-navbar toggleable="lg" type="light" variant="white">
       <b-navbar-brand href="#">
-        <img id="principal-logo" src="../assets/principal-logo-dark.png" alt="">
-        <img id="secundary-logo" src="../assets/secundary-logo.png" alt="">
+        <img id="principal-logo" src="../assets/logos/principal-logo-dark.png" alt="">
+        <img id="secundary-logo" src="../assets/logos/secundary-logo.png" alt="">
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -118,9 +118,8 @@
               <b-button
                 variant="light"
                 class="border px-4 py-3"
-                v-on:click="connectMetamask"
               >
-                <span class="pr-3"><img id="wallet-ico" src="../assets/metamask-icon.png" alt=""></span>
+                <span class="pr-3"><img id="wallet-ico" src="../assets/logos/metamask-icon.png" alt=""></span>
                 <span class="font-weight-regular">Metamask</span>
               </b-button>
             </b-col>
