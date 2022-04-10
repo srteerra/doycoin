@@ -10,6 +10,7 @@
                     <b-col class="my-auto text-center">
                       <div>
                         <h4 class="fs-4 text-dark font-weight-bolder">JOIN US!</h4>
+                        <hr>
                       </div>
                       <div>
                         <div v-if="currentStep==1" border-variant="light" class="p-0">
@@ -30,6 +31,10 @@
                               <input type="radio" id="20Trees" name="amountSelection" value="20"/>
                               <label for="20Trees">20 trees</label>
                             </div>
+                          </div>
+                          <div>
+                            <hr>
+                            <p>Or</p>
                           </div>
                           <div class="CustomTrees">
                             <input type="text" class="py-2 px-3 mb-5" placeholder="Enter your amount..."/>
