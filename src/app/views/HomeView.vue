@@ -6,23 +6,19 @@
           <b-col cols="12">
             <b-row class="pt-5 pb-2">
               <b-col class="text-center">
-                <h1 class="fs-2 text-dark">1,000,000</h1>
+                <h1 class="fs-2 text-dark">1,400,000</h1>
               </b-col>
             </b-row>
-            <b-row class="pb-4">
+            <b-row>
               <b-col class="text-center">
                 <p class="text-dark text-uppercase font-weight-light">Trees already planted</p>
+                <h4 class="fs-3 text-dark font-weight-light pb-3">We're planting <span class="font-weight-bold">1,340 trees</span> per month</h4>
                 <b-icon-caret-down-fill></b-icon-caret-down-fill>
               </b-col>
             </b-row>
             <b-row>
               <b-col class="text-center">
-                <b-button id="donate-btn" class="py-3 px-5 text-white" pill variant="primary" @click="showDonateModal()"><span>Donate here</span></b-button>
-              </b-col>
-            </b-row>
-            <b-row class="py-4 px-2 px-md-5">
-              <b-col cols="6" class="text-center mx-auto py-2">
-                <p class="text-dark">1$ = <b-icon-tree-fill></b-icon-tree-fill>Tree</p>
+                <DonationDash />
               </b-col>
             </b-row>
             <b-row class="pb-5 px-2 px-md-5">

@@ -19,4 +19,16 @@ new Vue({
 
 // Vue.config.productionTip = false
 
-require('../metamask')
+window.ethereum.on('accountsChanged', function (accounts) {
+  console.log(accounts)
+  if (accounts.length > 0) {
+    store.dispatch('setAcc', accounts[0])
+  } else {
+    
+  }
+})
+
+ethereum.on('chainChanged', (_chainId) => {
+  console.log(_chainId)
+  window.location.reload()
+})

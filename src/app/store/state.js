@@ -1,10 +1,12 @@
 export default {
-  fetchingData: true,
+  fetchingData: false,
   error: null,
-  address: null,
+  currentAccount: null,
   isconnected: false,
   connectBtnState: false,
   disconnectBtnState: true,
+  showconnectWalletModal: false,
+  showinstallMetaModal: false,
   showDonate: false,
   provider: null
 }

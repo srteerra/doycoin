@@ -13,11 +13,6 @@
 //   console.log('Do you have multiple wallets installed?')
 // }
 
-// // eslint-disable-next-line
-// async function handleChainChanged (_chainId) {
-//   // We recommend reloading the page, unless you must do otherwise
-//   window.location.reload()
-// }
 
 // async function getAcc () {
 //   this.$store.state.connectBtnState = true
@@ -51,7 +46,7 @@
 //   }
 // }
 
-// // eslint-disable-next-line
+// eslint-disable-next-line
 // async function connectMetamask () {
 //   if (provider) {
 //     ethereum
@@ -129,9 +124,4 @@
 //     this.currentAccount = accounts[0]
 //     // Do any other work!
 //   }
-// }
-
-// // eslint-disable-next-line
-// async function disconnectAcc () {
-//   window.location.reload()
 // }

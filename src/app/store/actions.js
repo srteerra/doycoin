@@ -1,40 +1,67 @@
-const Web3 = require('web3')
-const web3 = new Web3(Web3.givenProvider || 'ws://some.local-or-remote.node:8546')
+import detectEthereumProvider from '@metamask/detect-provider'
 
-console.log(web3.providers)
+const provider = await detectEthereumProvider()
+const ethereum = window.ethereum
+
+console.log(provider)
 
 export const actions = {
   async showDonateModal (context) {
-    context.commit('showDonateModal')
+    context.commit('SHOW_DONATE')
+  },
+  async showconnectWalletModal (context) {
+    context.commit('SHOW_CONNECT')
+  },
+  async showinstallMetaModal (context) {
+    context.commit('SHOW_INSTALL_METAMASK')
+  },
+  async disconnectAcc () {
+    window.location.reload()
+  },
+  async setAcc ({ commit }, acc) {
+    commit('CURRENT_ADDRESS', acc)
+  },
+  async connectAcc ({ commit, dispatch }) {
+    commit('CONNECT_BUTTON', true) // Button disabled
+    commit('LOADING_DATA', true) // Loading data on
+
+    if (provider) {
+      console.log(provider)
+      ethereum
+        .request({
+          method: 'wallet_requestPermissions',
+          params: [{ eth_accounts: {} }]
+        })
+        .then((permissions) => {
+          const accountsPermission = permissions.find(
+            (permission) => permission.parentCapability === 'eth_accounts'
+          )
+          if (accountsPermission) {
+            dispatch('setAcc', ethereum.selectedAddress)
+            commit('IS_CONNECTED', true)
+            commit('DISCONNECT_BUTTON', false) // Disconnect button enabled on nav
+            commit('LOADING_DATA', false) // Loading data off
+            commit('SHOW_CONNECT')
+          }
+        })
+        .catch((err) => {
+          if (err.code === 4001) {
+            console.log('Please connect to MetaMask.')
+            commit('CONNECT_BUTTON', false) // Button enabled
+            commit('DISCONNECT_BUTTON', true) // Disconnect button disabled on nav
+            commit('LOADING_DATA', false) // Loading data off
+            commit('SHOW_CONNECT')
+          } else {
+            console.error(err)
+          }
+        })
+    } else {
+      console.log('Please install MetaMask!')
+      commit('SHOW_INSTALL_METAMASK')
+      commit('CONNECT_BUTTON', false) // Button enabled
+      commit('DISCONNECT_BUTTON', true) // Disconnect button disabled on nav
+      commit('LOADING_DATA', false) // Loading data off
+      commit('SHOW_CONNECT')
+    }
   }
-  // async getAcc () {
-  //   this.$store.state.connectBtnState = true
-  //   this.$store.state.disconnectBtnState = false
-  //   console.log(provider)
-  //   if (provider) {
-  //     ethereum
-  //       .request({ method: 'eth_requestAccounts' })
-  //       .then(ethereum._handleAccountsChanged)
-  //       .catch((err) => {
-  //         if (err.code === 4001) {
-  //           // EIP-1193 userRejectedRequest error
-  //           // If this happens, the user rejected the connection request.
-  //           this.$store.state.connectBtnState = true
-  //           console.log('Please connect to MetaMask.')
-  //         } else {
-  //           console.error(err)
-  //         }
-  //       })
-  //   } else {
-  //     console.log('Please install MetaMask!')
-  //   }
-  //   this.$store.state.address = ethereum.selectedAddress
-  //   this.$store.state.isconnected = true
-  //   console.log(this.$store.state.isConnected)
-  //   if (this.showconnectWalletModal !== false) {
-  //     this.showconnectWalletModal = false
-  //   } else {
-  //     this.showconnectWalletModal = false
-  //   }
-  // }
 }

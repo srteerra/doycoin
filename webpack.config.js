@@ -109,6 +109,9 @@ module.exports = {
       new TerserPlugin()
     ]
   },
+  experiments: {
+    topLevelAwait: true
+  },
   devServer: {
     hot: true,
     host: '0.0.0.0',

@@ -1,6 +1,7 @@
 <template>
   <div class="container-fluid px-5 py-4">
     <b-navbar toggleable="lg" type="light" variant="white">
+      <!-- Navbar logo -->
       <b-navbar-brand href="#">
         <img id="principal-logo" src="../assets/logos/principal-logo-dark.png" alt="">
         <img id="secundary-logo" src="../assets/logos/secundary-logo.png" alt="">
@@ -8,9 +9,8 @@
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
+      <!-- Navbar links -->
       <b-collapse id="nav-collapse" is-nav>
-
-        <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto text-center text-dark font-weight-bold">
           <router-link to="/" class="px-2">Home</router-link>
           <router-link to="/about" class="px-2">About us</router-link>
@@ -18,19 +18,20 @@
           <router-link to="/how" class="px-2">How it works?</router-link>
           <router-link to="/contact" class="px-2">Contact us</router-link>
         </b-navbar-nav>
+
+        <!-- Connect wallet -->
         <b-button
           id="connectWallet"
           style="max-width:180px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"
           :disabled="this.$store.state.connectBtnState"
           class="ml-4 px-4 rounded-pill font-weight-bold"
           variant="success"
-          v-on:click="showconnectWalletModal=true"
+          v-on:click="showconnectWalletModal()"
         >
           {{ walletConnectText }}
         </b-button>
-        <b-tooltip v-if="$store.state.connectBtnState === false" variant="secondary" target="connectWallet" triggers="hover">
-          {{ $store.state.address }}
-        </b-tooltip>
+
+        <!-- Controls dropdown -->
         <b-dropdown id="dropdown-settings-header" no-caret right toggle-class="text-decoration-none" class="m-md-2 pl-1 text-decoration-none" variant="light" v-if="this.$store.state.connectBtnState">
           <template #button-content>
             <b-icon-gear></b-icon-gear>
@@ -46,7 +47,7 @@
             </div>
           </b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
-          <b-dropdown-item-button @click="disconnectAcc" :disabled="this.$store.state.disconnectBtnState">
+          <b-dropdown-item-button @click="disconnectAcc()" :disabled="this.$store.state.disconnectBtnState">
             <div class="py-2">
               <span class="px-2"><b-icon-box-arrow-left></b-icon-box-arrow-left></span> Disconnect
             </div>
@@ -54,7 +55,9 @@
         </b-dropdown>
       </b-collapse>
     </b-navbar>
-    <b-modal id="modal-installMetamask" v-model="showinstallMetaModal" centered size="md"
+
+    <!-- Missing Metamask modal -->
+    <b-modal id="modal-installMetamask" v-model="this.$store.state.showinstallMetaModal" centered size="md"
       header-bg-variant="light"
       header-text-variant="dark"
       header-border-variant="light"
@@ -64,7 +67,7 @@
     >
       <template #modal-header>
         <div class="w-100">
-          <b-button variant="light" size="md" class="float-right" @click="showinstallMetaModal=false">
+          <b-button variant="light" size="md" class="float-right" @click="showinstallMetaModal()">
             <b-icon-x></b-icon-x>
           </b-button>
         </div>
@@ -87,11 +90,13 @@
       </b-container>
       <template #modal-footer>
         <div class="w-100">
-          <b-button variant="dark" size="md" class="float-right" @click="showinstallMetaModal=false">Close</b-button>
+          <b-button variant="dark" size="md" class="float-right" @click="showinstallMetaModal()">Close</b-button>
         </div>
       </template>
     </b-modal>
-    <b-modal id="modal-connectWallet" v-model="showconnectWalletModal" centered size="lg"
+    
+    <!-- Selecting wallet modal -->
+    <b-modal id="modal-connectWallet" v-model="this.$store.state.showconnectWalletModal" centered size="lg"
       header-bg-variant="light"
       header-text-variant="dark"
       header-border-variant="light"
@@ -101,12 +106,12 @@
     >
       <template #modal-header>
         <div class="w-100">
-          <b-button variant="light" size="md" class="float-right" @click="showconnectWalletModal=false">
+          <b-button variant="light" size="md" class="float-right" @click="showconnectWalletModal()">
             <b-icon-x></b-icon-x>
           </b-button>
         </div>
       </template>
-      <b-overlay :show="loading" rounded="sm">
+      <b-overlay :show="this.$store.state.fetchingData" rounded="sm">
         <b-container class="px-5">
           <b-row class="pb-4">
             <b-col>
@@ -118,6 +123,7 @@
               <b-button
                 variant="light"
                 class="border px-4 py-3"
+                v-on:click="connectAcc()"
               >
                 <span class="pr-3"><img id="wallet-ico" src="../assets/logos/metamask-icon.png" alt=""></span>
                 <span class="font-weight-regular">Metamask</span>
@@ -133,7 +139,7 @@
       </b-overlay>
       <template #modal-footer>
         <div class="w-100">
-          <b-button variant="dark" size="md" class="float-right" @click="showconnectWalletModal=false">Close</b-button>
+          <b-button variant="dark" size="md" class="float-right" @click="showconnectWalletModal()">Close</b-button>
         </div>
       </template>
     </b-modal>
@@ -141,35 +147,34 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   data () {
     return {
       currentAccount: null,
-      loading: false,
-      addMeta: null,
-      showconnectWalletModal: false,
-      showinstallMetaModal: false
+    }
+  },
+  watch: {
+    userChange(newUser, oldUser) {
+      if (newUser.indexOf('?') > -1) {
+        
+      }
     }
   },
   computed: {
-    connectBtnVerify () {
-      if (this.connectBtnDisabled === false) {
-        return false
-      } else {
-        return true
-      }
-    },
     walletConnectText () {
-      if (this.$store.state.address === null) {
+      if (this.$store.state.currentAccount === null) {
         return 'Connect Wallet'
       } else {
-        return this.$store.state.address
+        return this.$store.state.currentAccount.slice(0, 4) + '...' + this.$store.state.currentAccount.slice(36, 50)
       }
     }
   },
   name: 'MainHeader',
   methods: {
-  }
+    ...mapActions(['disconnectAcc', '', 'connectAcc', 'showconnectWalletModal', 'showinstallMetaModal'])
+  },
 }
 </script>
 
