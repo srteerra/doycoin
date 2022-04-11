@@ -19,6 +19,10 @@ new Vue({
 
 // Vue.config.productionTip = false
 
+window.addEventListener('resize', () => {
+  store.commit('WINDOW_WIDTH')
+})
+
 window.ethereum.on('accountsChanged', function (accounts) {
   console.log(accounts)
   if (accounts.length > 0) {

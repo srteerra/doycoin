@@ -8,5 +8,6 @@ export default {
   showconnectWalletModal: false,
   showinstallMetaModal: false,
   showDonate: false,
-  provider: null
+  provider: null,
+  windowWidth: window.innerWidth,
 }

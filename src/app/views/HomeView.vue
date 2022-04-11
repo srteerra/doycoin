@@ -6,7 +6,7 @@
           <b-col cols="12">
             <b-row class="pt-5 pb-2">
               <b-col class="text-center">
-                <h1 class="fs-2 text-dark">1,400,000</h1>
+                <h1 class="fs-2 text-dark font-weight-bold">1,400,000</h1>
               </b-col>
             </b-row>
             <b-row>
@@ -21,8 +21,8 @@
                 <DonationDash />
               </b-col>
             </b-row>
-            <b-row class="pb-5 px-2 px-md-5">
-              <b-col cols="6" sm="8" lg="4" class="text-center mx-auto pb-5">
+            <b-row class="pb-5 px-0 px-md-2 px-md-5">
+              <b-col cols="6" sm="8" lg="4" class="text-center px-0 mx-auto pb-5">
                 <p class="pb-5 text-dark">Start planting trees around the world with your favorite cryptocurrencies.</p>
               </b-col>
             </b-row>
@@ -37,7 +37,7 @@
         </b-col>
       </b-row>
       <b-row class="pt-3 pb-5">
-        <b-col>
+        <b-col class="px-0 px-sm-3">
           <LeaderBoard />
         </b-col>
       </b-row>
