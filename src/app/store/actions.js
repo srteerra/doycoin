@@ -9,6 +9,9 @@ export const actions = {
   async showDonateModal (context) {
     context.commit('SHOW_DONATE')
   },
+  async exportDonatorData (context, payload) {
+    context.commit('DONATOR_DATA', payload)
+  },
   async showconnectWalletModal (context) {
     context.commit('SHOW_CONNECT')
   },

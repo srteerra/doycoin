@@ -2,6 +2,14 @@ export const WINDOW_WIDTH = (state) => {
   state.windowWidth = window.innerWidth
 }
 
+export const DONATOR_DATA = (state, payload) => {
+  state.donator = {
+    donatorName: payload.name,
+    donatorEmail: payload.email,
+    donatorMessage: payload.message
+  }
+}
+
 export const SHOW_DONATE = (state) => {
   if (state.showDonate === false) {
     state.showDonate = true

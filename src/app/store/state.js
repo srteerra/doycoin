@@ -10,4 +10,10 @@ export default {
   showDonate: false,
   provider: null,
   windowWidth: window.innerWidth,
+
+  donator: {
+    donatorName: '',
+    donatorEmail: '',
+    donatorMessage: '',
+  }
 }
