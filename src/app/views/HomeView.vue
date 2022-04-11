@@ -47,7 +47,6 @@
         <b-col></b-col>
       </b-row>
     </b-container>
-    <DonationDash />
   </div>
 </template>
 

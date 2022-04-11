@@ -20,16 +20,16 @@
                               <label for="1Tree">1 tree</label>
                             </div>
                             <div class="amountSelection-item">
-                              <input type="radio" id="5Trees" name="amountSelection" value="5"/>
-                              <label for="5Trees">5 trees</label>
+                              <input type="radio" id="15Trees" name="amountSelection" value="15"/>
+                              <label for="15Trees">15 trees</label>
                             </div>
                             <div class="amountSelection-item">
-                              <input type="radio" id="10Trees" name="amountSelection" value="10"/>
-                              <label for="10Trees">10 trees</label>
+                              <input type="radio" id="50Trees" name="amountSelection" value="50"/>
+                              <label for="50Trees">50 trees</label>
                             </div>
                             <div class="amountSelection-item">
-                              <input type="radio" id="20Trees" name="amountSelection" value="20"/>
-                              <label for="20Trees">20 trees</label>
+                              <input type="radio" id="100Trees" name="amountSelection" value="100"/>
+                              <label for="100Trees">100 trees</label>
                             </div>
                           </div>
                           <div>
@@ -37,7 +37,7 @@
                             <p>Or</p>
                           </div>
                           <div class="CustomTrees">
-                            <input type="text" class="py-2 px-3 mb-5" placeholder="Enter your amount..."/>
+                            <input type="text" class="w-100 py-2 px-3 mb-5" placeholder="Enter your amount..."/>
                           </div>
                           <div>
                             <b-button id="nextStepButton" block class="py-2" variant="success" @click="onClickNext">Next</b-button>
@@ -200,7 +200,7 @@ export default {
 
     .amountSelection-item {
       width: 45%;
-      height: auto;
+      height: 70px;
       margin: 0 5px;
     }
   }

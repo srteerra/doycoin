@@ -8,20 +8,23 @@
               <b-card-body>
                 <b-tabs pills align="center">
                   <b-tab title="Most Recent" active>
-                    <div class="py-5">
+                    <div class="px-4 py-5">
                       <b-list-group v-for="recentDonator in recentDonators" :key="recentDonator.id" flush class="py-2">
                         <b-list-group-item>
                           <b-row>
-                            <b-col class="my-auto text-center">
+                            <b-col cols xl="3" class="my-auto text-center">
                               <b-avatar v-bind:src="'https://i.pravatar.cc/300?' + recentDonator.id" size='4rem'></b-avatar>
                             </b-col>
-                            <b-col class="my-auto">
+                            <b-col cols xl="4" class="my-auto">
                               <p class="text-start">{{ recentDonator.name }}</p>
                               <p class="text-start">{{ recentDonator.desc }}</p>
                             </b-col>
-                            <b-col class="my-auto text-center">
-                              <b-badge pill variant="primary" class="text-white">{{ recentDonator.trees }} trees!</b-badge>
-                              <p>{{ recentDonator.date }}</p>
+                            <b-col cols xl="5" class="text-right">
+                              <p class="text-white treesText">{{ recentDonator.trees }} trees!</p>
+                              <div class="text-right">
+                                <!-- <p class="addressText font-weight-regular text-muted">{{ recentDonator.date }}</p> -->
+                                <a class="addressText font-weight-regular text-muted" href="https://www.bscscan.com/address/0x10ed43c718714eb63d5aa57b78b54704e256024e">0x1...6024e <b-icon-box-arrow-up-right></b-icon-box-arrow-up-right> </a>
+                              </div>
                             </b-col>
                           </b-row>
                         </b-list-group-item>
@@ -71,8 +74,23 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../assets/variables.scss';
+
   #LeadBoard-container {
     border: none;
     border-radius: 80px;
+  }
+
+  .treesText {
+    display: inline-block;
+    background-color: $success;
+    padding: 5px 15px;
+    font-size: 16px;
+    border-radius: 25px;
+  }
+
+  .addressText {
+    font-size: 15px;
+    margin: 0;
   }
 </style>
