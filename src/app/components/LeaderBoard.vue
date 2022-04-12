@@ -1,6 +1,11 @@
 <template>
-  <div>
+  <div id="LeadboardBlock">
     <b-container fluid>
+      <b-row class="pt-0 pt-md-5">
+        <b-col class="text-center">
+          <h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">Leaderboard</h3>
+        </b-col>
+      </b-row>
       <b-row>
         <b-col cols sm="12" md="10" lg="8" xl="6" class="mx-0 px-0 mx-sm-auto">
           <div>
@@ -82,6 +87,15 @@ export default {
 
 <style lang="scss">
   @import '../assets/variables.scss';
+
+  #LeadboardBlock {
+    width: 100%;
+    height: auto;
+    display: inline;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
 
   #LeadBoard-container {
     border: none;
