@@ -12,7 +12,7 @@
             <b-row>
               <b-col class="text-center">
                 <p class="text-dark text-uppercase font-weight-light">Trees already planted</p>
-                <h4 class="fs-3 text-dark font-weight-light pb-3">We're planting <span class="font-weight-bold">1,340 trees</span> per month</h4>
+                <h4 class="fs-3 text-dark font-weight-light pb-3">We're planting <span class="font-weight-bold">1,340 trees</span> per month <span><router-link to="/how" class="px-1"><b-icon-question-circle></b-icon-question-circle></router-link></span></h4>
                 <b-icon-caret-down-fill></b-icon-caret-down-fill>
               </b-col>
             </b-row>
