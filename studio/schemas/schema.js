@@ -10,7 +10,30 @@ export default createSchema({
   name: 'default',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([
-    /* Your types here! */
-  ]),
+  types: schemaTypes.concat(
+    [
+      {
+        name: 'users',
+        title: 'Users',
+        type: 'document',
+        fields: [
+          {
+            name: 'userName',
+            title: 'Username',
+            type: 'string'
+          },
+          {
+            name: 'userAddress',
+            title: 'Wallet Address',
+            type: 'string'
+          },
+          {
+            name: 'userAvatar',
+            title: 'Avatar',
+            type: 'image'
+          }
+        ]
+      }
+    ]
+  ),
 })

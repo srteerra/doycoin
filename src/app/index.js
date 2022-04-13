@@ -3,6 +3,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { client } from '../lib/sanityClient'
 
 import 'bootstrap'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
@@ -19,19 +20,30 @@ new Vue({
 
 // Vue.config.productionTip = false
 
+// On resize change
 window.addEventListener('resize', () => {
   store.commit('WINDOW_WIDTH')
 })
 
+// On Acc change
 window.ethereum.on('accountsChanged', function (accounts) {
   console.log(accounts)
   if (accounts.length > 0) {
     store.dispatch('setAcc', accounts[0])
+    const userDoc = {
+      _type: 'users',
+      _id: ethereum.selectedAddress,
+      userName: 'Unnamed',
+      userAddress: store.getters.getAddress
+    }
+
+    client.createIfNotExists(userDoc)
   } else {
     
   }
 })
 
+// On Chain change
 ethereum.on('chainChanged', (_chainId) => {
   console.log(_chainId)
   window.location.reload()

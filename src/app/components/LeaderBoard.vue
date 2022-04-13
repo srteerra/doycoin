@@ -18,7 +18,7 @@
                         <b-list-group-item class="shadow-lg rounded-lg py-4 pl-5 pl-lg-0">
                           <b-row>
                             <b-col v-if="windowWidth>576" sm="2" md="3" lg="3" xl="3" class="my-auto text-center">
-                              <b-avatar v-bind:src="'https://i.pravatar.cc/300?' + recentDonator.id" size='4rem'></b-avatar>
+                              <b-avatar id="userAvatar" v-bind:src="'https://i.pravatar.cc/300?' + recentDonator.id" size='4rem'></b-avatar>
                             </b-col>
                             <b-col cols="5" xs="3" sm="5" md="5" lg="5" xl="5" class="my-auto text-left" align-v="center">
                               <h4 class="text-start mb-0 text-dark font-weight-bolder">{{ recentDonator.name }}</h4>
@@ -99,6 +99,10 @@ export default {
 
   #LeadBoard-container {
     border: none;
+  }
+
+  #userAvatar {
+    border: 5px solid $success;
   }
 
   .treesText {

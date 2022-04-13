@@ -32,9 +32,9 @@
         </b-button>
 
         <!-- Controls dropdown -->
-        <b-dropdown id="dropdown-settings-header" no-caret right toggle-class="text-decoration-none" class="m-md-2 pl-1 text-decoration-none" variant="light" v-if="this.$store.state.connectBtnState">
+        <b-dropdown right toggle-class="no-caret text-decoration-none" class="m-md-2 pl-1" variant="light" v-if="this.$store.state.connectBtnState" no-caret>
           <template #button-content>
-            <b-icon-gear></b-icon-gear>
+            <b-avatar src="https://i.pravatar.cc/300?2" size='4rem'></b-avatar>
           </template>
           <b-dropdown-item to="/help">
             <div class="py-2">
@@ -173,7 +173,12 @@ export default {
   },
   name: 'MainHeader',
   methods: {
-    ...mapActions(['disconnectAcc', '', 'connectAcc', 'showconnectWalletModal', 'showinstallMetaModal'])
+    ...mapActions([
+      'disconnectAcc',
+      'connectAcc',
+      'showconnectWalletModal',
+      'showinstallMetaModal',
+      ])
   },
 }
 </script>

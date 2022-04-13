@@ -1,4 +1,5 @@
 import detectEthereumProvider from '@metamask/detect-provider'
+import { client } from '../../lib/sanityClient'
 
 const provider = await detectEthereumProvider()
 const ethereum = window.ethereum
@@ -45,6 +46,15 @@ export const actions = {
             commit('DISCONNECT_BUTTON', false) // Disconnect button enabled on nav
             commit('LOADING_DATA', false) // Loading data off
             commit('SHOW_CONNECT')
+
+            const userDoc = {
+              _type: 'users',
+              _id: ethereum.selectedAddress,
+              userName: 'Unnamed',
+              userAddress: store.getters.getAddress
+            }
+
+            client.createIfNotExists(userDoc)
           }
         })
         .catch((err) => {
