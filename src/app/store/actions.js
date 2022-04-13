@@ -32,15 +32,9 @@ export const actions = {
     if (provider) {
       console.log(provider)
       ethereum
-        .request({
-          method: 'wallet_requestPermissions',
-          params: [{ eth_accounts: {} }]
-        })
-        .then((permissions) => {
-          const accountsPermission = permissions.find(
-            (permission) => permission.parentCapability === 'eth_accounts'
-          )
-          if (accountsPermission) {
+        .request({ method: 'eth_requestAccounts' })
+        .then((provider) => {
+          if (provider) {
             dispatch('setAcc', ethereum.selectedAddress)
             commit('IS_CONNECTED', true)
             commit('DISCONNECT_BUTTON', false) // Disconnect button enabled on nav

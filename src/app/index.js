@@ -39,8 +39,12 @@ window.ethereum.on('accountsChanged', function (accounts) {
 
     client.createIfNotExists(userDoc)
   } else {
-    
+    window.location.reload()
   }
+})
+
+ethereum.on('disconnect', (error) => {
+  console.log(error)
 })
 
 // On Chain change
