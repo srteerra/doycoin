@@ -32,7 +32,7 @@
         </b-button>
 
         <!-- Controls dropdown -->
-        <b-dropdown right toggle-class="no-caret text-decoration-none" class="m-md-2 pl-1" variant="light" v-if="this.$store.state.connectBtnState" no-caret>
+        <b-dropdown right toggle-class="no-caret text-decoration-none" class="m-md-2 pl-1" variant="light" v-if="this.$store.state.isconnected" no-caret>
           <template #button-content>
             <b-avatar src="https://i.pravatar.cc/300?2" size='4rem'></b-avatar>
           </template>
