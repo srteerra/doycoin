@@ -36,6 +36,11 @@
           <template #button-content>
             <b-avatar src="https://i.pravatar.cc/300?2" size='4rem'></b-avatar>
           </template>
+          <b-dropdown-item to="/profile">
+            <div class="py-2">
+              <span class="px-2"><b-icon-person></b-icon-person></span> My profile
+            </div>
+          </b-dropdown-item>
           <b-dropdown-item to="/help">
             <div class="py-2">
               <span class="px-2"><b-icon-question-circle></b-icon-question-circle></span> Need help?

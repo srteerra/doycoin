@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import AboutView from '../views/AboutView.vue'
+import store from '../store'
 
 Vue.use(Router)
 
@@ -9,21 +8,18 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: () => import(/* webpackChunkName:"home" */ "../views/HomeView"),
   },
   {
     path: '/about',
     name: 'about',
-    component: AboutView
+    component: () => import(/* webpackChunkName:"about" */ "../views/AboutView"),
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: () => import(/* webpackChunkName:"profile" */ "../views/AboutView")
   }
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
 ]
 
 const router = new Router({
@@ -32,6 +28,14 @@ const router = new Router({
   mode: 'history',
   scrollBehavior () {
     window.scrollTo(0, 0)
+  }
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.name === 'profile' && store.state.isconnected === false) {
+    next({ name: 'home' })
+  } else {
+    next()
   }
 })
 
