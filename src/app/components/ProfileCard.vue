@@ -1,5 +1,5 @@
 <template>
-  <div id="profile__container">
+  <div id="profile__container" class="shadow-lg rounded-lg">
       <div class="profile__background"></div>
       <div class="profile__desc">
           <b-avatar class="profile__avatar mx-auto" size="5rem"></b-avatar>

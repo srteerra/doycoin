@@ -1,24 +1,27 @@
 <template>
   <div>
-    <b-container>
+    <b-container class="py-5">
       <b-row>
         <!-- Left side col -->
         <b-col>
-          <b-row>
+          <b-row class="mb-5">
             <ProfileCard/>
           </b-row>
-          <b-row></b-row>
+          <b-row>
+            <COSPCard/>
+          </b-row>
         </b-col>
         <!-- Right side col -->
         <b-col>
           <b-row>
+            <p class="pb-2">Latest donations</p>
             <b-list-group v-for="myDonation in myDonations" :key="myDonation.id" flush class="w-100">
               <b-list-group-item id="donation__item" class="shadow-lg rounded-lg py-4 mb-4">
                 <b-row>
                   <b-col cols="5" xs="3" sm="5" md="5" lg="6" xl="6" class="my-auto text-left" align-v="center">
-                    <h4 class="text-start mb-0 text-dark font-weight-bolder">{{ myDonation.name }}</h4>
                     <div>
                       <p class="text-start mb-0 text-dark descText font-weight-regular">{{ myDonation.desc }}</p>
+                      <p class="text-start mb-0 pt-3 text-dark descText font-weight-regular">{{ myDonation.date }}</p>
                     </div>
                   </b-col>
                   <b-col cols="7" xs="5" sm="5" md="4" lg="6" xl="6" class="text-right my-auto">
@@ -39,6 +42,7 @@
 
 <script>
 import ProfileCard from '../components/ProfileCard.vue'
+import COSPCard from '../components/COSPCard.vue'
 
 export default {
   data() {
@@ -47,7 +51,8 @@ export default {
     }
   },
   components: {
-    ProfileCard
+    ProfileCard,
+    COSPCard
   }
 }
 </script>
