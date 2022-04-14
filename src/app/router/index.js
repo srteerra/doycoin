@@ -31,12 +31,12 @@ const router = new Router({
   }
 })
 
-router.beforeEach((to, from, next) => {
-  if (to.name === 'profile' && store.state.isconnected === false) {
-    next({ name: 'home' })
-  } else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   if (to.name === 'profile' && store.state.isconnected === false) {
+//     next({ name: 'home' })
+//   } else {
+//     next()
+//   }
+// })
 
 export default router
