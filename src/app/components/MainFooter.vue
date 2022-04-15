@@ -62,11 +62,11 @@
 
 <script>
 export default {
-  data () {
-    return {
-    }
-  },
-  name: 'MainFooter'
+	data () {
+		return {
+		}
+	},
+	name: "MainFooter"
 }
 </script>
 

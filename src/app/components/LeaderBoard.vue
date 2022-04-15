@@ -76,17 +76,17 @@
 
 <script>
 export default {
-  data () {
-    return {
-      recentDonators: [{ id: 1, name: 'Ale', desc: 'Love the world and specially this movement', trees: 100, date: '02/26/2022' }, { id: 2, name: 'Scar', desc: 'I like the idea to invest my crypto on this.', trees: 50, date: '01/13/2022' }, { id: 3, name: 'Alex', desc: 'More trees!.', trees: 32, date: '05/11/2022' }]
-    }
-  },
-  computed: {
-    windowWidth() {
-      return this.$store.state.windowWidth;
-    }
-  },
-  name: 'LeaderBoard'
+	data () {
+		return {
+			recentDonators: [{ id: 1, name: "Ale", desc: "Love the world and specially this movement", trees: 100, date: "02/26/2022" }, { id: 2, name: "Scar", desc: "I like the idea to invest my crypto on this.", trees: 50, date: "01/13/2022" }, { id: 3, name: "Alex", desc: "More trees!.", trees: 32, date: "05/11/2022" }]
+		}
+	},
+	computed: {
+		windowWidth() {
+			return this.$store.state.windowWidth
+		}
+	},
+	name: "LeaderBoard"
 }
 </script>
 

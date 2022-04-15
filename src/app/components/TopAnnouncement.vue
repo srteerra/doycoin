@@ -11,12 +11,12 @@
 
 <script>
 export default {
-  data () {
-    return {
-      showTopAd: true
-    }
-  },
-  name: 'TopAnnouncement'
+	data () {
+		return {
+			showTopAd: true
+		}
+	},
+	name: "TopAnnouncement"
 }
 </script>
 

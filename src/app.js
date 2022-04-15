@@ -1,16 +1,17 @@
-require('dotenv').config()
+/* eslint-disable no-undef */
+require("dotenv").config()
 
-const express = require('express')
-const path = require('path')
+const express = require("express")
+const path = require("path")
 
 // INITIALIZING
 const app = express()
-app.set('port', process.env.PORT || 8080)
+app.set("port", process.env.PORT || 8080)
 
 // STATIC FILES
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, "public")))
 
 // RUN SERVER
-app.listen(app.get('port'), () => {
-  console.log('SERVER ON PORT: ', app.get('port'))
+app.listen(app.get("port"), () => {
+	console.log("SERVER ON PORT: ", app.get("port"))
 })

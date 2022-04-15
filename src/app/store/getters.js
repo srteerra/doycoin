@@ -1,17 +1,18 @@
 import state from "./state"
 
 export const getAddress = (state) => {
-  return state.currentAccount
+	return state.currentAccount
 }
 
 export const getProvider = (state) => {
-  return state.provider
+	return state.provider
 }
 
 export const isMetamask = () => {
-  return ethereum.isMetaMask
+	// eslint-disable-next-line no-undef
+	return ethereum.isMetaMask
 }
 
 export const isConnected = () => {
-  return state.isConnected
+	return state.isConnected
 }

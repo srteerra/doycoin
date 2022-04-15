@@ -25,8 +25,8 @@
 
 <script>
 export default {
-  props: ['nickName', 'position', 'facebookURL', 'twitterURL', 'instaURL'],
-  name: 'MemberCard'
+	props: ["nickName", "position", "facebookURL", "twitterURL", "instaURL"],
+	name: "MemberCard"
 }
 </script>
 

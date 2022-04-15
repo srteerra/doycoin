@@ -152,39 +152,33 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex"
 
 export default {
-  data () {
-    return {
-      currentAccount: null,
-    }
-  },
-  watch: {
-    userChange(newUser, oldUser) {
-      if (newUser.indexOf('?') > -1) {
-        
-      }
-    }
-  },
-  computed: {
-    walletConnectText () {
-      if (this.$store.state.currentAccount === null) {
-        return 'Connect Wallet'
-      } else {
-        return this.$store.state.currentAccount.slice(0, 4) + '...' + this.$store.state.currentAccount.slice(36, 50)
-      }
-    }
-  },
-  name: 'MainHeader',
-  methods: {
-    ...mapActions([
-      'disconnectAcc',
-      'connectAcc',
-      'showconnectWalletModal',
-      'showinstallMetaModal',
-      ])
-  },
+	data () {
+		return {
+			currentAccount: null,
+		}
+	},
+	watch: {},
+	computed: {
+		walletConnectText () {
+			if (this.$store.state.currentAccount === null) {
+				return "Connect Wallet"
+			} else {
+				return this.$store.state.currentAccount.slice(0, 4) + "..." + this.$store.state.currentAccount.slice(36, 50)
+			}
+		}
+	},
+	name: "MainHeader",
+	methods: {
+		...mapActions([
+			"disconnectAcc",
+			"connectAcc",
+			"showconnectWalletModal",
+			"showinstallMetaModal",
+		])
+	},
 }
 </script>
 

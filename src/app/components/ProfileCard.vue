@@ -23,22 +23,22 @@
 
 <script>
 export default {
-  data() {
-    return {}
-  },
-  name: 'ProfileCard',
-  methods: {
-    editAvatar() {
-      this.$bvModal.msgBoxOk('User name: Fred Flintstone', {
-        title: 'User Info',
-        size: 'sm',
-        buttonSize: 'sm',
-        okVariant: 'success',
-        headerClass: 'p-2 border-bottom-0',
-        footerClass: 'p-2 border-top-0'
-      })
-    }
-  }
+	data() {
+		return {}
+	},
+	name: "ProfileCard",
+	methods: {
+		editAvatar() {
+			this.$bvModal.msgBoxOk("User name: Fred Flintstone", {
+				title: "User Info",
+				size: "sm",
+				buttonSize: "sm",
+				okVariant: "success",
+				headerClass: "p-2 border-bottom-0",
+				footerClass: "p-2 border-top-0"
+			})
+		}
+	}
 }
 </script>
 

@@ -28,10 +28,10 @@
 
 <script>
 export default {
-  data() {
-    return {}
-  },
-  name: 'COSPCard'
+	data() {
+		return {}
+	},
+	name: "COSPCard"
 }
 </script>
 

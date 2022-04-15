@@ -48,34 +48,34 @@
 </template>
 
 <script>
-import LeaderBoard from '../components/LeaderBoard.vue'
-import DonationDash from '../components/DonationDash.vue'
-import { mapActions } from 'vuex'
+import LeaderBoard from "../components/LeaderBoard.vue"
+import DonationDash from "../components/DonationDash.vue"
+import { mapActions } from "vuex"
 
 export default {
-  data () {
-    return {
-    }
-  },
-  name: 'HomeView',
-  components: {
-    LeaderBoard,
-    DonationDash
-  },
-  computed: {
-    // metaAddressConnected () {
-    //   if (ethereum.selectedAddress === null) {
-    //     console.log('Not connected')
-    //     return false
-    //   } else {
-    //     console.log('Connected')
-    //     return true
-    //   }
-    // }
-  },
-  methods: {
-    ...mapActions(['showDonateModal'])
-  }
+	data () {
+		return {
+		}
+	},
+	name: "HomeView",
+	components: {
+		LeaderBoard,
+		DonationDash
+	},
+	computed: {
+		// metaAddressConnected () {
+		//   if (ethereum.selectedAddress === null) {
+		//     console.log('Not connected')
+		//     return false
+		//   } else {
+		//     console.log('Connected')
+		//     return true
+		//   }
+		// }
+	},
+	methods: {
+		...mapActions(["showDonateModal"])
+	}
 }
 </script>
 

@@ -41,19 +41,19 @@
 </template>
 
 <script>
-import ProfileCard from '../components/ProfileCard.vue'
-import COSPCard from '../components/COSPCard.vue'
+import ProfileCard from "../components/ProfileCard.vue"
+import COSPCard from "../components/COSPCard.vue"
 
 export default {
-  data() {
-    return {
-      myDonations: [{ id: 1, name: 'Ale', desc: 'Love the world and specially this movement', trees: 100, date: '02/26/2022' }, { id: 2, name: 'Scar', desc: 'I like the idea to invest my crypto on this.', trees: 50, date: '01/13/2022' }, { id: 3, name: 'Alex', desc: 'More trees! Lets donate more trees......', trees: 32, date: '05/11/2022' }]
-    }
-  },
-  components: {
-    ProfileCard,
-    COSPCard
-  }
+	data() {
+		return {
+			myDonations: [{ id: 1, name: "Ale", desc: "Love the world and specially this movement", trees: 100, date: "02/26/2022" }, { id: 2, name: "Scar", desc: "I like the idea to invest my crypto on this.", trees: 50, date: "01/13/2022" }, { id: 3, name: "Alex", desc: "More trees! Lets donate more trees......", trees: 32, date: "05/11/2022" }]
+		}
+	},
+	components: {
+		ProfileCard,
+		COSPCard
+	}
 }
 </script>
 

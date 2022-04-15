@@ -128,76 +128,76 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import { mapActions } from 'vuex'
+import { mapState } from "vuex"
+import { mapActions } from "vuex"
 
 export default {
-  name: 'DonationDash',
-  data () {
-    return {
-      currentStep: 1,
-      max_step: 5,
+	name: "DonationDash",
+	data () {
+		return {
+			currentStep: 1,
+			max_step: 5,
 
-      // Amount group
-      amountSelected: '',
-      amountSelectedInput: '',
-      amountSelectedCustomInput: '',
+			// Amount group
+			amountSelected: "",
+			amountSelectedInput: "",
+			amountSelectedCustomInput: "",
 
-      // Name group
-      NameInput: '',
-      maxLengthName: 35,
+			// Name group
+			NameInput: "",
+			maxLengthName: 35,
 
-      // Email group
-      EmailInput: '',
-      maxLengthEmail: 35,
+			// Email group
+			EmailInput: "",
+			maxLengthEmail: 35,
 
-      // Message group
-      MessageInput: '',
-      maxLengthMessage: 50,
+			// Message group
+			MessageInput: "",
+			maxLengthMessage: 50,
 
-      // Terms group
-      AgreeCheck: []
+			// Terms group
+			AgreeCheck: []
 
-    }
-  },
-  methods: {
-    onClickNext() {
-      this.currentStep++;
-    },
-    onClickBack() {
-      this.currentStep--;
-    },
-    onClickFirst() {
-      this.currentStep = 1;
-    },
+		}
+	},
+	methods: {
+		onClickNext() {
+			this.currentStep++
+		},
+		onClickBack() {
+			this.currentStep--
+		},
+		onClickFirst() {
+			this.currentStep = 1
+		},
 
-    ...mapActions([
-      'exportDonatorData'
-    ])
-  },
-  watch: {
-    amountSelectedCustomInput() {
-      if (this.amountSelectedCustomInput !== '') {
-        this.amountSelectedInput = ''
-        this.amountSelected = this.amountSelectedCustomInput
-      }
-    },
-    amountSelectedInput() {
-      if (this.amountSelectedInput !== '') {
-        this.amountSelectedCustomInput = ''
-        this.amountSelected = this.amountSelectedInput
-      }
-    }
-  },
-  computed: {
-    progress() {
-      return Math.round(100 / this.max_step) * this.currentStep;
-    },
+		...mapActions([
+			"exportDonatorData"
+		])
+	},
+	watch: {
+		amountSelectedCustomInput() {
+			if (this.amountSelectedCustomInput !== "") {
+				this.amountSelectedInput = ""
+				this.amountSelected = this.amountSelectedCustomInput
+			}
+		},
+		amountSelectedInput() {
+			if (this.amountSelectedInput !== "") {
+				this.amountSelectedCustomInput = ""
+				this.amountSelected = this.amountSelectedInput
+			}
+		}
+	},
+	computed: {
+		progress() {
+			return Math.round(100 / this.max_step) * this.currentStep
+		},
 
-    ...mapState([
-      'donator',
-    ])
-  }
+		...mapState([
+			"donator",
+		])
+	}
 }
 </script>
 
