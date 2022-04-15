@@ -1,5 +1,5 @@
 <template>
-  <div id="cosp__container" class="shadow-lg rounded-lg">
+  <div id="cosp__container" class="shadow-lg">
     <b-container>
       <b-row id="myContribution__container">
         <b-col>
@@ -9,14 +9,17 @@
     </b-container>
     <b-container>
       <b-row align-v="center">
-        <b-col class="text-center pb-3 pt-5">
-          <h3 class="font-weight-bold">56 Trees</h3>
-          <p>per month</p>
+        <b-col class="text-center pb-2 pt-5">
+          <p class="p-0"><small>I've already planted</small></p>
+          <h3 class="font-weight-bold">210 Trees</h3>
+          <hr>
+          <p><small>I'm planting</small></p>
+          <p><span class="font-weight-bold">56 trees</span> per month</p>
         </b-col>
       </b-row>
       <b-row align-v="center">
         <b-col class="text-center">
-          <p class="font-weight-light my-auto py-3"><small>*this is an approximate</small></p>
+          <p class="font-weight-light my-auto pb-3"><small>*this is an approximate<span><router-link to="/cosp" class="px-1"><b-icon-question-circle></b-icon-question-circle></router-link></span></small></p>
         </b-col>
       </b-row>
     </b-container>
@@ -38,10 +41,13 @@ export default {
   #cosp__container {
     width: 400px;
     max-width: 400px;
+    border-radius: 30px;
     background-color: white;
   }
 
   #myContribution__container {
     background-color: $success;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
   }
 </style>

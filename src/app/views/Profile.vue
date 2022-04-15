@@ -1,9 +1,9 @@
 <template>
   <div>
-    <b-container class="py-5">
+    <b-container class="py-5 my-5" style="max-width:1400px">
       <b-row>
         <!-- Left side col -->
-        <b-col>
+        <b-col cols="5">
           <b-row class="mb-5">
             <ProfileCard/>
           </b-row>
