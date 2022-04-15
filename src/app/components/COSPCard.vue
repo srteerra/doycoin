@@ -8,18 +8,16 @@
       </b-row>
     </b-container>
     <b-container>
-      <b-row align-v="center">
-        <b-col class="text-center pb-2 pt-5">
+      <b-row align-v="center pt-4">
+        <b-col class="text-center">
           <p class="p-0"><small>I've already planted</small></p>
           <h3 class="font-weight-bold">210 Trees</h3>
-          <hr>
-          <p><small>I'm planting</small></p>
-          <p><span class="font-weight-bold">56 trees</span> per month</p>
+					<hr>
         </b-col>
       </b-row>
-      <b-row align-v="center">
+      <b-row align-v="center pb-4">
         <b-col class="text-center">
-          <p class="font-weight-light my-auto pb-3"><small>*this is an approximate<span><router-link to="/cosp" class="px-1"><b-icon-question-circle></b-icon-question-circle></router-link></span></small></p>
+          <p class="font-weight-light my-auto"><small>*this is an approximate<span><router-link to="/cosp" class="px-1"><b-icon-question-circle></b-icon-question-circle></router-link></span></small></p>
         </b-col>
       </b-row>
     </b-container>
