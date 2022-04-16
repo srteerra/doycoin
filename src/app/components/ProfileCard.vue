@@ -3,40 +3,29 @@
     <div class="profile__background"></div>
     <div class="profile__desc">
         <div>
-          <b-avatar button v-b-modal.editAvatarModal class="profile__avatar mx-auto" src="https://i.pravatar.cc/300?2" size="6rem"></b-avatar>
-          <h3 class="font-weight-bold">Unamed</h3>
+          <b-avatar button class="profile__avatar mx-auto" src="https://i.pravatar.cc/300?2" size="6rem"></b-avatar>
+          <h3 class="font-weight-bold pt-2">Unamed</h3>
           <p>emailaddress@example.com</p>
         </div>
     </div>
-    <b-modal id="editAvatarModal"
-      centered
-      title="Change avatar"
-      :header-bg-variant="light"
-      :header-text-variant="dark"
-      :footer-bg-variant="light"
-      :footer-text-variant="dark"
-    >
-      <p class="my-4">Vertically centered modal!</p>
-    </b-modal>
   </div>
 </template>
 
 <script>
 export default {
 	data() {
-		return {}
+		return {
+			editAvatarModal: false,
+		}
 	},
 	name: "ProfileCard",
 	methods: {
-		editAvatar() {
-			this.$bvModal.msgBoxOk("User name: Fred Flintstone", {
-				title: "User Info",
-				size: "sm",
-				buttonSize: "sm",
-				okVariant: "success",
-				headerClass: "p-2 border-bottom-0",
-				footerClass: "p-2 border-top-0"
-			})
+		showeditAvatarModal() {
+			if (this.editAvatarModal === false) {
+				this.editAvatarModal = true
+			} else {
+				this.editAvatarModal = false
+			}
 		}
 	}
 }
