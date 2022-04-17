@@ -8,6 +8,10 @@ export const getProvider = (state) => {
 	return state.provider
 }
 
+export const getAvatar = (state) => {
+	return state.avatar
+}
+
 export const isMetamask = () => {
 	// eslint-disable-next-line no-undef
 	return ethereum.isMetaMask

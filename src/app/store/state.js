@@ -18,5 +18,6 @@ export default {
 	},
 
 	username: "",
-	plantedTrees: null
+	plantedTrees: null,
+	avatar: ""
 }

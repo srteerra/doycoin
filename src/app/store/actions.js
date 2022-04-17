@@ -1,6 +1,10 @@
 /* eslint-disable no-undef */
 import detectEthereumProvider from "@metamask/detect-provider"
 import { client } from "../../lib/sanityClient"
+import imageUrlBuilder from "@sanity/image-url"
+
+// Get a pre-configured url-builder from your sanity client
+const builder = imageUrlBuilder(client)
 
 const provider = await detectEthereumProvider()
 const ethereum = window.ethereum
@@ -54,6 +58,7 @@ export const actions = {
 							console.log(`${users.userName}`)
 							commit("SET_PLANTED_TREES", {amount: users.userTrees} )
 							commit("SET_USERNAME", {name: users.userName} )
+							commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
 						})
 					}
 				})

@@ -10,6 +10,10 @@ export const SET_USERNAME = (state, payload) => {
 	state.username = payload.name
 }
 
+export const SET_AVATAR = (state, payload) => {
+	state.avatar = payload.avatar
+}
+
 export const DONATOR_DATA = (state, payload) => {
 	state.donator = {
 		donatorName: payload.name,

@@ -5,10 +5,14 @@ import App from "./App.vue"
 import router from "./router"
 import store from "./store"
 import { client } from "../lib/sanityClient"
+import imageUrlBuilder from "@sanity/image-url"
 
 import "bootstrap"
 import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue"
 import "./assets/style.scss"
+
+// Get a pre-configured url-builder from your sanity client
+const builder = imageUrlBuilder(client)
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
@@ -43,6 +47,7 @@ window.ethereum.on("accountsChanged", function (accounts) {
 			console.log(`${users.userName}`)
 			store.commit("SET_PLANTED_TREES", {amount: users.userTrees} )
 			store.commit("SET_USERNAME", {name: users.userName} )
+			store.commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
 		})
 	} else {
 		window.location.reload()

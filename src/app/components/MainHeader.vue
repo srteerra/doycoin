@@ -34,7 +34,7 @@
         <!-- Controls dropdown -->
         <b-dropdown right toggle-class="no-caret text-decoration-none" class="m-md-2 pl-1" variant="light" v-if="this.$store.state.isconnected" no-caret>
           <template #button-content>
-            <b-avatar src="https://i.pravatar.cc/300?2" size='4rem'></b-avatar>
+            <b-avatar :src="`${getAvatar}`" size='4rem'></b-avatar>
           </template>
           <b-dropdown-item to="/profile">
             <div class="py-2">
@@ -153,6 +153,7 @@
 
 <script>
 import { mapActions } from "vuex"
+import { mapGetters } from "vuex"
 
 export default {
 	data () {
@@ -168,7 +169,10 @@ export default {
 			} else {
 				return this.$store.state.currentAccount.slice(0, 4) + "..." + this.$store.state.currentAccount.slice(36, 50)
 			}
-		}
+		},
+		...mapGetters([
+			"getAvatar"
+		])
 	},
 	name: "MainHeader",
 	methods: {
