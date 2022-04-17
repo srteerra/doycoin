@@ -19,22 +19,23 @@
           <router-link to="/contact" class="px-2">Contact us</router-link>
         </b-navbar-nav>
 
-        <!-- Connect wallet -->
-        <b-button
-          id="connectWallet"
-          style="max-width:180px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"
-          :disabled="this.$store.state.connectBtnState"
-          class="ml-4 px-4 rounded-pill font-weight-bold"
-          variant="success"
-          v-on:click="showconnectWalletModal()"
-        >
-          {{ walletConnectText }}
-        </b-button>
-
+				<!-- Connect wallet -->
+				<b-button
+					id="connectWallet"
+					style="max-width:210px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"
+					:disabled="this.$store.state.connectBtnState"
+					class="ml-4 px-4 rounded-pill font-weight-bold"
+					variant="success"
+					v-on:click="showconnectWalletModal()"
+				>
+					<span v-if="isConnected" class="pr-2"><b-icon-wallet></b-icon-wallet></span>
+					{{ walletConnectText }}
+				</b-button>
+        
         <!-- Controls dropdown -->
-        <b-dropdown right toggle-class="no-caret text-decoration-none" class="m-md-2 pl-1" variant="light" v-if="this.$store.state.isconnected" no-caret>
+        <b-dropdown right toggle-class="no-caret text-decoration-none" class="m-md-2 pl-1" variant="light" v-if="isConnected" no-caret="true">
           <template #button-content>
-            <b-avatar :src="`${getAvatar}`" size='4rem'></b-avatar>
+            <b-avatar button :src="`${getAvatar}`" size='4rem'></b-avatar>
           </template>
           <b-dropdown-item to="/profile">
             <div class="py-2">
@@ -167,11 +168,12 @@ export default {
 			if (this.$store.state.currentAccount === null) {
 				return "Connect Wallet"
 			} else {
-				return this.$store.state.currentAccount.slice(0, 4) + "..." + this.$store.state.currentAccount.slice(36, 50)
+				return this.$store.state.currentAccount.slice(0, 4) + "..." + this.$store.state.currentAccount.slice(36)
 			}
 		},
 		...mapGetters([
-			"getAvatar"
+			"getAvatar",
+			"isConnected"
 		])
 	},
 	name: "MainHeader",
@@ -187,6 +189,8 @@ export default {
 </script>
 
 <style lang="scss">
+	@import '../assets/variables.scss';
+
   #principal-logo {
     display: none;
   }
