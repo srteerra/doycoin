@@ -54,7 +54,7 @@
                         <div class="text-left">
                           <b-form class="pb-5">
                             <b-form-group id="NameInputGroup" class="text-dark font-weight-bold" label="Name" label-for="NameInput">
-                              <b-form-input id="NameInput" v-model="NameInput" :maxlength="maxLengthName" type="text" class="w-100 py-2 px-3 mb-4 DonationInput" placeholder="Enter your name..." required></b-form-input>
+                              <b-form-input id="NameInput" v-model="NameInput" :readonly="NameInputDisabled" :maxlength="maxLengthName" type="text" class="w-100 py-2 px-3 mb-4 DonationInput" placeholder="Enter your name..." required></b-form-input>
                             </b-form-group>
 
                             <b-form-group id="EmailInputGroup" class="text-dark font-weight-bold" label="Email address" label-for="EmailInput">
@@ -62,13 +62,18 @@
                             </b-form-group>
 
                             <b-form-group id="MessageInputGroup" class="text-dark font-weight-bold mb-4" label="Message" label-for="MessageInput">
-                              <b-form-textarea id="MessageInput" v-model="MessageInput" :maxlength="maxLengthMessage" type="text" class="w-100 py-2 px-3 mb-2 DonationInput" placeholder="Enter a message..." rows="3" max-rows="6" required></b-form-textarea>
+                              <b-form-textarea id="MessageInput" v-model="MessageInput" :maxlength="maxLengthMessage" type="text" class="w-100 rounded-0 py-2 px-3 mb-2 DonationInput" placeholder="Enter a message..." rows="3" max-rows="6" style="overflow:hidden;" required></b-form-textarea>
                               <p class="font-weight-light">{{ MessageInput.length }} / {{ maxLengthMessage }}</p>
                             </b-form-group>
 
                             <b-form-group id="AgreeCheckGroup" class="text-dark font-weight-regular" v-slot="{ AgreeCheckGroup }">
                               <b-form-checkbox-group id="AgreeCheck" v-model="AgreeCheck" :aria-describedby="AgreeCheckGroup">
-                                <b-form-checkbox value="accepted" class="pb-2">I accept the <span><router-link to="/terms" class="font-weight-bold">Terms and Conditions</router-link></span></b-form-checkbox>
+                                <b-form-checkbox value="accepted">I accept the <span><router-link to="/terms" class="font-weight-bold">Terms and Conditions</router-link></span></b-form-checkbox>
+                              </b-form-checkbox-group>
+                            </b-form-group>
+
+														<b-form-group id="AnonymousCheckGroup" class="text-dark font-weight-regular" v-slot="{ AnonymousCheckGroup }">
+                              <b-form-checkbox-group id="AnonymousCheck" v-model="AnonymousCheck" :aria-describedby="AnonymousCheckGroup">
                                 <b-form-checkbox value="anonymous" class="">Keep my donation anonymous</b-form-checkbox>
                               </b-form-checkbox-group>
                             </b-form-group>
@@ -76,7 +81,7 @@
                         </div>
                         <!-- exportDonatorData({name: NameInput, email:EmailInput, message:MessageInput}) -->
                         <div class="mb-2">
-                          <b-button id="nextStepButton" block class="py-2" variant="success" @click="onClickNext">Next</b-button>
+                          <b-button id="nextStepButton" :disabled="AgreeBtn" block class="py-2" variant="success" @click="onClickNext">Next</b-button>
                         </div>
                         <div>
                           <b-button id="backStepButton" block class="py-2" variant="light" @click="onClickBack">Back</b-button>
@@ -145,6 +150,7 @@ export default {
 
 			// Name group
 			NameInput: "",
+			NameInputDisabled: false,
 			maxLengthName: 35,
 
 			// Email group
@@ -156,7 +162,11 @@ export default {
 			maxLengthMessage: 50,
 
 			// Terms group
-			AgreeCheck: []
+			AgreeCheck: [],
+			AnonymousCheck: [],
+
+			// Buttons state
+			AgreeBtn: true
 
 		}
 	},
@@ -176,6 +186,22 @@ export default {
 		])
 	},
 	watch: {
+		AgreeCheck() {
+			if (this.AgreeCheck[0] !== "accepted") {
+				this.AgreeBtn = true
+			} else {
+				this.AgreeBtn = false
+			}
+		},
+		AnonymousCheck() {
+			if (this.AnonymousCheck[0] === "anonymous") {
+				this.NameInput = "Anonymous"
+				this.NameInputDisabled = true
+			} else {
+				this.NameInput = ""
+				this.NameInputDisabled = false
+			}
+		},
 		amountSelectedCustomInput() {
 			if (this.amountSelectedCustomInput !== "") {
 				this.amountSelectedInput = ""
@@ -238,17 +264,7 @@ export default {
     color: rgb(127, 127, 127);
     border: 1px solid gray;
     border-radius: 25px;
-    &:focus {
-      color: rgb(69, 69, 69);
-      font-weight: 700;
-      border: none;
-    }
-  }
-
-  .DonationTextArea {
-    background-color: rgb(240, 240, 240);
-    color: rgb(127, 127, 127);
-    border: 1px solid gray;
+		overflow: hidden;
     &:focus {
       color: rgb(69, 69, 69);
       font-weight: 700;
