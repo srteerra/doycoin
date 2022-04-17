@@ -47,7 +47,11 @@ window.ethereum.on("accountsChanged", function (accounts) {
 			console.log(`${users.userName}`)
 			store.commit("SET_PLANTED_TREES", {amount: users.userTrees} )
 			store.commit("SET_USERNAME", {name: users.userName} )
-			store.commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
+			if (builder.image(users.userAvatar).options.source !== undefined) {
+				store.commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
+			} else {
+				store.commit("SET_AVATAR", {avatar: ""} )
+			}
 		})
 	} else {
 		window.location.reload()
