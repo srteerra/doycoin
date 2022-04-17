@@ -8,14 +8,14 @@
       </b-row>
     </b-container>
     <b-container>
-      <b-row align-v="center pt-4">
+      <b-row align-v="center" class="pt-4">
         <b-col class="text-center">
           <p class="p-0"><small>I've already planted</small></p>
-          <h3 class="font-weight-bold">210 Trees</h3>
+          <h3 class="font-weight-bold">{{ this.$store.state.plantedTrees }} Trees</h3>
 					<hr>
         </b-col>
       </b-row>
-      <b-row align-v="center pb-4">
+      <b-row align-v="center" class="pb-4">
         <b-col class="text-center">
           <p class="font-weight-light my-auto"><small>*this is an approximate<span><router-link to="/cosp" class="px-1"><b-icon-question-circle></b-icon-question-circle></router-link></span></small></p>
         </b-col>

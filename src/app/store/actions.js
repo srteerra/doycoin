@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import detectEthereumProvider from "@metamask/detect-provider"
 import { client } from "../../lib/sanityClient"
 
@@ -25,7 +26,7 @@ export const actions = {
 	async setAcc ({ commit }, acc) {
 		commit("CURRENT_ADDRESS", acc)
 	},
-	async connectAcc ({ commit, dispatch }) {
+	async connectAcc ({ commit, dispatch, getters }) {
 		commit("CONNECT_BUTTON", true) // Button disabled
 		commit("LOADING_DATA", true) // Loading data on
 
@@ -43,13 +44,17 @@ export const actions = {
 
 						const userDoc = {
 							_type: "users",
-							_id: ethereum.selectedAddress,
+							_id: getters.getAddress,
 							userName: "Unnamed",
-							// eslint-disable-next-line no-undef
-							userAddress: store.getters.getAddress
+							userAddress: getters.getAddress
 						}
 
 						client.createIfNotExists(userDoc)
+						client.getDocument(getters.getAddress).then((users) => {
+							console.log(`${users.userName}`)
+							commit("SET_PLANTED_TREES", {amount: users.userTrees} )
+							commit("SET_USERNAME", {name: users.userName} )
+						})
 					}
 				})
 				.catch((err) => {

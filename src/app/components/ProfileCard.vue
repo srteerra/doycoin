@@ -4,8 +4,7 @@
     <div class="profile__desc">
         <div>
           <b-avatar button class="profile__avatar mx-auto" src="https://i.pravatar.cc/300?2" size="6rem"></b-avatar>
-          <h3 class="font-weight-bold pt-2">Unamed</h3>
-          <p>emailaddress@example.com</p>
+          <h3 class="font-weight-bold pt-2">{{ this.$store.state.username }}</h3>
         </div>
     </div>
   </div>

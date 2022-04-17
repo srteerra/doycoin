@@ -15,5 +15,8 @@ export default {
 		donatorName: "",
 		donatorEmail: "",
 		donatorMessage: "",
-	}
+	},
+
+	username: "",
+	plantedTrees: null
 }

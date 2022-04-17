@@ -39,6 +39,11 @@ window.ethereum.on("accountsChanged", function (accounts) {
 		}
 
 		client.createIfNotExists(userDoc)
+		client.getDocument(store.getters.getAddress).then((users) => {
+			console.log(`${users.userName}`)
+			store.commit("SET_PLANTED_TREES", {amount: users.userTrees} )
+			store.commit("SET_USERNAME", {name: users.userName} )
+		})
 	} else {
 		window.location.reload()
 	}

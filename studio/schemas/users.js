@@ -14,6 +14,11 @@ export default {
 			type: "string"
 		},
 		{
+			name: "userTrees",
+			title: "Planted Trees",
+			type: "number"
+		},
+		{
 			name: "userAvatar",
 			title: "Avatar",
 			type: "image"

@@ -2,6 +2,14 @@ export const WINDOW_WIDTH = (state) => {
 	state.windowWidth = window.innerWidth
 }
 
+export const SET_PLANTED_TREES = (state, payload) => {
+	state.plantedTrees = payload.amount
+}
+
+export const SET_USERNAME = (state, payload) => {
+	state.username = payload.name
+}
+
 export const DONATOR_DATA = (state, payload) => {
 	state.donator = {
 		donatorName: payload.name,
