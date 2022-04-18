@@ -79,9 +79,9 @@
                             </b-form-group>
                           </b-form>
                         </div>
-                        <!-- exportDonatorData({name: NameInput, email:EmailInput, message:MessageInput}) -->
+                        
                         <div class="mb-2">
-                          <b-button id="nextStepButton" :disabled="AgreeBtn" block class="py-2" variant="success" @click="onClickNext">Next</b-button>
+                          <b-button id="nextStepButton" :disabled="AgreeBtn" block class="py-2" variant="success" @click="onClickNext(); exportDonatorData({name: NameInput, email:EmailInput, message:MessageInput})">Next</b-button>
                         </div>
                         <div>
                           <b-button id="backStepButton" block class="py-2" variant="light" @click="onClickBack">Back</b-button>
@@ -92,7 +92,7 @@
                         <b-card-text>For furthermore in 3rd step.</b-card-text>
 
                         <div class="mb-2">
-                          <b-button id="nextStepButton" block class="py-2" variant="success" @click="onClickNext">Next</b-button>
+                          <b-button id="nextStepButton" block class="py-2" variant="success" @click="onClickNext(); sendDonation()">Next</b-button>
                         </div>
                         <div>
                           <b-button id="backStepButton" block class="py-2" variant="light" @click="onClickBack">Back</b-button>
@@ -182,7 +182,8 @@ export default {
 		},
 
 		...mapActions([
-			"exportDonatorData"
+			"exportDonatorData",
+			"sendDonation"
 		])
 	},
 	watch: {

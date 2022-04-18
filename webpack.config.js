@@ -101,7 +101,7 @@ module.exports = {
 		}),
 		new webpack.DefinePlugin({
 			"process.env.ASSET_PATH": JSON.stringify(ASSET_PATH),
-		}),
+		})
 	],
 	optimization: {
 		minimize: true,

@@ -33,7 +33,7 @@
 				</b-button>
         
         <!-- Controls dropdown -->
-        <b-dropdown right toggle-class="no-caret text-decoration-none" class="m-md-2 pl-1" variant="light" v-if="isConnected" no-caret="true">
+        <b-dropdown right toggle-class="no-caret text-decoration-none" class="m-md-2 pl-1" variant="light" v-if="isConnected" no-caret>
           <template #button-content>
             <b-avatar button :src="`${getAvatar}`" size='4rem'></b-avatar>
           </template>

@@ -1,22 +1,30 @@
 export default {
 	fetchingData: false,
 	error: null,
+	windowWidth: window.innerWidth,
+
+	// Eth or wallet
+	provider: null,
 	currentAccount: null,
 	isconnected: false,
+
+	// Btn states
 	connectBtnState: false,
 	disconnectBtnState: true,
+
+	// Modals
 	showconnectWalletModal: false,
 	showinstallMetaModal: false,
 	showDonate: false,
-	provider: null,
-	windowWidth: window.innerWidth,
 
+	// Donator data
 	donator: {
 		donatorName: "",
 		donatorEmail: "",
 		donatorMessage: "",
 	},
 
+	// User data
 	username: "",
 	plantedTrees: null,
 	avatar: ""

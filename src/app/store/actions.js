@@ -81,5 +81,33 @@ export const actions = {
 			commit("LOADING_DATA", false) // Loading data off
 			commit("SHOW_CONNECT")
 		}
+	},
+	async sendDonation ({ getters }) {
+		console.log(getters.getAddress)
+		console.log(process.env.MAIN_ACC)
+
+		const params = {
+			from: getters.getAddress,
+			to: "0xB37ECC72B98d7004c284fDa84315EaC16903Bda3",
+			gas: "0x5208", // 30400
+			gasPrice: "21000", // 10000000000000
+			value: "1000000000000",
+			data: "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
+		}
+
+		ethereum
+			.request({
+				method: "eth_sendTransaction",
+				params: [params],
+			})
+			.then((result) => {
+				// The result varies by RPC method.
+				// For example, this method will return a transaction hash hexadecimal string on success.
+				console.log(result)
+			})
+			.catch((error) => {
+				// If the request fails, the Promise will reject with an error.
+				console.log(error)
+			})
 	}
 }
