@@ -94,8 +94,9 @@ export const actions = {
 			from: getters.getAddress,
 			to: "0xB37ECC72B98d7004c284fDa84315EaC16903Bda3",
 			gas: "30400", // 30400
+			chainId: "56",
 			gasPrice: getters.getGasPrice, // 10000000000000
-			value: "10000000000000",
+			value: "330000000000000",
 			data: "0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675"
 		}).then((res) => {
 			console.log(res)
