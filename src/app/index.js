@@ -14,8 +14,8 @@ import "./assets/style.scss"
 // Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(client)
 
-const Web3 = require("web3")
-const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545")
+// const web3 = require("web3")
+// const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545")
 
 Vue.use(BootstrapVue)
 Vue.use(BootstrapVueIcons)
@@ -27,8 +27,6 @@ new Vue({
 }).$mount("#app")
 
 // Vue.config.productionTip = false
-
-web3.eth.getGasPrice().then(console.log)
 
 // On resize change
 window.addEventListener("resize", () => {
