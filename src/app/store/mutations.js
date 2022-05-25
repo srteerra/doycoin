@@ -31,18 +31,18 @@ export const SHOW_DONATE = (state) => {
 }
 
 export const SHOW_CONNECT = (state) => {
-	if (state.showconnectWalletModal === false) {
-		state.showconnectWalletModal = true
+	if (state.showconnectWalletModalState === false) {
+		state.showconnectWalletModalState = true
 	} else {
-		state.showconnectWalletModal = false
+		state.showconnectWalletModalState = false
 	}
 }
 
 export const SHOW_INSTALL_METAMASK = (state) => {
-	if (state.showinstallMetaModal === false) {
-		state.showinstallMetaModal = true
+	if (state.showinstallMetaModalState === false) {
+		state.showinstallMetaModalState = true
 	} else {
-		state.showinstallMetaModal = false
+		state.showinstallMetaModalState = false
 	}
 }
 

@@ -14,8 +14,8 @@ export default {
 	disconnectBtnState: true,
 
 	// Modals
-	showconnectWalletModal: false,
-	showinstallMetaModal: false,
+	showconnectWalletModalState: false,
+	showinstallMetaModalState: false,
 	showDonate: false,
 
 	// Donator data

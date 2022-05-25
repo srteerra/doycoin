@@ -23,7 +23,7 @@
 				<b-button
 					id="connectWallet"
 					style="max-width:210px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"
-					:disabled="this.$store.state.connectBtnState"
+					:disabled="connectBtnState"
 					class="ml-4 px-4 rounded-pill font-weight-bold"
 					variant="success"
 					v-on:click="showconnectWalletModal()"
@@ -53,7 +53,7 @@
             </div>
           </b-dropdown-item>
           <b-dropdown-divider></b-dropdown-divider>
-          <b-dropdown-item-button @click="disconnectAcc()" :disabled="this.$store.state.disconnectBtnState">
+          <b-dropdown-item-button @click="disconnectAcc()" :disabled="disconnectBtnState">
             <div class="py-2">
               <span class="px-2"><b-icon-box-arrow-left></b-icon-box-arrow-left></span> Disconnect
             </div>
@@ -63,7 +63,7 @@
     </b-navbar>
 
     <!-- Missing Metamask modal -->
-    <b-modal id="modal-installMetamask" v-model="this.$store.state.showinstallMetaModal" centered size="md"
+    <b-modal id="modal-installMetamask" v-model="showinstallMetaModalState" centered size="md"
       header-bg-variant="light"
       header-text-variant="dark"
       header-border-variant="light"
@@ -102,7 +102,7 @@
     </b-modal>
     
     <!-- Selecting wallet modal -->
-    <b-modal id="modal-connectWallet" v-model="this.$store.state.showconnectWalletModal" centered size="lg"
+    <b-modal id="modal-connectWallet" v-model="showconnectWalletModalState" centered size="lg"
       header-bg-variant="light"
       header-text-variant="dark"
       header-border-variant="light"
@@ -117,7 +117,7 @@
           </b-button>
         </div>
       </template>
-      <b-overlay :show="this.$store.state.fetchingData" rounded="sm">
+      <b-overlay :show="fetchingData" rounded="sm">
         <b-container class="px-5">
           <b-row class="pb-4">
             <b-col>
@@ -129,10 +129,18 @@
               <b-button
                 variant="light"
                 class="border px-4 py-3"
-                v-on:click="connectAcc()"
+                v-on:click="connectAcc_Metamask()"
               >
                 <span class="pr-3"><img id="wallet-ico" src="../assets/logos/metamask-icon.png" alt=""></span>
                 <span class="font-weight-regular">Metamask</span>
+              </b-button>
+							<b-button
+                variant="light"
+                class="border px-4 py-3"
+                v-on:click="connectAcc_Coinbase()"
+              >
+                <span class="pr-3"><img id="wallet-ico" src="../assets/logos/metamask-icon.png" alt=""></span>
+                <span class="font-weight-regular">Coinbase Wallet</span>
               </b-button>
             </b-col>
           </b-row>
@@ -155,6 +163,7 @@
 <script>
 import { mapActions } from "vuex"
 import { mapGetters } from "vuex"
+import { mapState } from "vuex"
 
 export default {
 	data () {
@@ -174,13 +183,21 @@ export default {
 		...mapGetters([
 			"getAvatar",
 			"isConnected"
+		]),
+		...mapState([
+			"showconnectWalletModalState",
+			"fetchingData",
+			"showinstallMetaModalState",
+			"disconnectBtnState",
+			"connectBtnState"
 		])
 	},
 	name: "MainHeader",
 	methods: {
 		...mapActions([
 			"disconnectAcc",
-			"connectAcc",
+			"connectAcc_Metamask",
+			"connectAcc_Coinbase",
 			"showconnectWalletModal",
 			"showinstallMetaModal",
 		])
