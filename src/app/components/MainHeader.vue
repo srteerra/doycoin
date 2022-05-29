@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid px-5 py-4">
-    <b-navbar toggleable="lg" type="light" variant="white">
+    <b-navbar toggleable="xl" type="light" variant="white">
       <!-- Navbar logo -->
       <b-navbar-brand href="#">
         <img id="principal-logo" src="../assets/logos/principal-logo-dark.png" alt="">
@@ -12,26 +12,25 @@
       <!-- Navbar links -->
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto text-center text-dark font-weight-bold">
-          <router-link to="/" class="px-2">Home</router-link>
-          <router-link to="/about" class="px-2">About us</router-link>
-          <router-link to="/token" class="px-2">Our token</router-link>
-          <router-link to="/how" class="px-2">How it works?</router-link>
-          <router-link to="/contact" class="px-2">Contact us</router-link>
+          <router-link to="/" class="px-2 my-auto">Home</router-link>
+          <router-link to="/about" class="px-2 my-auto">About us</router-link>
+          <router-link to="/token" class="px-2 my-auto">Our token</router-link>
+          <router-link to="/how" class="px-2 my-auto">How it works?</router-link>
+          <router-link to="/contact" class="px-2 my-auto">Contact us</router-link>
+					<!-- Connect wallet -->
+					<b-button
+						id="connectWallet"
+						style="max-width:100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"
+						:disabled="connectBtnState"
+						class="ml-0 mt-3 mt-xl-0 ml-xl-4 px-4 rounded-pill font-weight-bold"
+						variant="success"
+						v-on:click="showconnectWalletModal()"
+					>
+						<span v-if="isConnected" class="pr-2"><b-icon-wallet></b-icon-wallet></span>
+						{{ walletConnectText }}
+					</b-button>
         </b-navbar-nav>
 
-				<!-- Connect wallet -->
-				<b-button
-					id="connectWallet"
-					style="max-width:210px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"
-					:disabled="connectBtnState"
-					class="ml-4 px-4 rounded-pill font-weight-bold"
-					variant="success"
-					v-on:click="showconnectWalletModal()"
-				>
-					<span v-if="isConnected" class="pr-2"><b-icon-wallet></b-icon-wallet></span>
-					{{ walletConnectText }}
-				</b-button>
-        
         <!-- Controls dropdown -->
         <b-dropdown right toggle-class="no-caret text-decoration-none" class="m-md-2 pl-1" variant="light" v-if="isConnected" no-caret>
           <template #button-content>
