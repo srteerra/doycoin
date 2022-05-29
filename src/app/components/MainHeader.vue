@@ -3,8 +3,8 @@
     <b-navbar toggleable="xl" type="light" variant="white">
       <!-- Navbar logo -->
       <b-navbar-brand href="#">
-        <img id="principal-logo" src="../assets/logos/principal-logo-dark.png" alt="">
-        <img id="secundary-logo" src="../assets/logos/secundary-logo.png" alt="">
+        <img id="principal-logo" src="../assets/logos/horizontal-black.png" alt="">
+        <img id="secundary-logo" src="../assets/logos/icon-black.png" alt="">
       </b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -15,7 +15,7 @@
           <router-link to="/" class="px-2 my-auto">Home</router-link>
           <router-link to="/about" class="px-2 my-auto">About us</router-link>
           <router-link to="/token" class="px-2 my-auto">Our token</router-link>
-          <router-link to="/how" class="px-2 my-auto">How it works?</router-link>
+          <router-link to="/learn" class="px-2 my-auto">Learn</router-link>
           <router-link to="/contact" class="px-2 my-auto">Contact us</router-link>
 					<!-- Connect wallet -->
 					<b-button

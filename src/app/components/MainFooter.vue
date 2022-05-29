@@ -51,8 +51,8 @@
                   </ul>
                 </b-row>
                 <b-row class="d-flex justify-content-center justify-content-lg-end py-5">
-                  <img id="principal-logo" src="../assets/logos/principal-logo-dark.png" alt="" srcset="">
-                  <img id="secundary-logo" src="../assets/logos/secundary-logo-dark.png" alt="" srcset="">
+                  <img id="principal-logo" src="../assets/logos/horizontal-black.png" alt="" srcset="">
+                  <img id="secundary-logo" src="../assets/logos/icon-black.png" alt="" srcset="">
                 </b-row>
               </b-col>
           </b-row>
