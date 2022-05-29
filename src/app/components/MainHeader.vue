@@ -139,7 +139,7 @@
                 class="border px-4 py-3"
                 v-on:click="connectAcc_Coinbase()"
               >
-                <span class="pr-3"><img id="wallet-ico" src="../assets/logos/metamask-icon.png" alt=""></span>
+                <span class="pr-3"><img id="wallet-ico" src="../assets/logos/coinbase-icon.png" alt=""></span>
                 <span class="font-weight-regular">Coinbase Wallet</span>
               </b-button>
             </b-col>
