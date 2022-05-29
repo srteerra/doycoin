@@ -19,6 +19,11 @@ export default {
 			type: "number"
 		},
 		{
+			name: "userCountry",
+			title: "Country",
+			type: "string"
+		},
+		{
 			name: "userAvatar",
 			title: "Avatar",
 			type: "image"

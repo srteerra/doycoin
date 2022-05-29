@@ -59,13 +59,15 @@ export const actions = {
 							_id: getters.getAddress,
 							userName: "Unnamed",
 							userAddress: getters.getAddress,
-							userTrees: 0
+							userTrees: 0,
+							userCountry: "Undefined"
 						}
 
 						client.createIfNotExists(userDoc)
 						client.getDocument(getters.getAddress).then((users) => {
 							console.log(`${users.userName}`)
 							commit("SET_PLANTED_TREES", {amount: users.userTrees} )
+							commit("SET_USER_COUNTRY", {country: users.userCountry} )
 							commit("SET_USERNAME", {name: users.userName} )
 							commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
 						})

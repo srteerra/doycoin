@@ -28,5 +28,6 @@ export default {
 	// User data
 	username: "",
 	plantedTrees: 0,
-	avatar: ""
+	avatar: "",
+	userCountry: ""
 }

@@ -14,6 +14,7 @@ import "./assets/style.scss"
 // Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(client)
 
+const metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
 // const web3 = require("web3")
 // const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545")
 
@@ -34,27 +35,26 @@ window.addEventListener("resize", () => {
 })
 
 // On Acc change
-window.ethereum.on("accountsChanged", function (accounts) {
+metamaskProvider.on("accountsChanged", function (accounts) {
 	console.log(accounts)
 	if (accounts.length > 0) {
 		store.dispatch("setAcc", accounts[0])
 		const userDoc = {
 			_type: "users",
-			_id: ethereum.selectedAddress,
+			_id: store.getters.getAddress,
 			userName: "Unnamed",
-			userAddress: store.getters.getAddress
+			userAddress: store.getters.getAddress,
+			userTrees: 0,
+			userCountry: "Undefined"
 		}
 
 		client.createIfNotExists(userDoc)
 		client.getDocument(store.getters.getAddress).then((users) => {
 			console.log(`${users.userName}`)
 			store.commit("SET_PLANTED_TREES", {amount: users.userTrees} )
+			store.commit("SET_USER_COUNTRY", {country: users.userCountry} )
 			store.commit("SET_USERNAME", {name: users.userName} )
-			if (builder.image(users.userAvatar).options.source !== undefined) {
-				store.commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
-			} else {
-				store.commit("SET_AVATAR", {avatar: ""} )
-			}
+			store.commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
 		})
 	} else {
 		window.location.reload()

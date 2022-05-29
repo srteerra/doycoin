@@ -6,6 +6,10 @@ export const SET_PLANTED_TREES = (state, payload) => {
 	state.plantedTrees = payload.amount
 }
 
+export const SET_USER_COUNTRY = (state, payload) => {
+	state.userCountry = payload.country
+}
+
 export const SET_USERNAME = (state, payload) => {
 	state.username = payload.name
 }
