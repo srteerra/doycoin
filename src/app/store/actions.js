@@ -69,7 +69,11 @@ export const actions = {
 							commit("SET_PLANTED_TREES", {amount: users.userTrees} )
 							commit("SET_USER_COUNTRY", {country: users.userCountry} )
 							commit("SET_USERNAME", {name: users.userName} )
-							commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
+							if (users.userAvatar == undefined) {
+								commit("SET_AVATAR", {avatar: undefined} )
+							} else {
+								commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
+							}
 						})
 					}
 				})
@@ -117,21 +121,28 @@ export const actions = {
 							_type: "users",
 							_id: getters.getAddress,
 							userName: "Unnamed",
-							userAddress: getters.getAddress
+							userAddress: getters.getAddress,
+							userTrees: 0,
+							userCountry: "Undefined"
 						}
 
 						client.createIfNotExists(userDoc)
 						client.getDocument(getters.getAddress).then((users) => {
 							console.log(`${users.userName}`)
 							commit("SET_PLANTED_TREES", {amount: users.userTrees} )
+							commit("SET_USER_COUNTRY", {country: users.userCountry} )
 							commit("SET_USERNAME", {name: users.userName} )
-							commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
+							if (users.userAvatar == undefined) {
+								commit("SET_AVATAR", {avatar: undefined} )
+							} else {
+								commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
+							}
 						})
 					}
 				})
 				.catch((err) => {
 					if (err.code === 4001) {
-						console.log("Please connect to MetaMask.")
+						console.log("Please connect to Coinbase.")
 						commit("CONNECT_BUTTON", false) // Button enabled
 						commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
 						commit("LOADING_DATA", false) // Loading data off
@@ -141,7 +152,7 @@ export const actions = {
 					}
 				})
 		} else {
-			console.log("Please install MetaMask!")
+			console.log("Please install Coinbase!")
 			commit("SHOW_INSTALL_METAMASK")
 			commit("CONNECT_BUTTON", false) // Button enabled
 			commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav

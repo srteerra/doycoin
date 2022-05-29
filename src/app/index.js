@@ -15,6 +15,7 @@ import "./assets/style.scss"
 const builder = imageUrlBuilder(client)
 
 const metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
+const coinbaseProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
 // const web3 = require("web3")
 // const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545")
 
@@ -34,7 +35,7 @@ window.addEventListener("resize", () => {
 	store.commit("WINDOW_WIDTH")
 })
 
-// On Acc change
+// On Metamask Acc change
 metamaskProvider.on("accountsChanged", function (accounts) {
 	console.log(accounts)
 	if (accounts.length > 0) {
@@ -54,7 +55,42 @@ metamaskProvider.on("accountsChanged", function (accounts) {
 			store.commit("SET_PLANTED_TREES", {amount: users.userTrees} )
 			store.commit("SET_USER_COUNTRY", {country: users.userCountry} )
 			store.commit("SET_USERNAME", {name: users.userName} )
-			store.commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
+			if (users.userAvatar == undefined) {
+				store.commit("SET_AVATAR", {avatar: undefined} )
+			} else {
+				store.commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
+			}
+		})
+	} else {
+		window.location.reload()
+	}
+})
+
+// On Coinbase Acc change
+coinbaseProvider.on("accountsChanged", function (accounts) {
+	console.log(accounts)
+	if (accounts.length > 0) {
+		store.dispatch("setAcc", accounts[0])
+		const userDoc = {
+			_type: "users",
+			_id: store.getters.getAddress,
+			userName: "Unnamed",
+			userAddress: store.getters.getAddress,
+			userTrees: 0,
+			userCountry: "Undefined"
+		}
+
+		client.createIfNotExists(userDoc)
+		client.getDocument(store.getters.getAddress).then((users) => {
+			console.log(`${users.userName}`)
+			store.commit("SET_PLANTED_TREES", {amount: users.userTrees} )
+			store.commit("SET_USER_COUNTRY", {country: users.userCountry} )
+			store.commit("SET_USERNAME", {name: users.userName} )
+			if (users.userAvatar == undefined) {
+				store.commit("SET_AVATAR", {avatar: undefined} )
+			} else {
+				store.commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
+			}
 		})
 	} else {
 		window.location.reload()

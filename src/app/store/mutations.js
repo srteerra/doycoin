@@ -15,7 +15,11 @@ export const SET_USERNAME = (state, payload) => {
 }
 
 export const SET_AVATAR = (state, payload) => {
-	state.avatar = payload.avatar
+	if (payload.avatar == undefined) {
+		state.avatar = ""
+	} else {
+		state.avatar = payload.avatar
+	}
 }
 
 export const DONATOR_DATA = (state, payload) => {
