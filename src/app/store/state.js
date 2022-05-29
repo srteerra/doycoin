@@ -27,6 +27,6 @@ export default {
 
 	// User data
 	username: "",
-	plantedTrees: null,
+	plantedTrees: 0,
 	avatar: ""
 }

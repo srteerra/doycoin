@@ -58,7 +58,8 @@ export const actions = {
 							_type: "users",
 							_id: getters.getAddress,
 							userName: "Unnamed",
-							userAddress: getters.getAddress
+							userAddress: getters.getAddress,
+							userTrees: 0
 						}
 
 						client.createIfNotExists(userDoc)
