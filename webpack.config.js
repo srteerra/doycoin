@@ -10,7 +10,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin")
 const TerserPlugin = require("terser-webpack-plugin")
 
 const devMode = process.env.NODE_ENV !== "production"
-const ASSET_PATH = process.env.ASSET_PATH || "./"
+const ASSET_PATH = process.env.ASSET_PATH || ""
 
 module.exports = {
 	entry: "./src/app/index.js",
