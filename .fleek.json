@@ -1,7 +1,7 @@
 {
 	"build": {
 		"command": "npm install && npm run build:prod",
-		"publicDir": "public",
+		"publicDir": "src/public",
 		"baseDir": ".",
 		"environment": {
 			"SOME_ENV": "Build finished!"
