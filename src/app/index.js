@@ -62,7 +62,7 @@ metamaskProvider.on("accountsChanged", function (accounts) {
 			}
 		})
 	} else {
-		window.location.reload()
+		window.location.href = "/"
 	}
 })
 
@@ -93,7 +93,7 @@ coinbaseProvider.on("accountsChanged", function (accounts) {
 			}
 		})
 	} else {
-		window.location.reload()
+		window.location.href = "/"
 	}
 })
 
