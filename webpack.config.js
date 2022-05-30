@@ -18,7 +18,7 @@ module.exports = {
 		path: path.resolve(__dirname, "src/public"),
 		filename: "js/[name].js",
 		assetModuleFilename: "assets/img/[name].[ext][query]",
-		publicPath: ASSET_PATH
+		publicPath: ""
 	},
 	resolve: {
 		extensions: [".js", ".vue"]
