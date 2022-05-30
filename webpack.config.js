@@ -15,9 +15,9 @@ const ASSET_PATH = process.env.ASSET_PATH || "/"
 module.exports = {
 	entry: "./src/app/index.js",
 	output: {
-		path: path.resolve(__dirname, "public"),
-		filename: "js/[name].[contenthash].js",
-		assetModuleFilename: "assets/img/[name].[hash][ext][query]",
+		path: path.resolve(__dirname, "src/public"),
+		filename: "js/[name].js",
+		assetModuleFilename: "assets/img/[name].[ext][query]",
 		publicPath: ASSET_PATH
 	},
 	resolve: {
