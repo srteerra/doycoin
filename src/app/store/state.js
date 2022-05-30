@@ -7,7 +7,6 @@ export default {
 	provider: null,
 	currentAccount: null,
 	isconnected: false,
-	gasPrice: "",
 
 	// Btn states
 	connectBtnState: false,

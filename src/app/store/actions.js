@@ -165,15 +165,12 @@ export const actions = {
 	async sendDonation ({ getters }) {
 		console.log(getters.getAddress)
 		console.log(process.env.MAIN_ACC)
-
-		console.log("Gas price is: ", getters.getGasPrice)
 		
 		web3.eth.sendTransaction({
 			from: getters.getAddress,
 			to: "0xB37ECC72B98d7004c284fDa84315EaC16903Bda3",
 			gas: "30400", // 30400
 			chain: "56",
-			gasPrice: getters.getGasPrice, // 10000000000000
 			value: web3.utils.toWei("1"),
 		}).then((res) => {
 			console.log(res)

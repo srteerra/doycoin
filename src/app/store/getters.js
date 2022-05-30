@@ -7,10 +7,6 @@ export const getAddress = (state) => {
 	return state.currentAccount
 }
 
-export const getGasPrice = (state) => {
-	return state.gasPrice
-}
-
 export const getAddressShort = (state) => {
 	if (state.currentAccount !== null) {
 		return state.currentAccount.slice(0, 4) + "..." + state.currentAccount.slice(36)
