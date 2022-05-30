@@ -1,9 +1,8 @@
 {
 	"build": {
-		"image": "node:slim",
 		"command": "npm install && npm run build:prod",
 		"publicDir": "public",
-		"baseDir": "",
+		"baseDir": ".",
 		"environment": {
 			"SOME_ENV": "Build finished!"
 		}
