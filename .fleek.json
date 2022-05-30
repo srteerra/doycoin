@@ -1,10 +1,15 @@
 {
-	"build": {
-		"command": "npm install && npm run build:prod",
-		"publicDir": "src/public",
-		"baseDir": ".",
-		"environment": {
-			"SOME_ENV": "Build finished!"
-		}
-	}
+  "site": {
+    "id": "5472c6b9-d88f-44a3-a22b-bdae7c6b1db8",
+    "team": "09472e86-b259-40a1-8629-ac1c2c27c7f9",
+    "platform": "ipfs",
+    "source": "github",
+    "name": "morning-dust-8749"
+  },
+  "build": {
+    "baseDir": ".",
+    "publicDir": "src/public",
+    "command": "npm install && npm run build:prod",
+    "rootDir": ""
+  }
 }
