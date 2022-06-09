@@ -16,14 +16,15 @@ import "./assets/style.scss"
 const builder = imageUrlBuilder(client)
 const provider = new detectEthereumProvider()
 
-console.log("providers", provider)
+console.log("providers:", window.ethereum)
+console.log("provider:", provider)
 
-if (window.ethereum.providers) {
-	if (provider.isMetaMask === true) {
+if (window.ethereum) {
+	if (window.ethereum.providers.find((provider) => provider.isMetaMask)) {
 		var metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
 		console.log("meta", metamaskProvider)
 	} 
-	if (provider.isCoinbaseWallet === true) {
+	if (window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)) {
 		var coinbaseProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
 		console.log("coinbase", coinbaseProvider)
 	}
@@ -112,12 +113,12 @@ coinbaseProvider.on("accountsChanged", function (accounts) {
 	}
 })
 
-ethereum.on("disconnect", (error) => {
+metamaskProvider.on("disconnect", (error) => {
 	console.log(error)
 })
 
 // On Chain change
-ethereum.on("chainChanged", (_chainId) => {
+metamaskProvider.on("chainChanged", (_chainId) => {
 	console.log(_chainId)
 	window.location.reload()
 })

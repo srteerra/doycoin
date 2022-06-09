@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import detectEthereumProvider from "@metamask/detect-provider"
 import { client } from "../../lib/sanityClient"
@@ -8,17 +9,15 @@ const builder = imageUrlBuilder(client)
 
 const provider = new detectEthereumProvider()
 const Web3 = require("web3")
-const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545")
+const web3 = new Web3(Web3.givenProvider || "ws://localhost:8546")
 // const ethereum = window.ethereum
 
-console.log("providers", provider)
-
-if (window.ethereum.providers) {
-	if (provider.isMetaMask === true) {
+if (window.ethereum) {
+	if (window.ethereum.providers.find((provider) => provider.isMetaMask)) {
 		var metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
 		console.log("meta", metamaskProvider)
 	} 
-	if (provider.isCoinbaseWallet === true) {
+	if (window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)) {
 		var coinbaseProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
 		console.log("coinbase", coinbaseProvider)
 	}
@@ -51,7 +50,6 @@ export const actions = {
 		commit("LOADING_DATA", true) // Loading data on
 
 		if (metamaskProvider) {
-			console.log("yes", metamaskProvider)
 			metamaskProvider
 				.request({ method: "eth_requestAccounts" })
 				.then((provider) => {
@@ -114,10 +112,11 @@ export const actions = {
 		commit("LOADING_DATA", true) // Loading data on
 
 		if (coinbaseProvider) {
-			console.log("yes", coinbaseProvider)
+			console.log(provider)
 			coinbaseProvider
 				.request({ method: "eth_requestAccounts" })
 				.then((provider) => {
+					console.log(provider)
 					if (provider) {
 						dispatch("setAcc", coinbaseProvider.selectedAddress)
 						commit("IS_CONNECTED", true)
