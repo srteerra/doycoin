@@ -12,10 +12,20 @@ const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545")
 // const ethereum = window.ethereum
 
 console.log("providers", provider)
-const metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
-const coinbaseProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
-console.log("meta", metamaskProvider)
-console.log("coinbase", coinbaseProvider)
+
+if (window.ethereum.providers) {
+	if (provider.isMetaMask === true) {
+		var metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
+		console.log("meta", metamaskProvider)
+	} 
+	if (provider.isCoinbaseWallet === true) {
+		var coinbaseProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
+		console.log("coinbase", coinbaseProvider)
+	}
+} else {
+	console.log("It seems that you don't have a wallet")
+}
+
 
 export const actions = {
 	async showDonateModal (context) {

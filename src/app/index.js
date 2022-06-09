@@ -6,6 +6,7 @@ import router from "./router"
 import store from "./store"
 import { client } from "../lib/sanityClient"
 import imageUrlBuilder from "@sanity/image-url"
+import detectEthereumProvider from "@metamask/detect-provider"
 
 import "bootstrap"
 import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue"
@@ -13,9 +14,23 @@ import "./assets/style.scss"
 
 // Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(client)
+const provider = new detectEthereumProvider()
 
-const metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
-const coinbaseProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
+console.log("providers", provider)
+
+if (window.ethereum.providers) {
+	if (provider.isMetaMask === true) {
+		var metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
+		console.log("meta", metamaskProvider)
+	} 
+	if (provider.isCoinbaseWallet === true) {
+		var coinbaseProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
+		console.log("coinbase", coinbaseProvider)
+	}
+} else {
+	console.log("It seems that you don't have a wallet")
+}
+
 // const web3 = require("web3")
 // const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545")
 
