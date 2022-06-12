@@ -9,7 +9,7 @@
         <b-card-text>{{ position }}</b-card-text>
         <div class="d-flex justify-content-around">
           <a v-bind:href="facebookURL">
-            <b-icon-facebook></b-icon-facebook>
+            <b-icon-github></b-icon-github>
           </a>
           <a v-bind:href="twitterURL">
             <b-icon-twitter></b-icon-twitter>
