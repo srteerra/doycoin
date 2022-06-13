@@ -14,23 +14,11 @@ import "./assets/style.scss"
 
 // Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(client)
-const provider = new detectEthereumProvider()
+const provider = await detectEthereumProvider()
+const ethereum = window.ethereum
 
-console.log("providers:", window.ethereum)
+console.log("providers:", ethereum)
 console.log("provider:", provider)
-
-if (window.ethereum) {
-	if (window.ethereum.providers.find((provider) => provider.isMetaMask)) {
-		var metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
-		console.log("meta", metamaskProvider)
-	} 
-	if (window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)) {
-		var coinbaseProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
-		console.log("coinbase", coinbaseProvider)
-	}
-} else {
-	console.log("It seems that you don't have a wallet")
-}
 
 // const web3 = require("web3")
 // const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545")
@@ -51,8 +39,8 @@ window.addEventListener("resize", () => {
 	store.commit("WINDOW_WIDTH")
 })
 
-// On Metamask Acc change
-metamaskProvider.on("accountsChanged", function (accounts) {
+// On Acc change
+ethereum.on("accountsChanged", function (accounts) {
 	console.log(accounts)
 	if (accounts.length > 0) {
 		store.dispatch("setAcc", accounts[0])
@@ -78,47 +66,16 @@ metamaskProvider.on("accountsChanged", function (accounts) {
 			}
 		})
 	} else {
-		window.location.href = "/"
+		window.location.reload()
 	}
 })
 
-// On Coinbase Acc change
-coinbaseProvider.on("accountsChanged", function (accounts) {
-	console.log(accounts)
-	if (accounts.length > 0) {
-		store.dispatch("setAcc", accounts[0])
-		const userDoc = {
-			_type: "users",
-			_id: store.getters.getAddress,
-			userName: "Unnamed",
-			userAddress: store.getters.getAddress,
-			userTrees: 0,
-			userCountry: "Undefined"
-		}
-
-		client.createIfNotExists(userDoc)
-		client.getDocument(store.getters.getAddress).then((users) => {
-			console.log(`${users.userName}`)
-			store.commit("SET_PLANTED_TREES", {amount: users.userTrees} )
-			store.commit("SET_USER_COUNTRY", {country: users.userCountry} )
-			store.commit("SET_USERNAME", {name: users.userName} )
-			if (users.userAvatar == undefined) {
-				store.commit("SET_AVATAR", {avatar: undefined} )
-			} else {
-				store.commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
-			}
-		})
-	} else {
-		window.location.href = "/"
-	}
-})
-
-metamaskProvider.on("disconnect", (error) => {
+ethereum.on("disconnect", (error) => {
 	console.log(error)
 })
 
 // On Chain change
-metamaskProvider.on("chainChanged", (_chainId) => {
+ethereum.on("chainChanged", (_chainId) => {
 	console.log(_chainId)
 	window.location.reload()
 })

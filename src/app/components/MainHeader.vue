@@ -99,6 +99,45 @@
         </div>
       </template>
     </b-modal>
+
+		<!-- Missing Coinbase modal -->
+    <b-modal id="modal-installMetamask" v-model="showinstallCoinbaseModalState" centered size="md"
+      header-bg-variant="light"
+      header-text-variant="dark"
+      header-border-variant="light"
+      footer-bg-variant="light"
+      footer-text-variant="dark"
+      footer-border-variant="light"
+    >
+      <template #modal-header>
+        <div class="w-100">
+          <b-button variant="light" size="md" class="float-right" @click="showinstallCoinbaseModal()">
+            <b-icon-x></b-icon-x>
+          </b-button>
+        </div>
+      </template>
+      <b-container class="px-5">
+        <b-row class="pb-4">
+          <b-col class="text-center">
+            <img src="../assets/icons/advertencia.png" class="pb-4" style="max-width:80px;max-height:80px;">
+            <h4>Something is missing!</h4>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="text-center">
+            <p class="font-weight-regular">
+              You must to have <span class="font-weight-bold">Coinbase</span> on your browser to connect. Install it
+              <span class="font-weight-regular text-primary"> <a href="https://metamask.io/" target="_blank">here</a> </span>
+            </p>
+          </b-col>
+        </b-row>
+      </b-container>
+      <template #modal-footer>
+        <div class="w-100">
+          <b-button variant="dark" size="md" class="float-right" @click="showinstallCoinbaseModal()">Close</b-button>
+        </div>
+      </template>
+    </b-modal>
     
     <!-- Selecting wallet modal -->
     <b-modal id="modal-connectWallet" v-model="showconnectWalletModalState" centered size="lg"
@@ -128,7 +167,7 @@
               <b-button
                 variant="light"
                 class="border px-4 py-3"
-                v-on:click="connectAcc_Metamask()"
+                v-on:click="connectAcc_Wallet({provider: 1})"
               >
                 <span class="pr-3"><img id="wallet-ico" src="../assets/logos/metamask-icon.png" alt=""></span>
                 <span class="font-weight-regular">Metamask</span>
@@ -136,7 +175,7 @@
 							<b-button
                 variant="light"
                 class="border px-4 py-3"
-                v-on:click="connectAcc_Coinbase()"
+                v-on:click="connectAcc_Wallet({provider: 2})"
               >
                 <span class="pr-3"><img id="wallet-ico" src="../assets/logos/coinbase-icon.png" alt=""></span>
                 <span class="font-weight-regular">Coinbase Wallet</span>
@@ -187,6 +226,7 @@ export default {
 			"showconnectWalletModalState",
 			"fetchingData",
 			"showinstallMetaModalState",
+			"showinstallCoinbaseModalState",
 			"disconnectBtnState",
 			"connectBtnState"
 		])
@@ -195,10 +235,10 @@ export default {
 	methods: {
 		...mapActions([
 			"disconnectAcc",
-			"connectAcc_Metamask",
-			"connectAcc_Coinbase",
+			"connectAcc_Wallet",
 			"showconnectWalletModal",
 			"showinstallMetaModal",
+			"showinstallCoinbaseModal"
 		])
 	},
 }

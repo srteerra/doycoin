@@ -12,19 +12,8 @@ const Web3 = require("web3")
 const web3 = new Web3(Web3.givenProvider || "ws://localhost:8546")
 // const ethereum = window.ethereum
 
-if (window.ethereum) {
-	if (window.ethereum.providers.find((provider) => provider.isMetaMask)) {
-		var metamaskProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
-		console.log("meta", metamaskProvider)
-	} 
-	if (window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)) {
-		var coinbaseProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
-		console.log("coinbase", coinbaseProvider)
-	}
-} else {
-	console.log("It seems that you don't have a wallet")
-}
-
+console.log("providers:", window.ethereum)
+console.log("provider:", provider)
 
 export const actions = {
 	async showDonateModal (context) {
@@ -39,28 +28,74 @@ export const actions = {
 	async showinstallMetaModal (context) {
 		context.commit("SHOW_INSTALL_METAMASK")
 	},
+	async showinstallCoinbaseModal (context) {
+		context.commit("SHOW_INSTALL_COINBASE")
+	},
 	async disconnectAcc () {
 		window.location.reload()
 	},
 	async setAcc ({ commit }, acc) {
 		commit("CURRENT_ADDRESS", acc)
 	},
-	async connectAcc_Metamask ({ commit, dispatch, getters }) {
+	async connectAcc_Wallet ({ commit, dispatch, getters }, payload ) {
 		commit("CONNECT_BUTTON", true) // Button disabled
 		commit("LOADING_DATA", true) // Loading data on
 
-		if (metamaskProvider) {
-			metamaskProvider
+		var walletProvider = undefined
+
+		if (payload.provider) {
+			if (payload.provider === 1) {
+				if (!window.ethereum.providers) {
+					console.log("no meta")
+					commit("SHOW_INSTALL_METAMASK")
+					commit("CONNECT_BUTTON", false) // Button enabled
+					commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
+					commit("LOADING_DATA", false) // Loading data off
+					commit("SHOW_CONNECT")
+					return ""
+				} else {
+					walletProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
+					console.log("meta", walletProvider)
+				}
+			} 
+			if (payload.provider === 2) {
+				if (!window.ethereum.providers) {
+					console.log("no coin")
+					commit("SHOW_INSTALL_COINBASE")
+					commit("CONNECT_BUTTON", false) // Button enabled
+					commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
+					commit("LOADING_DATA", false) // Loading data off
+					commit("SHOW_CONNECT")
+					return ""
+				} else {
+					walletProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
+					console.log("coinbase", walletProvider)
+				}
+			}
+			if (payload.provider === 3) {
+				if (!window.ethereum.providers) {
+					console.log("no brave")
+					commit("SHOW_INSTALL_COINBASE")
+					commit("CONNECT_BUTTON", false) // Button enabled
+					commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
+					commit("LOADING_DATA", false) // Loading data off
+					commit("SHOW_CONNECT")
+					return ""
+				} else {
+					walletProvider = window.ethereum.providers.find((provider) => provider.isBraveWallet)
+					console.log("brave", walletProvider)
+				}
+			}
+
+			walletProvider
 				.request({ method: "eth_requestAccounts" })
 				.then((provider) => {
 					if (provider) {
-						dispatch("setAcc", metamaskProvider.selectedAddress)
+						dispatch("setAcc", walletProvider.selectedAddress)
 						commit("IS_CONNECTED", true)
 						commit("DISCONNECT_BUTTON", false) // Disconnect button enabled on nav
 						commit("LOADING_DATA", false) // Loading data off
 						commit("SHOW_CONNECT")
-
-						console.log("now")
 
 						const userDoc = {
 							_type: "users",
@@ -98,70 +133,6 @@ export const actions = {
 				})
 		} else {
 			console.log("Please install MetaMask!")
-			commit("SHOW_INSTALL_METAMASK")
-			commit("CONNECT_BUTTON", false) // Button enabled
-			commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
-			commit("LOADING_DATA", false) // Loading data off
-			commit("SHOW_CONNECT")
-
-			console.log("Fail")
-		}
-	},
-	async connectAcc_Coinbase ({ commit, dispatch, getters }) {
-		commit("CONNECT_BUTTON", true) // Button disabled
-		commit("LOADING_DATA", true) // Loading data on
-
-		if (coinbaseProvider) {
-			console.log(provider)
-			coinbaseProvider
-				.request({ method: "eth_requestAccounts" })
-				.then((provider) => {
-					console.log(provider)
-					if (provider) {
-						dispatch("setAcc", coinbaseProvider.selectedAddress)
-						commit("IS_CONNECTED", true)
-						commit("DISCONNECT_BUTTON", false) // Disconnect button enabled on nav
-						commit("LOADING_DATA", false) // Loading data off
-						commit("SHOW_CONNECT")
-
-						console.log("now")
-
-						const userDoc = {
-							_type: "users",
-							_id: getters.getAddress,
-							userName: "Unnamed",
-							userAddress: getters.getAddress,
-							userTrees: 0,
-							userCountry: "Undefined"
-						}
-
-						client.createIfNotExists(userDoc)
-						client.getDocument(getters.getAddress).then((users) => {
-							console.log(`${users.userName}`)
-							commit("SET_PLANTED_TREES", {amount: users.userTrees} )
-							commit("SET_USER_COUNTRY", {country: users.userCountry} )
-							commit("SET_USERNAME", {name: users.userName} )
-							if (users.userAvatar == undefined) {
-								commit("SET_AVATAR", {avatar: undefined} )
-							} else {
-								commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
-							}
-						})
-					}
-				})
-				.catch((err) => {
-					if (err.code === 4001) {
-						console.log("Please connect to Coinbase.")
-						commit("CONNECT_BUTTON", false) // Button enabled
-						commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
-						commit("LOADING_DATA", false) // Loading data off
-						commit("SHOW_CONNECT")
-					} else {
-						console.error(err)
-					}
-				})
-		} else {
-			console.log("Please install Coinbase!")
 			commit("SHOW_INSTALL_METAMASK")
 			commit("CONNECT_BUTTON", false) // Button enabled
 			commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav

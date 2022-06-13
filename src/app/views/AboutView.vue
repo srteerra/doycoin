@@ -4,7 +4,7 @@
 			<!-- First section -->
       <b-row class="pb-5 trees-section">
 				<b-col cols="12" md="6" class="mb-5">
-					<h2 class="font-weight-bold">About us</h2>
+					<h2 class="font-weight-bold pb-4">About us</h2>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta doloremque culpa id magni quos itaque quasi similique voluptas atque. Ea odit excepturi repudiandae error itaque. Asperiores tempora eius qui sequi!</p>
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta doloremque culpa id magni quos itaque quasi similique voluptas atque. Ea odit excepturi repudiandae error itaque. Asperiores tempora eius qui sequi!</p>
 				</b-col>

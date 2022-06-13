@@ -54,6 +54,14 @@ export const SHOW_INSTALL_METAMASK = (state) => {
 	}
 }
 
+export const SHOW_INSTALL_COINBASE = (state) => {
+	if (state.showinstallCoinbaseModalState === false) {
+		state.showinstallCoinbaseModalState = true
+	} else {
+		state.showinstallCoinbaseModalState = false
+	}
+}
+
 export const CONNECT_BUTTON = (state, status) => {
 	state.connectBtnState = status
 }

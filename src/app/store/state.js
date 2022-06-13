@@ -15,6 +15,7 @@ export default {
 	// Modals
 	showconnectWalletModalState: false,
 	showinstallMetaModalState: false,
+	showinstallCoinbaseModalState: false,
 	showDonate: false,
 
 	// Donator data

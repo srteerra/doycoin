@@ -2,7 +2,7 @@
   <div>
     <TopAnnouncement />
     <MainHeader />
-    <router-view/>
+    <router-view />
     <MainFooter />
   </div>
 </template>
