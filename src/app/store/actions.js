@@ -1,19 +1,14 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-import detectEthereumProvider from "@metamask/detect-provider"
 import { client } from "../../lib/sanityClient"
 import imageUrlBuilder from "@sanity/image-url"
 
 // Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(client)
 
-const provider = new detectEthereumProvider()
 const Web3 = require("web3")
 const web3 = new Web3(Web3.givenProvider || "ws://localhost:8546")
-// const ethereum = window.ethereum
-
-console.log("providers:", window.ethereum)
-console.log("provider:", provider)
+const ethereum = window.ethereum
 
 export const actions = {
 	async showDonateModal (context) {
@@ -37,61 +32,16 @@ export const actions = {
 	async setAcc ({ commit }, acc) {
 		commit("CURRENT_ADDRESS", acc)
 	},
-	async connectAcc_Wallet ({ commit, dispatch, getters }, payload ) {
+	async connectAcc_Wallet ({ commit, dispatch, getters }) {
 		commit("CONNECT_BUTTON", true) // Button disabled
 		commit("LOADING_DATA", true) // Loading data on
 
-		var walletProvider = undefined
-
-		if (payload.provider) {
-			if (payload.provider === 1) {
-				if (!window.ethereum.providers) {
-					console.log("no meta")
-					commit("SHOW_INSTALL_METAMASK")
-					commit("CONNECT_BUTTON", false) // Button enabled
-					commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
-					commit("LOADING_DATA", false) // Loading data off
-					commit("SHOW_CONNECT")
-					return ""
-				} else {
-					walletProvider = window.ethereum.providers.find((provider) => provider.isMetaMask)
-					console.log("meta", walletProvider)
-				}
-			} 
-			if (payload.provider === 2) {
-				if (!window.ethereum.providers) {
-					console.log("no coin")
-					commit("SHOW_INSTALL_COINBASE")
-					commit("CONNECT_BUTTON", false) // Button enabled
-					commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
-					commit("LOADING_DATA", false) // Loading data off
-					commit("SHOW_CONNECT")
-					return ""
-				} else {
-					walletProvider = window.ethereum.providers.find((provider) => provider.isCoinbaseWallet)
-					console.log("coinbase", walletProvider)
-				}
-			}
-			if (payload.provider === 3) {
-				if (!window.ethereum.providers) {
-					console.log("no brave")
-					commit("SHOW_INSTALL_COINBASE")
-					commit("CONNECT_BUTTON", false) // Button enabled
-					commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
-					commit("LOADING_DATA", false) // Loading data off
-					commit("SHOW_CONNECT")
-					return ""
-				} else {
-					walletProvider = window.ethereum.providers.find((provider) => provider.isBraveWallet)
-					console.log("brave", walletProvider)
-				}
-			}
-
-			walletProvider
+		if (ethereum) {
+			ethereum
 				.request({ method: "eth_requestAccounts" })
 				.then((provider) => {
 					if (provider) {
-						dispatch("setAcc", walletProvider.selectedAddress)
+						dispatch("setAcc", ethereum.selectedAddress)
 						commit("IS_CONNECTED", true)
 						commit("DISCONNECT_BUTTON", false) // Disconnect button enabled on nav
 						commit("LOADING_DATA", false) // Loading data off
@@ -122,7 +72,7 @@ export const actions = {
 				})
 				.catch((err) => {
 					if (err.code === 4001) {
-						console.log("Please connect to MetaMask.")
+						console.log("Request denied.")
 						commit("CONNECT_BUTTON", false) // Button enabled
 						commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
 						commit("LOADING_DATA", false) // Loading data off
@@ -136,14 +86,12 @@ export const actions = {
 					}
 				})
 		} else {
-			console.log("Please install MetaMask!")
+			console.log("Please install a wallet!")
 			commit("SHOW_INSTALL_METAMASK")
 			commit("CONNECT_BUTTON", false) // Button enabled
 			commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
 			commit("LOADING_DATA", false) // Loading data off
 			commit("SHOW_CONNECT")
-
-			console.log("Fail")
 		}
 	},
 	async sendDonation ({ getters }) {
