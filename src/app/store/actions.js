@@ -129,6 +129,10 @@ export const actions = {
 						commit("SHOW_CONNECT")
 					} else {
 						console.error(err)
+						commit("CONNECT_BUTTON", false) // Button enabled
+						commit("DISCONNECT_BUTTON", true) // Disconnect button disabled on nav
+						commit("LOADING_DATA", false) // Loading data off
+						commit("SHOW_CONNECT")
 					}
 				})
 		} else {
