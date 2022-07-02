@@ -44,20 +44,20 @@ module.exports = {
 				test: /\.(sa|sc|c)ss$/,
 				exclude: /node_modules/,
 				use: [
-					devMode ?  "style-loader" : MiniCssExtractPlugin.loader,
+					devMode ? "style-loader" : MiniCssExtractPlugin.loader,
 					"css-loader",
 					{
 						loader: "sass-loader",
 						options: {
 							implementation: require("sass")
 						}
-					},
+					}
 				]
 			},
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
 				type: "asset/resource",
-				exclude: /node_modules/,
+				exclude: /node_modules/
 			},
 			{
 				test: /\.(woff|woff2)$/,
@@ -74,7 +74,7 @@ module.exports = {
 						// outputPath => donde se va a guardar en la carpeta final
 						outputPath: "./assets/fonts/",
 						publicPath: "./assets/fonts/",
-						esModule: false,
+						esModule: false
 					}
 				}
 			}
@@ -90,25 +90,22 @@ module.exports = {
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, "./src/app/index.html"),
-			ninify:{
-				collapseWhitespace:true,
-				removeComments:true,
-				removeRedundantAttributes:true,
-				removeScriptTypeAttributes:true,
-				removeStyleLinkAttributes:true,
-				useShortDoctype:true
+			ninify: {
+				collapseWhitespace: true,
+				removeComments: true,
+				removeRedundantAttributes: true,
+				removeScriptTypeAttributes: true,
+				removeStyleLinkAttributes: true,
+				useShortDoctype: true
 			}
 		}),
 		new webpack.DefinePlugin({
-			"process.env.ASSET_PATH": JSON.stringify(ASSET_PATH),
+			"process.env.ASSET_PATH": JSON.stringify(ASSET_PATH)
 		})
 	],
 	optimization: {
 		minimize: true,
-		minimizer: [
-			new CssMinimizerPlugin(),
-			new TerserPlugin()
-		]
+		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()]
 	},
 	experiments: {
 		topLevelAwait: true

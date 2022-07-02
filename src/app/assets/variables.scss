@@ -1,56 +1,56 @@
 $enable-responsive-font-sizes: true;
 
-$primary:   #69b770;
-$secondary: #D0FFC7;
-$success:   #688063;
-$info:      cyan;
-$warning:   yellow;
-$danger:    red;
-$light:     rgb(255, 255, 255);
-$dark:      #353535;
+$primary: #69b770;
+$secondary: #d0ffc7;
+$success: #688063;
+$info: cyan;
+$warning: yellow;
+$danger: red;
+$light: rgb(255, 255, 255);
+$dark: #353535;
 
 $theme-colors: (
-    "primary":    $primary,
-    "secondary":  $secondary,
-    "success":    $success,
-    "info":       $info,
-    "warning":    $warning,
-    "danger":     $danger,
-    "light":      $light,
-    "dark":       $dark
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': $success,
+  'info': $info,
+  'warning': $warning,
+  'danger': $danger,
+  'light': $light,
+  'dark': $dark
 );
 
 $enable-responsive-font-sizes: true;
 
-$font-weight-lighter:         lighter;
-$font-weight-light:           300;
-$font-weight-normal:          400;
-$font-weight-bold:            700;
-$font-weight-bolder:          bolder;
+$font-weight-lighter: lighter;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$font-weight-bolder: bolder;
 
-$font-weight-base:            $font-weight-normal;
+$font-weight-base: $font-weight-normal;
 
-$line-height-base:            1.5;
-$line-height-sm:              1.25;
-$line-height-lg:              2;
+$line-height-base: 1.5;
+$line-height-sm: 1.25;
+$line-height-lg: 2;
 
 $font-size-root: null;
 $font-size-base: 1rem;
-$font-size-sm: $font-size-base * .875;
+$font-size-sm: $font-size-base * 0.875;
 $font-size-lg: $font-size-base * 1.25;
 
 $h1-font-size: $font-size-base * 8;
 $h2-font-size: $font-size-base * 4;
 $h3-font-size: $font-size-base * 2;
 $h4-font-size: $font-size-base * 1.5;
-$h5-font-size: $font-size-base - 1; 
+$h5-font-size: $font-size-base - 1;
 $h6-font-size: $font-size-base;
 
 $font-sizes: (
-    1: $h1-font-size,
-    2: $h2-font-size,
-    3: $h3-font-size,
-    4: $h4-font-size,
-    5: $h5-font-size,
-    6: $h6-font-size
+  1: $h1-font-size,
+  2: $h2-font-size,
+  3: $h3-font-size,
+  4: $h4-font-size,
+  5: $h5-font-size,
+  6: $h6-font-size
 );

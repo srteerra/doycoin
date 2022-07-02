@@ -1,24 +1,24 @@
 /* eslint-disable no-undef */
-"use-strict"
-import Vue from "vue"
-import App from "./App.vue"
-import router from "./router"
-import store from "./store"
-import { client } from "../lib/sanityClient"
-import imageUrlBuilder from "@sanity/image-url"
-import detectEthereumProvider from "@metamask/detect-provider"
+'use-strict'
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import { client } from '../lib/sanityClient'
+import imageUrlBuilder from '@sanity/image-url'
+import detectEthereumProvider from '@metamask/detect-provider'
 
-import "bootstrap"
-import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue"
-import "./assets/style.scss"
+import 'bootstrap'
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+import './assets/style.scss'
 
 // Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(client)
 const provider = await detectEthereumProvider()
 const ethereum = window.ethereum
 
-console.log("providers:", ethereum)
-console.log("provider:", provider)
+console.log('providers:', ethereum)
+console.log('provider:', provider)
 
 // const web3 = require("web3")
 // const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545")
@@ -29,40 +29,42 @@ Vue.use(BootstrapVueIcons)
 new Vue({
 	router,
 	store,
-	render: h => h (App)
-}).$mount("#app")
+	render: h => h(App)
+}).$mount('#app')
 
 // Vue.config.productionTip = false
 
 // On resize change
-window.addEventListener("resize", () => {
-	store.commit("WINDOW_WIDTH")
+window.addEventListener('resize', () => {
+	store.commit('WINDOW_WIDTH')
 })
 
 // On Acc change
-ethereum.on("accountsChanged", function (accounts) {
+ethereum.on('accountsChanged', function(accounts) {
 	console.log(accounts)
 	if (accounts.length > 0) {
-		store.dispatch("setAcc", accounts[0])
+		store.dispatch('setAcc', accounts[0])
 		const userDoc = {
-			_type: "users",
+			_type: 'users',
 			_id: store.getters.getAddress,
-			userName: "Unnamed",
+			userName: 'Unnamed',
 			userAddress: store.getters.getAddress,
 			userTrees: 0,
-			userCountry: "Undefined"
+			userCountry: 'Undefined'
 		}
 
 		client.createIfNotExists(userDoc)
-		client.getDocument(store.getters.getAddress).then((users) => {
+		client.getDocument(store.getters.getAddress).then(users => {
 			console.log(`${users.userName}`)
-			store.commit("SET_PLANTED_TREES", {amount: users.userTrees} )
-			store.commit("SET_USER_COUNTRY", {country: users.userCountry} )
-			store.commit("SET_USERNAME", {name: users.userName} )
+			store.commit('SET_PLANTED_TREES', { amount: users.userTrees })
+			store.commit('SET_USER_COUNTRY', { country: users.userCountry })
+			store.commit('SET_USERNAME', { name: users.userName })
 			if (users.userAvatar == undefined) {
-				store.commit("SET_AVATAR", {avatar: undefined} )
+				store.commit('SET_AVATAR', { avatar: undefined })
 			} else {
-				store.commit("SET_AVATAR", {avatar: builder.image(users.userAvatar).url()} )
+				store.commit('SET_AVATAR', {
+					avatar: builder.image(users.userAvatar).url()
+				})
 			}
 		})
 	} else {
@@ -70,12 +72,12 @@ ethereum.on("accountsChanged", function (accounts) {
 	}
 })
 
-ethereum.on("disconnect", (error) => {
+ethereum.on('disconnect', error => {
 	console.log(error)
 })
 
 // On Chain change
-ethereum.on("chainChanged", (_chainId) => {
+ethereum.on('chainChanged', _chainId => {
 	console.log(_chainId)
 	window.location.reload()
 })

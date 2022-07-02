@@ -1,4 +1,4 @@
-export const WINDOW_WIDTH = (state) => {
+export const WINDOW_WIDTH = state => {
 	state.windowWidth = window.innerWidth
 }
 
@@ -16,7 +16,7 @@ export const SET_USERNAME = (state, payload) => {
 
 export const SET_AVATAR = (state, payload) => {
 	if (payload.avatar == undefined) {
-		state.avatar = ""
+		state.avatar = ''
 	} else {
 		state.avatar = payload.avatar
 	}
@@ -30,7 +30,7 @@ export const DONATOR_DATA = (state, payload) => {
 	}
 }
 
-export const SHOW_DONATE = (state) => {
+export const SHOW_DONATE = state => {
 	if (state.showDonate === false) {
 		state.showDonate = true
 	} else {
@@ -38,7 +38,7 @@ export const SHOW_DONATE = (state) => {
 	}
 }
 
-export const SHOW_CONNECT = (state) => {
+export const SHOW_CONNECT = state => {
 	if (state.showconnectWalletModalState === false) {
 		state.showconnectWalletModalState = true
 	} else {
@@ -46,7 +46,7 @@ export const SHOW_CONNECT = (state) => {
 	}
 }
 
-export const SHOW_INSTALL_METAMASK = (state) => {
+export const SHOW_INSTALL_METAMASK = state => {
 	if (state.showinstallMetaModalState === false) {
 		state.showinstallMetaModalState = true
 	} else {
@@ -54,7 +54,7 @@ export const SHOW_INSTALL_METAMASK = (state) => {
 	}
 }
 
-export const SHOW_INSTALL_COINBASE = (state) => {
+export const SHOW_INSTALL_COINBASE = state => {
 	if (state.showinstallCoinbaseModalState === false) {
 		state.showinstallCoinbaseModalState = true
 	} else {
