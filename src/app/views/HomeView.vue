@@ -98,15 +98,4 @@ export default {
 	background-position: center;
 	background-size: cover;
 }
-#donate-btn {
-	&:hover {
-		span {
-			display: none;
-		}
-
-		&:before {
-			content: 'with crypto!';
-		}
-	}
-}
 </style>
