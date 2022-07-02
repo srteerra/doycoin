@@ -2,6 +2,7 @@
   <div>
     <TopAnnouncement />
     <MainHeader />
+		<NoWalletCardVue />
     <router-view />
     <MainFooter />
   </div>
@@ -11,13 +12,15 @@
 import MainHeader from './components/MainHeader.vue'
 import MainFooter from './components/MainFooter.vue'
 import TopAnnouncement from './components/TopAnnouncement.vue'
+import NoWalletCardVue from './components/NoWalletCard.vue'
 
 export default {
 	name: 'App',
 	components: {
 		MainHeader,
 		MainFooter,
-		TopAnnouncement
+		TopAnnouncement,
+		NoWalletCardVue
 	},
 	data() {
 		return {}
