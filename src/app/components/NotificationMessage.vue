@@ -3,7 +3,8 @@
 		<div class="notificationMessage__content m-0 p-0">
 			<div>
 				<p class="m-0 p-0 font-weight-bold">
-					<span :class="typeMessage" class="dot mr-2"></span> {{ notification.message }}
+					<span :class="typeMessage" class="dot mr-2"></span>
+					{{ notification.message }}
 				</p>
 			</div>
 			<div class="notificationMessage__btn">
@@ -11,27 +12,61 @@
 					variant="light"
 					size="md"
 					class="m-0"
-					@click="noWalletquit = false"
+					@click="closeNotification()"
 				>
 					<b-icon-x />
 				</b-button>
 			</div>
 		</div>
 		<b-progress
-			:value="70"
+			:value="timeNoti"
 			:variant="notification.type"
-			:max="100"
+			:max="max"
 			class="notificationMessage__timeline mb-3 p-0"
 		></b-progress>
 	</b-card>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
 	props: ['notification'],
+	data() {
+		return {
+			timeOut: null,
+			timer: 0,
+			timeNoti: 100,
+			max: 100
+		}
+	},
 	computed: {
 		typeMessage() {
 			return `alert-${this.notification.type}`
+		}
+	},
+	mounted() {
+		this.startTimer()
+	},
+	created() {
+		this.timeOut = setTimeout(() => {
+			this.removeNotification(this.notification)
+		}, 3000)
+	},
+	beforeDestroy() {
+		clearTimeout(this.timeOut)
+	},
+	methods: {
+		...mapActions(['removeNotification']),
+		startTimer() {
+			let vm = this
+			let timer = setInterval(function() {
+				vm.timeNoti -= 5
+				if (vm.timeNoti >= vm.max) clearInterval(timer)
+			}, 100)
+		},
+		closeNotification() {
+			this.removeNotification(this.notification)
 		}
 	}
 }
@@ -86,5 +121,4 @@ export default {
 .alert-warning {
 	background-color: $warning;
 }
-
 </style>

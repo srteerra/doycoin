@@ -116,18 +116,21 @@ export const actions = {
 	async addNotification({commit}, payload) {
 		commit('PUSH_NOTIFICATION', payload)
 	},
+	async removeNotification({commit}, notification) {
+		commit('REMOVE_NOTIFICATION', notification)
+	},
 	async test({dispatch}) {
 		dispatch('addNotification', {
 			type: 'success',
 			message: 'Profile updated!'
 		})
-		dispatch('addNotification', {
-			type: 'danger',
-			message: 'Update failed.'
-		})
-		dispatch('addNotification', {
-			type: 'warning',
-			message: 'Something is missing...'
-		})
+		// dispatch('addNotification', {
+		// 	type: 'danger',
+		// 	message: 'Update failed.'
+		// })
+		// dispatch('addNotification', {
+		// 	type: 'warning',
+		// 	message: 'Something is missing...'
+		// })
 	},
 }
