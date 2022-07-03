@@ -84,6 +84,16 @@ export const actions = {
 						commit('DISCONNECT_BUTTON', true) // Disconnect button disabled on nav
 						commit('LOADING_DATA', false) // Loading data off
 						commit('SHOW_CONNECT')
+					} else if (err.code === -32002) {
+						console.log('Request still in progress.')
+						dispatch('addNotification', {
+							type: 'danger',
+							message: 'Metamask is already processing.'
+						})
+						commit('CONNECT_BUTTON', false) // Button enabled
+						commit('DISCONNECT_BUTTON', true) // Disconnect button disabled on nav
+						commit('LOADING_DATA', false) // Loading data off
+						commit('SHOW_CONNECT')
 					} else {
 						console.error(err)
 						dispatch('addNotification', {
