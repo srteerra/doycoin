@@ -2,6 +2,7 @@
 /* eslint-disable no-undef */
 import { client } from '../../lib/sanityClient'
 import imageUrlBuilder from '@sanity/image-url'
+import { dispatch } from 'rxjs/internal-compatibility'
 
 // Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(client)
@@ -111,5 +112,14 @@ export const actions = {
 			.then(res => {
 				console.log(res)
 			})
-	}
+	},
+	async addNotification({commit}, payload) {
+		commit('PUSH_NOTIFICATION', payload)
+	},
+	async test({dispatch}) {
+		dispatch('addNotification', {
+			type: 'success',
+			message: 'Profile updated!'
+		})
+	},
 }

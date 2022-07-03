@@ -29,5 +29,8 @@ export default {
 	username: '',
 	plantedTrees: 0,
 	avatar: '',
-	userCountry: ''
+	userCountry: '',
+
+	// Notification center
+	notifications: []
 }

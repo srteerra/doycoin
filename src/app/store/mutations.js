@@ -81,3 +81,9 @@ export const IS_CONNECTED = (state, status) => {
 export const LOADING_DATA = (state, status) => {
 	state.fetchingData = status
 }
+
+export const PUSH_NOTIFICATION = (state, payload) => {
+	state.notifications.push({
+		...payload,
+	})
+}

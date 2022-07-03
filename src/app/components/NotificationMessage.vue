@@ -2,7 +2,9 @@
 	<b-card id="notificationMessage" class="pl-4 pr-2 mb-3">
 		<div class="notificationMessage__content m-0 p-0">
 			<div>
-				<p class="m-0 p-0 font-weight-bold"><span class="dot mr-2"></span> Profile updated!</p>
+				<p class="m-0 p-0 font-weight-bold">
+					<span :class="typeMessage" class="dot mr-2"></span> {{ notification.message }}
+				</p>
 			</div>
 			<div class="notificationMessage__btn">
 				<b-button
@@ -17,15 +19,22 @@
 		</div>
 		<b-progress
 			:value="70"
-			:variant="success"
-			:max="max"
+			:variant="notification.type"
+			:max="100"
 			class="notificationMessage__timeline mb-3 p-0"
 		></b-progress>
 	</b-card>
 </template>
 
 <script>
-export default {}
+export default {
+	props: ['notification'],
+	computed: {
+		typeMessage() {
+			return `alert-${this.notification.type}`
+		}
+	}
+}
 </script>
 
 <style lang="scss">
@@ -63,7 +72,19 @@ export default {}
 	display: inline-flex;
 	height: 15px;
 	width: 15px;
-	background-color: $primary;
 	border-radius: 50%;
 }
+
+.alert-success {
+	background-color: $success;
+}
+
+.alert-danger {
+	background-color: $danger;
+}
+
+.alert-warning {
+	background-color: $warning;
+}
+
 </style>
