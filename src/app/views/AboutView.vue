@@ -50,10 +50,11 @@
 		</b-container>
 
 		<!-- Roadmap section -->
-		<b-container>
+		<b-container class="roadmap">
 			<b-row>
 				<b-col cols="12" md="6">
-					<div class="mx-auto w-50">
+					<img src="../assets/vectors/tree-5.png" alt="tree" class="w-40">
+					<div class="mx-auto ">
 						<h4 class="font-weight-bold">Stage 1</h4>
 						<ul>
 							<li>pancakeswap Launch</li>
@@ -169,5 +170,11 @@ export default {
 
 		.address{
 			background-color: #EBEBEB80;
+		}
+
+		.roadmap{
+			img{
+				width: 100px;
+			}
 		}
 </style>
