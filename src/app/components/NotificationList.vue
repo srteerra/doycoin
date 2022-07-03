@@ -1,16 +1,19 @@
 <template>
 	<div class="notification__list m-3">
+		<NotificationMessage />
 		<NoWalletCardVue />
 	</div>
 </template>
 
 <script>
 import NoWalletCardVue from './NoWalletCard.vue'
+import NotificationMessage from './NotificationMessage.vue'
 
 export default {
 	name: 'NotificationList',
 	components: {
-		NoWalletCardVue
+		NoWalletCardVue,
+		NotificationMessage
 	},
 	data() {
 		return {
