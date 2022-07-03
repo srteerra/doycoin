@@ -76,12 +76,20 @@ export const actions = {
 				.catch(err => {
 					if (err.code === 4001) {
 						console.log('Request denied.')
+						dispatch('addNotification', {
+							type: 'danger',
+							message: 'Request denied.'
+						})
 						commit('CONNECT_BUTTON', false) // Button enabled
 						commit('DISCONNECT_BUTTON', true) // Disconnect button disabled on nav
 						commit('LOADING_DATA', false) // Loading data off
 						commit('SHOW_CONNECT')
 					} else {
 						console.error(err)
+						dispatch('addNotification', {
+							type: 'danger',
+							message: err
+						})
 						commit('CONNECT_BUTTON', false) // Button enabled
 						commit('DISCONNECT_BUTTON', true) // Disconnect button disabled on nav
 						commit('LOADING_DATA', false) // Loading data off

@@ -1,30 +1,37 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
-	<b-card id="notificationMessage" class="pl-4 pr-2 mb-3">
-		<div class="notificationMessage__content m-0 p-0">
-			<div>
-				<p class="m-0 p-0 font-weight-bold">
-					<span :class="typeMessage" class="dot mr-2"></span>
-					{{ notification.message }}
-				</p>
+	<transition
+		mode="out-in"
+		enter-class="animate__animated animate__backInRight"
+		leave-active-class="animate__animated animate__backOutRight"
+	>
+		<b-card id="notificationMessage" class="pl-4 pr-2 mb-3">
+			<div class="notificationMessage__content m-0 p-0">
+				<div>
+					<p class="m-0 p-0 font-weight-bold">
+						<span :class="typeMessage" class="dot mr-2"></span>
+						{{ notification.message }}
+					</p>
+				</div>
+				<div class="notificationMessage__btn">
+					<b-button
+						variant="light"
+						size="md"
+						class="m-0"
+						@click="closeNotification()"
+					>
+						<b-icon-x />
+					</b-button>
+				</div>
 			</div>
-			<div class="notificationMessage__btn">
-				<b-button
-					variant="light"
-					size="md"
-					class="m-0"
-					@click="closeNotification()"
-				>
-					<b-icon-x />
-				</b-button>
-			</div>
-		</div>
-		<b-progress
-			:value="timeNoti"
-			:variant="notification.type"
-			:max="max"
-			class="notificationMessage__timeline mb-3 p-0"
-		></b-progress>
-	</b-card>
+			<b-progress
+				:value="timeNoti"
+				:variant="notification.type"
+				:max="max"
+				class="notificationMessage__timeline mb-3 p-0"
+			></b-progress>
+		</b-card>
+	</transition>
 </template>
 
 <script>
