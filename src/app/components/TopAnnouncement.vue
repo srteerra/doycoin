@@ -1,29 +1,45 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
-    <b-container fluid class="py-3" id="TopAd" v-if="showTopAd">
-        <b-row align-v="center">
-            <b-col class="text-white d-flex justify-content-center">
-              <p class="mx-auto m-0 p-0 font-weight-regular text-center"><b-icon-tree-fill></b-icon-tree-fill> Please make sure you're visiting <strong>https://doycoin.com</strong> - verify this site.</p>
-              <b-button @click="showTopAd=false" class="text-end" size="sm" variant="success"><b-icon-x></b-icon-x></b-button>
-            </b-col>
-        </b-row>
-    </b-container>
+  <b-container
+    v-if="showTopAd"
+    id="TopAd"
+    fluid
+    class="py-3"
+  >
+    <b-row align-v="center">
+      <b-col class="text-white d-flex justify-content-center">
+        <p class="mx-auto m-0 p-0 font-weight-regular text-center">
+          <b-icon-tree-fill /> Please make sure you're visiting
+          <strong>https://doycoin.com</strong> - verify this site.
+        </p>
+        <b-button
+          class="text-end"
+          size="sm"
+          variant="primary"
+          @click="showTopAd = false"
+        >
+          <b-icon-x />
+        </b-button>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
 export default {
-	data () {
+	name: 'TopAnnouncement',
+	data() {
 		return {
 			showTopAd: true
 		}
-	},
-	name: "TopAnnouncement"
+	}
 }
 </script>
 
 <style lang="scss">
-  @import '../assets/variables.scss';
+@import '../assets/variables.scss';
 
-  #TopAd {
-    background-color: $success;
-  }
+#TopAd {
+  background-color: $primary;
+}
 </style>

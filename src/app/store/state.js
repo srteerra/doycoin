@@ -20,14 +20,17 @@ export default {
 
 	// Donator data
 	donator: {
-		donatorName: "",
-		donatorEmail: "",
-		donatorMessage: "",
+		donatorName: '',
+		donatorEmail: '',
+		donatorMessage: ''
 	},
 
 	// User data
-	username: "",
+	username: '',
 	plantedTrees: 0,
-	avatar: "",
-	userCountry: ""
+	avatar: '',
+	userCountry: '',
+
+	// Notification center
+	notifications: []
 }

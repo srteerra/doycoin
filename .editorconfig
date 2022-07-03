@@ -1,12 +1,19 @@
-# EditorConfig is awesome: https://EditorConfig.org
-
-# top-most EditorConfig file
+# Editor configuration, see https://editorconfig.org
 root = true
 
 [*]
+charset = utf-8
 indent_style = tab
 indent_size = 2
-end_of_line = crlf
-charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.js]
+quote_type = single
+
+[*.vue]
+quote_type = single
+
+[*.md]
+max_line_length = off
 trim_trailing_whitespace = false
-insert_final_newline = false

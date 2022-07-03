@@ -1,9 +1,17 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div class="px-2">
-    <b-card id="member-card" class="text-center p-5" border-variant="light">
+    <b-card
+      id="member-card"
+      class="text-center p-5"
+      border-variant="light"
+    >
       <div class="px-4">
         <div class="pb-4">
-          <b-avatar src="https://i.pravatar.cc/300?4" size='4rem'></b-avatar>
+          <b-avatar
+            src="https://i.pravatar.cc/300?4"
+            size="4rem"
+          />
         </div>
         <b-card-title>{{ nickName }}</b-card-title>
         <b-card-text>{{ position }}</b-card-text>
@@ -11,11 +19,11 @@
           <a v-bind:href="githubURL">
             <b-icon-github></b-icon-github>
           </a>
-          <a v-bind:href="twitterURL">
-            <b-icon-twitter></b-icon-twitter>
+          <a :href="twitterURL">
+            <b-icon-twitter />
           </a>
-          <a v-bind:href="instaURL">
-            <b-icon-instagram></b-icon-instagram>
+          <a :href="instaURL">
+            <b-icon-instagram />
           </a>
         </div>
       </div>
@@ -25,11 +33,9 @@
 
 <script>
 export default {
-	props: ["nickName", "position", "facebookURL", "twitterURL", "instaURL"],
-	name: "MemberCard"
+	name: 'MemberCard',
+	props: ['nickName', 'position', 'facebookURL', 'twitterURL', 'instaURL']
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

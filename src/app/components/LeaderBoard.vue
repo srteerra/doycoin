@@ -1,36 +1,108 @@
+<!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <div id="LeadboardBlock">
     <b-container fluid>
       <b-row class="pt-0 pt-md-5">
         <b-col class="text-center">
-          <h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">Leaderboard</h3>
+          <h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+            Leaderboard
+          </h3>
         </b-col>
       </b-row>
       <b-row>
-        <b-col cols sm="12" md="10" lg="8" xl="6" class="mx-0 px-0 mx-sm-auto">
+        <b-col
+          cols
+          sm="12"
+          md="10"
+          lg="8"
+          xl="6"
+          class="mx-0 px-0 mx-sm-auto"
+        >
           <div>
-            <div id="LeadBoard-container" class="my-5">
+            <div
+              id="LeadBoard-container"
+              class="my-5"
+            >
               <div class="px-0 px-md-2">
-                <b-tabs pills align="center">
-                  <b-tab title="Top donations" active>
+                <b-tabs
+                  pills
+                  align="center"
+                >
+                  <b-tab
+                    title="Top donations"
+                    active
+                  >
                     <div class="px-0 px-md-4 py-5">
-                      <b-list-group v-for="recentDonator in recentDonators" :key="recentDonator.id" flush class="py-2 px-0">
-                        <b-list-group-item class="shadow-lg rounded-lg py-4 pl-5 pl-lg-0">
+                      <b-list-group
+                        v-for="recentDonator in recentDonators"
+                        :key="recentDonator.id"
+                        flush
+                        class="py-2 px-0"
+                      >
+                        <b-list-group-item
+                          class="shadow-lg rounded-lg py-4 pl-5 pl-lg-0"
+                        >
                           <b-row>
-                            <b-col v-if="windowWidth>576" sm="2" md="3" lg="3" xl="3" class="my-auto text-center">
-                              <b-avatar id="userAvatar" v-bind:src="'https://i.pravatar.cc/300?' + recentDonator.id" size='4rem'></b-avatar>
+                            <b-col
+                              v-if="windowWidth > 576"
+                              sm="2"
+                              md="3"
+                              lg="3"
+                              xl="3"
+                              class="my-auto text-center"
+                            >
+                              <b-avatar
+                                id="userAvatar"
+                                :src="
+                                  'https://i.pravatar.cc/300?' +
+                                    recentDonator.id
+                                "
+                                size="4rem"
+                              />
                             </b-col>
-                            <b-col cols="5" xs="3" sm="5" md="5" lg="5" xl="5" class="my-auto text-left" align-v="center">
-                              <h4 class="text-start mb-0 text-dark font-weight-bolder">{{ recentDonator.name }}</h4>
+                            <b-col
+                              cols="5"
+                              xs="3"
+                              sm="5"
+                              md="5"
+                              lg="5"
+                              xl="5"
+                              class="my-auto text-left"
+                              align-v="center"
+                            >
+                              <h4
+                                class="text-start mb-0 text-dark font-weight-bolder"
+                              >
+                                {{ recentDonator.name }}
+                              </h4>
                               <div>
-                                <p class="text-start mb-0 text-dark descText font-weight-regular">{{ recentDonator.desc }}</p>
+                                <p
+                                  class="text-start mb-0 text-dark descText font-weight-regular"
+                                >
+                                  {{ recentDonator.desc }}
+                                </p>
                               </div>
                             </b-col>
-                            <b-col cols="7" xs="5" sm="5" md="4" lg="4" xl="4" class="text-right my-auto pr-5">
-                              <p class="text-white treesText">{{ recentDonator.trees }} trees!</p>
+                            <b-col
+                              cols="7"
+                              xs="5"
+                              sm="5"
+                              md="4"
+                              lg="4"
+                              xl="4"
+                              class="text-right my-auto pr-5"
+                            >
+                              <p class="text-white treesText">
+                                {{ recentDonator.trees }} trees!
+                              </p>
                               <div class="">
                                 <!-- <p class="addressText font-weight-regular text-muted">{{ recentDonator.date }}</p> -->
-                                <a class="addressText font-weight-regular text-muted" href="https://www.bscscan.com/address/0x10ed43c718714eb63d5aa57b78b54704e256024e">0x1...6024e <b-icon-box-arrow-up-right></b-icon-box-arrow-up-right> </a>
+                                <a
+                                  class="addressText font-weight-regular text-muted"
+                                  href="https://www.bscscan.com/address/0x10ed43c718714eb63d5aa57b78b54704e256024e"
+                                >0x1...6024e
+                                  <b-icon-box-arrow-up-right />
+                                </a>
                               </div>
                             </b-col>
                           </b-row>
@@ -40,23 +112,76 @@
                   </b-tab>
                   <b-tab title="Most recent">
                     <div class="px-0 px-md-4 py-5">
-                      <b-list-group v-for="recentDonator in recentDonators" :key="recentDonator.id" flush class="py-2 px-0">
-                        <b-list-group-item class="shadow-lg rounded-lg py-4 pl-5 pl-lg-0">
+                      <b-list-group
+                        v-for="recentDonator in recentDonators"
+                        :key="recentDonator.id"
+                        flush
+                        class="py-2 px-0"
+                      >
+                        <b-list-group-item
+                          class="shadow-lg rounded-lg py-4 pl-5 pl-lg-0"
+                        >
                           <b-row>
-                            <b-col v-if="windowWidth>576" sm="2" md="3" lg="3" xl="3" class="my-auto text-center">
-                              <b-avatar id="userAvatar" v-bind:src="'https://i.pravatar.cc/300?' + recentDonator.id" size='4rem'></b-avatar>
+                            <b-col
+                              v-if="windowWidth > 576"
+                              sm="2"
+                              md="3"
+                              lg="3"
+                              xl="3"
+                              class="my-auto text-center"
+                            >
+                              <b-avatar
+                                id="userAvatar"
+                                :src="
+                                  'https://i.pravatar.cc/300?' +
+                                    recentDonator.id
+                                "
+                                size="4rem"
+                              />
                             </b-col>
-                            <b-col cols="5" xs="3" sm="5" md="5" lg="5" xl="5" class="my-auto text-left" align-v="center">
-                              <h4 class="text-start mb-0 text-dark font-weight-bolder">{{ recentDonator.name }}</h4>
+                            <b-col
+                              cols="5"
+                              xs="3"
+                              sm="5"
+                              md="5"
+                              lg="5"
+                              xl="5"
+                              class="my-auto text-left"
+                              align-v="center"
+                            >
+                              <h4
+                                class="text-start mb-0 text-dark font-weight-bolder"
+                              >
+                                {{ recentDonator.name }}
+                              </h4>
                               <div>
-                                <p class="text-start mb-0 text-dark descText font-weight-regular">{{ recentDonator.desc }}</p>
+                                <p
+                                  class="text-start mb-0 text-dark descText font-weight-regular"
+                                >
+                                  {{ recentDonator.desc }}
+                                </p>
                               </div>
                             </b-col>
-                            <b-col cols="7" xs="5" sm="5" md="4" lg="4" xl="4" class="text-right my-auto pr-5">
-                              <p class="text-white treesText">{{ recentDonator.trees }} trees!</p>
+                            <b-col
+                              cols="7"
+                              xs="5"
+                              sm="5"
+                              md="4"
+                              lg="4"
+                              xl="4"
+                              class="text-right my-auto pr-5"
+                            >
+                              <p class="text-white treesText">
+                                {{ recentDonator.trees }} trees!
+                              </p>
                               <div class="">
                                 <!-- <p class="addressText font-weight-regular text-muted">{{ recentDonator.date }}</p> -->
-                                <a class="addressText font-weight-regular text-muted" href="https://www.bscscan.com/address/0x10ed43c718714eb63d5aa57b78b54704e256024e">0x1...6024e <b-icon-box-arrow-up-right></b-icon-box-arrow-up-right> </a>
+                                <a
+                                  class="addressText font-weight-regular text-muted"
+                                  href="https://www.bscscan.com/address/0x10ed43c718714eb63d5aa57b78b54704e256024e"
+                                >0x1...6024e
+                                  <b-icon-box-arrow-up-right />
+                                </a>
                               </div>
                             </b-col>
                           </b-row>
@@ -76,54 +201,76 @@
 
 <script>
 export default {
-	data () {
+	name: 'LeaderBoard',
+	data() {
 		return {
-			recentDonators: [{ id: 1, name: "Ale", desc: "Love the world and specially this movement", trees: 100, date: "02/26/2022" }, { id: 2, name: "Scar", desc: "I like the idea to invest my crypto on this.", trees: 50, date: "01/13/2022" }, { id: 3, name: "Alex", desc: "More trees!.", trees: 32, date: "05/11/2022" }]
+			recentDonators: [
+				{
+					id: 1,
+					name: 'Ale',
+					desc: 'Love the world and specially this movement',
+					trees: 100,
+					date: '02/26/2022'
+				},
+				{
+					id: 2,
+					name: 'Scar',
+					desc: 'I like the idea to invest my crypto on this.',
+					trees: 50,
+					date: '01/13/2022'
+				},
+				{
+					id: 3,
+					name: 'Alex',
+					desc: 'More trees!.',
+					trees: 32,
+					date: '05/11/2022'
+				}
+			]
 		}
 	},
 	computed: {
 		windowWidth() {
 			return this.$store.state.windowWidth
 		}
-	},
-	name: "LeaderBoard"
+	}
 }
 </script>
 
 <style lang="scss">
-  @import '../assets/variables.scss';
+@import '../assets/variables.scss';
 
-  #LeadboardBlock {
-    width: 100%;
-    height: auto;
-    display: inline;
-    position: relative;
-    top: 0;
-    left: 0;
-  }
+#LeadboardBlock {
+  width: 100%;
+  height: auto;
+  display: inline;
+  position: relative;
+  top: 0;
+  left: 0;
+}
 
-  #LeadBoard-container {
-    border: none;
-  }
+#LeadBoard-container {
+  border: none;
+}
 
-  #userAvatar {
-    border: 5px solid $success;
-  }
+#userAvatar {
+  border: 5px solid $primary;
+}
 
-  .treesText {
-    display: inline-block;
-    background-color: $success;
-    padding: 5px 15px;
-    font-size: 16px;
-    border-radius: 25px;
-  }
+.treesText {
+  display: inline-block;
+  background-color: $primary;
+  padding: 5px 15px;
+  font-size: 16px;
+  border-radius: 25px;
+}
 
-  .descText {
-    font-size: 15px;
-  }
+.descText {
+  font-size: 15px;
+}
 
-  .addressText {
-    font-size: 15px;
-    margin: 0;
-  }
+.addressText {
+  font-size: 15px;
+  margin: 0;
+}
 </style>
