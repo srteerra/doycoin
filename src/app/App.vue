@@ -2,7 +2,7 @@
   <div>
     <TopAnnouncement />
     <MainHeader />
-		<NoWalletCardVue />
+		<NotificationList />
     <router-view />
     <MainFooter />
   </div>
@@ -12,7 +12,7 @@
 import MainHeader from './components/MainHeader.vue'
 import MainFooter from './components/MainFooter.vue'
 import TopAnnouncement from './components/TopAnnouncement.vue'
-import NoWalletCardVue from './components/NoWalletCard.vue'
+import NotificationList from './components/NotificationList.vue'
 
 export default {
 	name: 'App',
@@ -20,7 +20,7 @@ export default {
 		MainHeader,
 		MainFooter,
 		TopAnnouncement,
-		NoWalletCardVue
+		NotificationList
 	},
 	data() {
 		return {}

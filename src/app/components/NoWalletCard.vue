@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
-	<b-card v-if="showNoWallet" id="NoWalletCard" class="pl-4 pr-2 m-3">
+	<b-card v-if="showNoWallet" id="NoWalletCard" class="pl-4 pr-2">
 		<div class="noWalletCard__header">
 			<b-button
 				variant="light"
@@ -64,11 +64,7 @@ export default {
 
 <style lang="scss">
 #NoWalletCard {
-	width: 500px;
-	position: fixed;
-	z-index: 10;
-	bottom: 0;
-	right: 0;
+	width: 100%;
 	border: none;
 	border-radius: 20px;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
