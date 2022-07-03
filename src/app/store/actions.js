@@ -121,5 +121,13 @@ export const actions = {
 			type: 'success',
 			message: 'Profile updated!'
 		})
+		dispatch('addNotification', {
+			type: 'danger',
+			message: 'Update failed.'
+		})
+		dispatch('addNotification', {
+			type: 'warning',
+			message: 'Something is missing...'
+		})
 	},
 }

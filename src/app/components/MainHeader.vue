@@ -38,7 +38,7 @@
 						style="max-width:100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"
 						:disabled="connectBtnState"
 						class="ml-0 mt-3 mt-xl-0 ml-xl-4 px-4 rounded-pill font-weight-bold"
-						variant="success"
+						variant="primary"
 						@click="connectAcc_Wallet()"
 					>
 						<span v-if="isConnected" class="pr-2"><b-icon-wallet /></span>
@@ -48,7 +48,7 @@
 						id="test"
 						style="max-width:100%;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"
 						class="ml-0 mt-3 mt-xl-0 ml-xl-4 px-4 rounded-pill font-weight-bold"
-						variant="success"
+						variant="primary"
 						@click="test()"
 					>
 						test

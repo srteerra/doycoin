@@ -15,7 +15,7 @@
         <b-button
           class="text-end"
           size="sm"
-          variant="success"
+          variant="primary"
           @click="showTopAd = false"
         >
           <b-icon-x />
@@ -40,6 +40,6 @@ export default {
 @import '../assets/variables.scss';
 
 #TopAd {
-  background-color: $success;
+  background-color: $primary;
 }
 </style>

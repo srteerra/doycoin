@@ -130,7 +130,7 @@ export default {
 
 .treesText {
 	display: inline-block;
-	background-color: $success;
+	background-color: $primary;
 	padding: 5px 15px;
 	font-size: 16px;
 	border-radius: 25px;

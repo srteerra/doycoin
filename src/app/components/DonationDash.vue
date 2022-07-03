@@ -94,7 +94,7 @@
                           id="nextStepButton"
                           block
                           class="py-2"
-                          variant="success"
+                          variant="primary"
                           @click="onClickNext"
                         >
                           Next
@@ -220,7 +220,7 @@
                           :disabled="AgreeBtn"
                           block
                           class="py-2"
-                          variant="success"
+                          variant="primary"
                           @click="
                             onClickNext();
                             exportDonatorData({
@@ -258,7 +258,7 @@
                           id="nextStepButton"
                           block
                           class="py-2"
-                          variant="success"
+                          variant="primary"
                           @click="
                             onClickNext();
                             sendDonation();
@@ -292,7 +292,7 @@
                           id="nextStepButton"
                           block
                           class="py-2"
-                          variant="success"
+                          variant="primary"
                           @click="onClickNext"
                         >
                           Next
@@ -323,7 +323,7 @@
                           id="nextStepButton"
                           block
                           class="py-2"
-                          variant="success"
+                          variant="primary"
                           @click="onClickNext"
                         >
                           Donate!
@@ -346,7 +346,7 @@
                     :value="currentStep"
                     :max="max_step"
                     class="my-3"
-                    variant="success"
+                    variant="primary"
                   />
                 </b-col>
               </b-container>

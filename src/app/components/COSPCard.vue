@@ -65,7 +65,7 @@ export default {
 }
 
 #myContribution__container {
-  background-color: $success;
+  background-color: $primary;
   border-top-left-radius: 35px;
   border-top-right-radius: 35px;
 }

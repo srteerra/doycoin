@@ -33,7 +33,7 @@
 				href="#"
 				class="mx-3 py-2 px-5"
 				pill
-				variant="success"
+				variant="primary"
 				@click="noWalletquit = false"
 				>I want one!</b-button
 			>

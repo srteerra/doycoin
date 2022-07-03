@@ -254,12 +254,12 @@ export default {
 }
 
 #userAvatar {
-  border: 5px solid $success;
+  border: 5px solid $primary;
 }
 
 .treesText {
   display: inline-block;
-  background-color: $success;
+  background-color: $primary;
   padding: 5px 15px;
   font-size: 16px;
   border-radius: 25px;

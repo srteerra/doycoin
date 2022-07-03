@@ -143,7 +143,7 @@
 						Close
 					</b-button>
 					<b-button
-						variant="success"
+						variant="primary"
 						size="md"
 						class="float-right mr-2"
 						@click=";(editProfileModal = false), saveChangesButton()"
