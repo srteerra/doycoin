@@ -116,21 +116,31 @@ export default {
 	margin: 5px auto;
 }
 
-.trees-section {
-	.trees {
-		width: 60%;
-		position: relative;
-	}
-	.crypto {
-		width: 100px;
-		position: absolute;
-		right: 70px;
-		top: -50px;
-	}
-}
+		.trees-section{
+			.trees{
+				width: 60%;
+				position: relative;
+			}
+			.crypto{
+				width: 100px;
+				position: absolute;
+				right: 70px;
+				top: -50px;
+			}
+		}
 
-.contact {
-	background-color: #262626;
-	color: white;
-}
+		.contact{
+			background-color: #262626;
+			color: white;
+		}
+
+		.address{
+			background-color: #EBEBEB80;
+		}
+
+		.roadmap{
+			img{
+				width: 100px;
+			}
+		}
 </style>

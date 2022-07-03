@@ -16,8 +16,8 @@
         <b-card-title>{{ nickName }}</b-card-title>
         <b-card-text>{{ position }}</b-card-text>
         <div class="d-flex justify-content-around">
-          <a :href="facebookURL">
-            <b-icon-github />
+          <a v-bind:href="githubURL">
+            <b-icon-github></b-icon-github>
           </a>
           <a :href="twitterURL">
             <b-icon-twitter />
