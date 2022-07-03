@@ -1,24 +1,65 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
-	<b-card id="NoWalletCard" class="pl-4 pr-2 m-3">
+	<b-card v-if="showNoWallet" id="NoWalletCard" class="pl-4 pr-2 m-3">
 		<div class="noWalletCard__header">
-			<b-button variant="light" size="md" class="mb-0">
+			<b-button
+				variant="light"
+				size="md"
+				class="mb-0"
+				@click="noWalletquit = false"
+			>
 				<b-icon-x />
 			</b-button>
 		</div>
 		<div class="noWalletCard__content">
-			<h3 class="font-weight-bold mb-4">It looks like you don't have a wallet yet.</h3>
-			<p>In order to use the functionalities of this web application it is necessary to to have a cryptocurrency wallet such as Metamask.</p>
+			<h3 class="font-weight-bold mb-4">
+				It looks like you don't have a wallet yet.
+			</h3>
+			<p>
+				In order to use the functionalities of this web application it is
+				necessary to to have a cryptocurrency wallet such as Metamask.
+			</p>
 		</div>
 		<div class="noWalletCard__footer">
-			<b-button href="#" class="mx-3 py-2 px-5" pill variant="outline-dark">Dismiss</b-button>
-			<b-button href="#" class="mx-3 py-2 px-5" pill variant="success">I want one!</b-button>
+			<b-button
+				href="#"
+				class="mx-3 py-2 px-5"
+				pill
+				variant="outline-dark"
+				@click="noWalletquit = false"
+				>Dismiss</b-button
+			>
+			<b-button
+				href="#"
+				class="mx-3 py-2 px-5"
+				pill
+				variant="success"
+				@click="noWalletquit = false"
+				>I want one!</b-button
+			>
 		</div>
 	</b-card>
 </template>
 
 <script>
-export default {}
+import { mapState } from 'vuex'
+
+export default {
+	data() {
+		return {
+		}
+	},
+	computed: {
+		...mapState(['provider']),
+		showNoWallet() {
+			if (this.provider) {
+				return false
+			} else {
+				return true
+			}
+		}
+	}
+}
 </script>
 
 <style lang="scss">
