@@ -27,7 +27,7 @@ export default {
 		return {}
 	},
 	mounted() {
-		$('#pre-loader').fadeOut('slow')
+		$('#pre-loader').fadeOut(2000)
 	}
 }
 </script>
