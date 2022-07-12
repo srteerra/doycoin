@@ -26,7 +26,7 @@
 							</b-col>
 						</b-row>
 						<b-row>
-							<b-col class="text-center">
+							<b-col class="text-center px-0">
 								<DonationDash />
 							</b-col>
 						</b-row>
