@@ -18,6 +18,9 @@ export default {
 	showinstallCoinbaseModalState: false,
 	showDonate: false,
 
+	// Notification Ex
+	noWalletNoti: false,
+
 	// Donator data
 	donator: {
 		donatorName: '',

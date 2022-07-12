@@ -12,7 +12,7 @@
 <script>
 import NoWalletCardVue from './NoWalletCard.vue'
 import NotificationMessage from './NotificationMessage.vue'
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
 	name: 'NotificationList',
@@ -25,6 +25,14 @@ export default {
 	},
 	computed: {
 		...mapState(['notifications'])
+	},
+	created() {
+		if (!window.ethereum) {
+			this.noWalletNotiShow()
+		}
+	},
+	methods: {
+		...mapActions(['noWalletNotiShow'])
 	}
 }
 </script>

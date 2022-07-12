@@ -18,6 +18,9 @@ export const actions = {
 	async exportDonatorData(context, payload) {
 		context.commit('DONATOR_DATA', payload)
 	},
+	async noWalletNotiShow(context) {
+		context.commit('SHOW_NOWALLET_NOTIFICATION')
+	},
 	async showconnectWalletModal(context) {
 		context.commit('SHOW_CONNECT')
 	},

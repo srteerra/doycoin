@@ -67,6 +67,10 @@ ethereum.on('accountsChanged', function(accounts) {
 				})
 			}
 		})
+		store.dispatch('addNotification', {
+			type: 'warning',
+			message: 'Account changed.'
+		})
 	} else {
 		window.location.reload()
 	}

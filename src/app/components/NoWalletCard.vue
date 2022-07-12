@@ -1,12 +1,12 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
-	<b-card v-if="showNoWallet" id="NoWalletCard" class="pl-4 pr-2">
+	<b-card v-if="noWalletNoti" id="NoWalletCard" class="pl-4 pr-2">
 		<div class="noWalletCard__header">
 			<b-button
 				variant="light"
 				size="md"
 				class="mb-0"
-				@click="noWalletquit = false"
+				@click="noWalletNotiShow()"
 			>
 				<b-icon-x />
 			</b-button>
@@ -26,7 +26,7 @@
 				class="mx-3 py-2 px-5"
 				pill
 				variant="outline-dark"
-				@click="noWalletquit = false"
+				@click="noWalletNotiShow()"
 				>Dismiss</b-button
 			>
 			<b-button
@@ -34,7 +34,7 @@
 				class="mx-3 py-2 px-5"
 				pill
 				variant="primary"
-				@click="noWalletquit = false"
+				@click="noWalletNotiShow()"
 				>I want one!</b-button
 			>
 		</div>
@@ -42,23 +42,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
 	data() {
 		return {
-
 		}
 	},
 	computed: {
-		...mapState(['provider']),
-		showNoWallet() {
-			if (this.provider) {
-				return false
-			} else {
-				return true
-			}
-		}
+		...mapState(['noWalletNoti'])
+	},
+	methods: {
+		...mapActions(['noWalletNotiShow'])
 	}
 }
 </script>

@@ -82,6 +82,10 @@ export const LOADING_DATA = (state, status) => {
 	state.fetchingData = status
 }
 
+export const SHOW_NOWALLET_NOTIFICATION = (state) => {
+	state.noWalletNoti = !state.noWalletNoti
+}
+
 export const PUSH_NOTIFICATION = (state, payload) => {
 	state.notifications.push({
 		...payload,
