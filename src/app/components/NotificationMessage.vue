@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/require-prop-types -->
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
 	<transition

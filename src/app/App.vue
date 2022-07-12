@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <TopAnnouncement />
-    <MainHeader />
+	<div>
+		<TopAnnouncement />
+		<MainHeader />
 		<NotificationList />
-    <router-view />
-    <MainFooter />
-  </div>
+		<router-view />
+		<MainFooter />
+	</div>
 </template>
 
 <script>
@@ -13,6 +13,7 @@ import MainHeader from './components/MainHeader.vue'
 import MainFooter from './components/MainFooter.vue'
 import TopAnnouncement from './components/TopAnnouncement.vue'
 import NotificationList from './components/NotificationList.vue'
+import $ from 'jquery'
 
 export default {
 	name: 'App',
@@ -24,6 +25,9 @@ export default {
 	},
 	data() {
 		return {}
+	},
+	mounted() {
+		$('#pre-loader').fadeOut('slow')
 	}
 }
 </script>

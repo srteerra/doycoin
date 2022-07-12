@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 'use-strict'
 import Vue from 'vue'
@@ -7,6 +8,7 @@ import store from './store'
 import { client } from '../lib/sanityClient'
 import imageUrlBuilder from '@sanity/image-url'
 import detectEthereumProvider from '@metamask/detect-provider'
+import $ from 'jquery'
 
 import 'bootstrap'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'

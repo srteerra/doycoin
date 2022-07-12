@@ -26,7 +26,7 @@ export default {
 	computed: {
 		...mapState(['notifications'])
 	},
-	created() {
+	mounted() {
 		if (!window.ethereum) {
 			this.noWalletNotiShow()
 		}
