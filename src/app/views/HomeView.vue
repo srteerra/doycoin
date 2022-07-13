@@ -91,11 +91,11 @@ export default {
 </script>
 
 <style lang="scss">
-#main-bg {
-	height: auto;
-	background-image: url('../assets/images/main-bg.png');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-}
+// #main-bg {
+// 	height: auto;
+// 	background-image: url('../assets/images/main-bg.png');
+// 	background-repeat: no-repeat;
+// 	background-position: center;
+// 	background-size: cover;
+// }
 </style>

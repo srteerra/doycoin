@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
-	<div class="container-fluid px-5 py-4">
-		<b-navbar toggleable="xl" type="light" variant="white">
+	<div class="container-fluid p-0 m-0">
+		<b-navbar toggleable="xl" type="light" variant="white" class="px-5 py-4">
 			<!-- Navbar logo -->
 			<b-navbar-brand href="#">
 				<img

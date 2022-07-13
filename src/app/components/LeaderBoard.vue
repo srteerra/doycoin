@@ -367,6 +367,7 @@ export default {
 
 #leadboard__item {
 	border-radius: 20px;
+	background-color: white;
 }
 
 #donator__badge {
