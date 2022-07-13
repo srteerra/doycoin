@@ -1,6 +1,17 @@
 <template>
 	<div class="container-fluid px-0 mx-0">
-		<b-container id="main-bg" fluid class="py-5">
+		<b-container
+			:style="{
+				height: 'auto',
+				'background-repeat': 'no-repeat',
+				'background-position': 'center',
+				'background-size': 'cover',
+				'background-image':
+					'url(' + require('../assets/images/main-bg.png') + ')'
+			}"
+			fluid
+			class="py-5"
+		>
 			<div>
 				<b-row class="pt-5">
 					<b-col cols="12">
@@ -90,12 +101,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// #main-bg {
-// 	height: auto;
-// 	background-image: url('../assets/images/main-bg.png');
-// 	background-repeat: no-repeat;
-// 	background-position: center;
-// 	background-size: cover;
-// }
-</style>
+<style lang="scss"></style>
