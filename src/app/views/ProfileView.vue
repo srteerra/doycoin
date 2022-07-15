@@ -1,21 +1,24 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
 	<div>
-		<b-container class="py-5 my-5" style="max-width:1400px">
+		<b-container fluid class="py-5 my-5" style="max-width: 1400px;">
 			<b-row>
 				<!-- Left side col -->
-				<b-col cols="5">
+				<b-col cols="12" sm="10" xl="4" class="profile__cards mr-5 mx-auto">
 					<b-row class="mb-5">
 						<ProfileCard />
+					</b-row>
+					<b-row class="mb-5">
+						<RankCard />
 					</b-row>
 					<b-row>
 						<COSPCard />
 					</b-row>
 				</b-col>
 				<!-- Right side col -->
-				<b-col>
-					<b-row>
-						<p class="pb-2">Latest donations</p>
+				<b-col cols="12" sm="10" xl="7" class="mx-auto mt-5 mt-xl-0">
+					<b-row class="mt-5 mt-xl-0">
+						<p class="pb-2 mx-auto mx-xl-0">Latest donations</p>
 						<b-list-group
 							v-for="myDonation in myDonations"
 							:key="myDonation.id"
@@ -24,14 +27,14 @@
 						>
 							<b-list-group-item
 								id="donation__item"
-								class="shadow-lg rounded-lg py-4 mb-4"
+								class="shadow-lg py-4 mb-4"
 							>
 								<b-row>
 									<b-col
 										cols="5"
 										xs="3"
-										sm="5"
-										md="5"
+										sm="7"
+										md="7"
 										lg="6"
 										xl="6"
 										class="my-auto text-left"
@@ -54,7 +57,7 @@
 										cols="7"
 										xs="5"
 										sm="5"
-										md="4"
+										md="5"
 										lg="6"
 										xl="6"
 										class="text-right my-auto"
@@ -77,6 +80,12 @@
 					</b-row>
 				</b-col>
 			</b-row>
+			<!-- <img
+				id="profileTrees__vec"
+				class="d-none d-xl-block"
+				src="../assets/vectors/trees-1.png"
+				alt=""
+			/> -->
 		</b-container>
 	</div>
 </template>
@@ -84,11 +93,13 @@
 <script>
 import ProfileCard from '../components/ProfileCard.vue'
 import COSPCard from '../components/COSPCard.vue'
+import RankCard from '../components/RankCard.vue'
 
 export default {
 	components: {
 		ProfileCard,
-		COSPCard
+		COSPCard,
+		RankCard
 	},
 	data() {
 		return {
@@ -126,7 +137,16 @@ export default {
 #donation__item {
 	width: 100%;
 	max-width: 100%;
+	border-radius: 20px;
 }
+
+// #profileTrees__vec {
+// 	position: absolute;
+// 	right: 100px;
+// 	bottom: 0;
+// 	width: 350px;
+// 	z-index: -10;
+// }
 
 .treesText {
 	display: inline-block;

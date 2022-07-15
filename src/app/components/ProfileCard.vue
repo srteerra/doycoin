@@ -223,7 +223,7 @@ export default {
 				'Congo, the Democratic Republic of the',
 				'Cook Islands',
 				'Costa Rica',
-				'Cote d\'Ivoire',
+				'Cote dIvoire',
 				'Croatia (Hrvatska)',
 				'Cuba',
 				'Cyprus',
@@ -284,11 +284,11 @@ export default {
 				'Kazakhstan',
 				'Kenya',
 				'Kiribati',
-				'Korea, Democratic People\'s Republic of',
+				'Korea, Democratic Peoples Republic of',
 				'Korea, Republic of',
 				'Kuwait',
 				'Kyrgyzstan',
-				'Lao, People\'s Democratic Republic',
+				'Lao, Peoples Democratic Republic',
 				'Latvia',
 				'Lebanon',
 				'Lesotho',
@@ -431,8 +431,7 @@ export default {
 
 <style lang="scss">
 #profile__container {
-	width: 400px;
-	max-width: 400px;
+	width: 100%;
 	height: 350px;
 	max-height: 350px;
 	border-radius: 35px;

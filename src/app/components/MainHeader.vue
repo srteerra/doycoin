@@ -50,10 +50,10 @@
 				<b-dropdown
 					v-if="isConnected"
 					right
-					toggle-class="no-caret text-decoration-none"
+					toggle-class="text-decoration-none"
 					class="m-md-2 pl-1"
 					variant="light"
-					no-caret
+					no-caret="true"
 				>
 					<template #button-content>
 						<b-avatar button :src="`${getAvatar}`" size="4rem" />
