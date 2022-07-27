@@ -36,16 +36,7 @@
 															align="start"
 															class="my-auto d-flex justify-content-end justify-content-md-center"
 														>
-															<div>
-																<img
-																	id="donator__badge"
-																	class="mr-3"
-																	:src="
-																		require('../assets/badges/Level ' +
-																			`${recentDonator.level}` +
-																			' badge.png')
-																	"
-																/>
+															<div class="leadboardTop__avatar">
 																<b-avatar
 																	id="donator__avatar"
 																	:src="
@@ -53,6 +44,15 @@
 																			recentDonator.id
 																	"
 																	size="4rem"
+																/>
+																<img
+																	id="donator__badge"
+																	class="ml-4"
+																	:src="
+																		require('../assets/badges/Level ' +
+																			`${recentDonator.level}` +
+																			' badge.png')
+																	"
 																/>
 															</div>
 														</b-col>
@@ -68,7 +68,7 @@
 															xl="4"
 															class="my-auto text-left d-flex justify-content-start"
 														>
-															<div>
+															<div class="leadboardTop__desc">
 																<h4
 																	class="text-start mb-0 text-dark font-weight-bolder"
 																>
@@ -95,7 +95,7 @@
 															xl="4"
 															class="my-auto d-flex justify-content-end justify-content-sm-center justify-content-md-end"
 														>
-															<div>
+															<div class="leadboardTop__trees">
 																<p class="text-white treesText">
 																	{{ recentDonator.trees }} trees!
 																</p>
@@ -148,15 +148,6 @@
 															class="my-auto d-flex justify-content-end justify-content-md-center"
 														>
 															<div>
-																<img
-																	id="donator__badge"
-																	class="mr-3"
-																	:src="
-																		require('../assets/badges/Level ' +
-																			`${recentDonator.level}` +
-																			' badge.png')
-																	"
-																/>
 																<b-avatar
 																	id="donator__avatar"
 																	:src="
@@ -164,6 +155,15 @@
 																			recentDonator.id
 																	"
 																	size="4rem"
+																/>
+																<img
+																	id="donator__badge"
+																	class="ml-4"
+																	:src="
+																		require('../assets/badges/Level ' +
+																			`${recentDonator.level}` +
+																			' badge.png')
+																	"
 																/>
 															</div>
 														</b-col>
@@ -368,6 +368,26 @@ export default {
 #leadboard__item {
 	border-radius: 20px;
 	background-color: white;
+
+	&:first-of-type {
+		height: 300px;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr 1fr;
+
+		.leadboardTop__avatar {
+			grid-row: 1;
+		}
+
+		.leadboardTop__desc {
+			width: 500px;
+			grid-row: 2;
+		}
+
+		.leadboardTop__trees {
+			grid-row: 3;
+		}
+	}
 }
 
 #donator__badge {
