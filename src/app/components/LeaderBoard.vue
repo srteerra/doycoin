@@ -426,7 +426,7 @@ export default {
 			)
 		},
 		itemsForListTop() {
-			return this.recentDonators.slice(1)
+			return this.recentDonators.slice(1, 5)
 		},
 		filteredTopItem() {
 			return this.recentDonators.slice(0, 1)

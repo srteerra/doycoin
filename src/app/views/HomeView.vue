@@ -17,7 +17,14 @@
 					<b-col cols="12">
 						<b-row class="pt-5">
 							<b-col class="text-center">
-								<h1 class="fs-2 text-dark font-weight-bold">1,400,000</h1>
+								<h1 class="fs-2 text-dark font-weight-bold">
+									<ICountUp
+										:delay="delay"
+										:endVal="totalTreesPlanted"
+										:options="options"
+										@ready="onReady"
+									/>
+								</h1>
 							</b-col>
 						</b-row>
 						<b-row>
@@ -27,7 +34,15 @@
 								</p>
 								<h4 class="fs-3 text-dark font-weight-light pb-3">
 									We're planting
-									<span class="font-weight-bold">1,340 trees</span> per month
+									<span class="font-weight-bold">
+										<ICountUp
+											:delay="delay"
+											:endVal="totalTreesMonthly"
+											:options="options"
+											@ready="onReady"
+										/>
+									</span>
+									per month
 									<span
 										><router-link to="/how" class="px-1"
 											><b-icon-question-circle></b-icon-question-circle></router-link
@@ -74,15 +89,27 @@
 import LeaderBoard from '../components/LeaderBoard.vue'
 import DonationDash from '../components/DonationDash.vue'
 import { mapActions } from 'vuex'
+import ICountUp from 'vue-countup-v2'
 
 export default {
 	name: 'HomeView',
 	components: {
 		LeaderBoard,
-		DonationDash
+		DonationDash,
+		ICountUp
 	},
 	data() {
-		return {}
+		return {
+			delay: 1000,
+			options: {
+				useEasing: true,
+				useGrouping: true,
+				separator: ',',
+				decimal: '.',
+				prefix: '',
+				suffix: ''
+			}
+		}
 	},
 	computed: {
 		// metaAddressConnected () {
@@ -94,6 +121,12 @@ export default {
 		//     return true
 		//   }
 		// }
+		totalTreesPlanted() {
+			return 1000000
+		},
+		totalTreesMonthly() {
+			return 1340
+		}
 	},
 	methods: {
 		...mapActions(['showDonateModal'])
