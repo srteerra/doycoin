@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: doycoin
+    build: .
+    volumes:
+      - .:/usr/src/app/
+      - /usr/src/app/node_modules
+    ports:
+      - '8080:8000'
+    command: >
+      bash -c "npm run server"

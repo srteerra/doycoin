@@ -17,19 +17,39 @@
 			<!-- Navbar links -->
 			<b-collapse id="nav-collapse" is-nav>
 				<b-navbar-nav class="ml-auto text-center text-dark font-weight-bold">
-					<router-link to="/" class="px-2 my-auto">
+					<router-link
+						to="/home"
+						class="px-2 my-auto"
+						active-class="activeLink"
+					>
 						Home
 					</router-link>
-					<router-link to="/about" class="px-2 my-auto">
+					<router-link
+						to="/about"
+						class="px-2 my-auto"
+						active-class="activeLink"
+					>
 						About us
 					</router-link>
-					<router-link to="/token" class="px-2 my-auto">
+					<router-link
+						to="/token"
+						class="px-2 my-auto"
+						active-class="activeLink"
+					>
 						Our token
 					</router-link>
-					<router-link to="/learn" class="px-2 my-auto">
+					<router-link
+						to="/learn"
+						class="px-2 my-auto"
+						active-class="activeLink"
+					>
 						Learn
 					</router-link>
-					<router-link to="/contact" class="px-2 my-auto">
+					<router-link
+						to="/contact"
+						class="px-2 my-auto"
+						active-class="activeLink"
+					>
 						Contact us
 					</router-link>
 					<!-- Connect wallet -->
@@ -288,5 +308,10 @@ export default {
 		display: initial;
 		max-width: 75px;
 	}
+}
+
+.activeLink {
+	font-weight: 800;
+	color: #688063;
 }
 </style>

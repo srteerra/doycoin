@@ -96,13 +96,15 @@
 															class="my-auto d-flex justify-content-end justify-content-sm-center justify-content-md-end"
 														>
 															<div class="leadboardTop__trees">
-																<p class="text-white treesText">
+																<p
+																	class="text-white treesText font-weight-bolder"
+																>
 																	{{ recentDonator.trees }} trees!
 																</p>
 																<div>
 																	<!-- <p class="addressText font-weight-regular text-muted">{{ recentDonator.date }}</p> -->
 																	<a
-																		class="addressText font-weight-regular text-muted"
+																		class="addressText font-weight-bolder text-muted"
 																		href="https://www.bscscan.com/address/0x10ed43c718714eb63d5aa57b78b54704e256024e"
 																		>0x1...6024e
 																		<b-icon-box-arrow-up-right />
@@ -207,13 +209,15 @@
 															class="my-auto d-flex justify-content-end justify-content-sm-center justify-content-md-end"
 														>
 															<div>
-																<p class="text-white treesText">
+																<p
+																	class="text-white treesText font-weight-bolder"
+																>
 																	{{ recentDonator.trees }} trees!
 																</p>
 																<div>
 																	<!-- <p class="addressText font-weight-regular text-muted">{{ recentDonator.date }}</p> -->
 																	<a
-																		class="addressText font-weight-regular text-muted"
+																		class="addressText font-weight-bolder text-muted"
 																		href="https://www.bscscan.com/address/0x10ed43c718714eb63d5aa57b78b54704e256024e"
 																		>0x1...6024e
 																		<b-icon-box-arrow-up-right />
@@ -376,16 +380,16 @@ export default {
 		grid-template-rows: 1fr 1fr 1fr;
 
 		.leadboardTop__avatar {
-			grid-row: 1;
+			grid-row: 1 !important;
 		}
 
 		.leadboardTop__desc {
-			width: 500px;
-			grid-row: 2;
+			width: 500px !important;
+			grid-row: 2 !important;
 		}
 
 		.leadboardTop__trees {
-			grid-row: 3;
+			grid-row: 3 !important;
 		}
 	}
 }
