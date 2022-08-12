@@ -248,7 +248,68 @@
 											border-variant="light"
 											class="card-style"
 										>
-											<b-card-text>For furthermore in 3rd step.</b-card-text>
+											<b-card-text>Select your favorite crypto!</b-card-text>
+
+											<div class="px-0 pb-5 cryptoSelection">
+												<div class="cryptoSelection-item">
+													<input
+														id="bnb-select"
+														v-model="cryptoSelectionInput"
+														type="radio"
+														name="cryptoSelection"
+														value="1"
+														checked
+													/>
+													<label for="bnb-select">
+														<span>
+															<img
+																src="../assets/icons/bnb-icon.png"
+																alt=""
+																class="cryptoSelection-icon"
+															/>
+															BNB
+														</span>
+													</label>
+												</div>
+												<div class="cryptoSelection-item">
+													<input
+														id="dot-select"
+														v-model="cryptoSelectionInput"
+														type="radio"
+														name="cryptoSelection"
+														value="2"
+													/>
+													<label for="dot-select">
+														<span>
+															<img
+																src="../assets/icons/dot-icon.png"
+																alt=""
+																class="cryptoSelection-icon"
+															/>
+															Polkadot
+														</span>
+													</label>
+												</div>
+												<div class="cryptoSelection-item">
+													<input
+														id="doge-select"
+														v-model="cryptoSelectionInput"
+														type="radio"
+														name="cryptoSelection"
+														value="3"
+													/>
+													<label for="doge-select">
+														<span>
+															<img
+																src="../assets/icons/doge-icon.png"
+																alt=""
+																class="cryptoSelection-icon"
+															/>
+															Dogecoin
+														</span>
+													</label>
+												</div>
+											</div>
 
 											<div class="mb-2">
 												<b-button
@@ -477,6 +538,10 @@ export default {
 	border-radius: 25px;
 }
 
+.cryptoSelection-icon {
+	max-width: 30px;
+}
+
 .DonationInput {
 	background-color: rgb(240, 240, 240);
 	color: rgb(127, 127, 127);
@@ -525,6 +590,50 @@ export default {
 
 	.amountSelection-item {
 		width: 45%;
+		height: 70px;
+		margin: 0 5px;
+	}
+}
+
+.cryptoSelection {
+	width: 100%;
+	justify-content: center;
+	display: inline-flex;
+	flex-wrap: wrap;
+
+	input[type='radio'] {
+		opacity: 0;
+		visibility: hidden;
+		width: 0;
+		&:checked + label {
+			color: white;
+			background-color: $success;
+			border-color: $success;
+
+			.cryptoSelection-icon {
+				filter: brightness(0) invert(1);
+			}
+		}
+	}
+
+	label {
+		width: 100%;
+		display: inline-block;
+		color: rgb(127, 127, 127);
+		font-weight: 800;
+		background-color: rgb(240, 240, 240);
+		padding: 15px 10px;
+		cursor: pointer;
+		border: 1px solid gray;
+		border-radius: 25px;
+	}
+
+	input[type='text'] {
+		width: 60%;
+	}
+
+	.cryptoSelection-item {
+		width: 100%;
 		height: 70px;
 		margin: 0 5px;
 	}
