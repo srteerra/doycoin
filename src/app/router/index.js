@@ -7,7 +7,7 @@ Vue.use(Router)
 
 const routes = [
 	{
-		path: '/home',
+		path: '/',
 		name: 'home',
 		component: () => import(/* webpackChunkName:"home" */ '../views/HomeView')
 	},
@@ -27,7 +27,7 @@ const routes = [
 const router = new Router({
 	linkExactActiveClass: 'link-active',
 	routes,
-	// mode: "history",
+	mode: 'history',
 	scrollBehavior() {
 		window.scrollTo(0, 0)
 	}
