@@ -28,6 +28,7 @@ const router = new Router({
 	linkExactActiveClass: 'link-active',
 	routes,
 	mode: 'history',
+	base: '/',
 	scrollBehavior() {
 		window.scrollTo(0, 0)
 	}
