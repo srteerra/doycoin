@@ -27,7 +27,8 @@ const routes = [
 const router = new Router({
 	linkExactActiveClass: 'link-active',
 	routes,
-	// mode: "history",
+	mode: 'hash',
+	base: '/',
 	scrollBehavior() {
 		window.scrollTo(0, 0)
 	}
