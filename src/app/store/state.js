@@ -16,6 +16,7 @@ export default {
 	showconnectWalletModalState: false,
 	showinstallMetaModalState: false,
 	showinstallCoinbaseModalState: false,
+	showaddressToDonateState: false,
 	showDonate: false,
 
 	// Notification Ex

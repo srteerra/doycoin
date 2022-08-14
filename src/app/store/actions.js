@@ -15,6 +15,9 @@ export const actions = {
 	async showDonateModal(context) {
 		context.commit('SHOW_DONATE')
 	},
+	async showaddressToDonate(context) {
+		context.commit('SHOW_ADDRESS_TO_DONATE')
+	},
 	async exportDonatorData(context, payload) {
 		context.commit('DONATOR_DATA', payload)
 	},
@@ -134,13 +137,13 @@ export const actions = {
 				console.log(res)
 			})
 	},
-	async addNotification({commit}, payload) {
+	async addNotification({ commit }, payload) {
 		commit('PUSH_NOTIFICATION', payload)
 	},
-	async removeNotification({commit}, notification) {
+	async removeNotification({ commit }, notification) {
 		commit('REMOVE_NOTIFICATION', notification)
 	},
-	async test({dispatch}) {
+	async test({ dispatch }) {
 		dispatch('addNotification', {
 			type: 'success',
 			message: 'Profile updated!'
@@ -153,5 +156,5 @@ export const actions = {
 		// 	type: 'warning',
 		// 	message: 'Something is missing...'
 		// })
-	},
+	}
 }

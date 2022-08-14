@@ -82,8 +82,12 @@ export const LOADING_DATA = (state, status) => {
 	state.fetchingData = status
 }
 
-export const SHOW_NOWALLET_NOTIFICATION = (state) => {
+export const SHOW_NOWALLET_NOTIFICATION = state => {
 	state.noWalletNoti = !state.noWalletNoti
+}
+
+export const SHOW_ADDRESS_TO_DONATE = state => {
+	state.showaddressToDonateState = !state.showaddressToDonateState
 }
 
 export const PUSH_NOTIFICATION = (state, payload) => {

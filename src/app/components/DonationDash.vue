@@ -253,7 +253,16 @@
 											</div>
 
 											<div class="mb-4">
-												<a href="">Donate through an address</a>
+												<b-button
+													id="donateAddresses"
+													block
+													class="py-2"
+													style="outline: none"
+													variant="link"
+													@click="showaddressToDonate()"
+												>
+													Donate through an address
+												</b-button>
 											</div>
 
 											<div class="mb-2">
@@ -358,6 +367,209 @@
 				</b-col>
 			</div>
 		</b-container>
+
+		<!-- Addresses to donate modal -->
+		<b-modal
+			id="modal-addressToDonate"
+			v-model="showaddressToDonateState"
+			centered
+			size="lg"
+			header-bg-variant="light"
+			header-text-variant="dark"
+			header-border-variant="light"
+			footer-bg-variant="light"
+			footer-text-variant="dark"
+			footer-border-variant="light"
+		>
+			<template #modal-header>
+				<div class="w-100">
+					<b-button
+						variant="light"
+						size="md"
+						class="float-right"
+						@click="showaddressToDonate()"
+					>
+						<b-icon-x />
+					</b-button>
+				</div>
+			</template>
+			<b-row class="pb-4 px-5">
+				<b-col class="text-center">
+					<h3 class="font-weight-bold">Our address book</h3>
+					<p>To never stop growing this movement</p>
+					<div class="px-5">
+						<small>
+							<strong>Notice:</strong> If you make a donation of any amount to
+							any of the following addresses. It will be completely
+							<strong>Anonymous</strong>.
+						</small>
+					</div>
+				</b-col>
+			</b-row>
+			<b-row class="pb-4 px-5">
+				<b-col class="text-center">
+					<b-tabs content-class="mt-5" fill pills>
+						<b-tab active>
+							<template #title>
+								<img
+									src="../assets/icons/btc-icon.png"
+									alt=""
+									style="width: 15px; height: 15px;"
+								/>
+								<strong>BTC</strong>
+							</template>
+
+							<p>Bitcoin Address</p>
+							<img
+								src="../assets/QR/qr.png"
+								alt=""
+								style="max-width: 500px; max-height: 500px;"
+							/>
+							<b-button
+								pill
+								size="sm"
+								variant="outline-dark"
+								class="font-weight-light py-2 px-3 my-3"
+								@click="
+									copyAddress('0xb37ecc72b98d7004c284fda84315eac16903bda3')
+								"
+							>
+								0xb37ecc72b98d7004c284fda84315eac16903bda3
+								<span class="pl-1"><b-icon-clipboard /></span>
+							</b-button>
+							<div>
+								<small>
+									<strong>Remember:</strong> You only have to send
+									<strong>BTC</strong> to this address. If you send
+									<br />
+									another token, we will not receive it and will be lost.
+								</small>
+							</div>
+						</b-tab>
+						<b-tab>
+							<template #title>
+								<img
+									src="../assets/icons/bnb-icon.png"
+									alt=""
+									style="width: 15px; height: 15px;"
+								/>
+								<strong>BNB</strong>
+							</template>
+							<p>Binance Smart Chain (BSC)</p>
+							<img
+								src="../assets/QR/qr.png"
+								alt=""
+								style="max-width: 500px; max-height: 500px;"
+							/>
+							<b-button
+								pill
+								size="sm"
+								variant="outline-dark"
+								class="font-weight-light py-2 px-3 my-3"
+								@click="
+									copyAddress('0xb37ecc72b98d7004c284fda84315eac16903bda3')
+								"
+							>
+								0xb37ecc72b98d7004c284fda84315eac16903bda3
+								<span class="pl-1"><b-icon-clipboard /></span>
+							</b-button>
+							<div>
+								<small>
+									<strong>Remember:</strong> You only have to send
+									<strong>BNB</strong> to this address. If you send
+									<br />
+									another token, we will not receive it and will be lost.
+								</small>
+							</div></b-tab
+						>
+						<b-tab>
+							<template #title>
+								<img
+									src="../assets/icons/eth-icon.png"
+									alt=""
+									style="width: 15px; height: 15px;"
+								/>
+								<strong>ETH</strong>
+							</template>
+							<p>Ethereum Mainnet (ERC-20)</p>
+							<img
+								src="../assets/QR/qr.png"
+								alt=""
+								style="max-width: 500px; max-height: 500px;"
+							/>
+							<b-button
+								pill
+								size="sm"
+								variant="outline-dark"
+								class="font-weight-light py-2 px-3 my-3"
+								@click="
+									copyAddress('0xb37ecc72b98d7004c284fda84315eac16903bda3')
+								"
+							>
+								0xb37ecc72b98d7004c284fda84315eac16903bda3
+								<span class="pl-1"><b-icon-clipboard /></span>
+							</b-button>
+							<div>
+								<small>
+									<strong>Remember:</strong> You only have to send
+									<strong>ETH</strong> to this address. If you send
+									<br />
+									another token, we will not receive it and will be lost.
+								</small>
+							</div></b-tab
+						>
+						<b-tab disabled
+							><template #title>
+								<img
+									src="../assets/icons/doge-icon.png"
+									alt=""
+									style="width: 15px; height: 15px;"
+								/>
+								<strong>DOGE</strong>
+							</template>
+							<p>Ethereum Mainnet (ERC-20)</p>
+							<img
+								src="../assets/QR/qr.png"
+								alt=""
+								style="max-width: 500px; max-height: 500px;"
+							/>
+							<b-button
+								pill
+								size="sm"
+								variant="outline-dark"
+								class="font-weight-light py-2 px-3 my-3"
+								@click="
+									copyAddress('0xb37ecc72b98d7004c284fda84315eac16903bda3')
+								"
+							>
+								0xb37ecc72b98d7004c284fda84315eac16903bda3
+								<span class="pl-1"><b-icon-clipboard /></span>
+							</b-button>
+							<div>
+								<small>
+									<strong>Remember:</strong> You only have to send
+									<strong>DOGE</strong> to this address. If you send
+									<br />
+									another token, we will not receive it and will be lost.
+								</small>
+							</div></b-tab
+						>
+					</b-tabs>
+				</b-col>
+			</b-row>
+			<template #modal-footer>
+				<div class="w-100">
+					<b-button
+						variant="dark"
+						size="md"
+						class="float-right"
+						@click="showaddressToDonate()"
+					>
+						Close
+					</b-button>
+				</div>
+			</template>
+		</b-modal>
 	</div>
 </template>
 
@@ -402,7 +614,7 @@ export default {
 			return Math.round(100 / this.max_step) * this.currentStep
 		},
 
-		...mapState(['donator']),
+		...mapState(['donator', 'showaddressToDonateState']),
 
 		yearsCalc() {
 			return Math.floor(Math.random() * (15 - 5) + 5)
@@ -442,8 +654,18 @@ export default {
 		onClickFirst() {
 			this.currentStep = 1
 		},
+		copyAddress(add) {
+			navigator.clipboard.writeText(add).then(
+				() => {
+					console.log('copied')
+				},
+				() => {
+					console.log('not copied')
+				}
+			)
+		},
 
-		...mapActions(['exportDonatorData', 'sendDonation'])
+		...mapActions(['exportDonatorData', 'sendDonation', 'showaddressToDonate'])
 	}
 }
 </script>
