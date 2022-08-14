@@ -25,7 +25,18 @@
 													class="shadow-lg py-4 mb-4"
 												>
 													<b-row class="px-4 px-sm-5 leadboard__item__content">
-														<div id="topdonator__background"></div>
+														<div
+															id="topdonator__background"
+															:style="{
+																'background-repeat': 'no-repeat',
+																'background-position': 'center',
+																'background-size': 'cover',
+																'background-image':
+																	'url(' +
+																	require('../assets/images/main-bg.png') +
+																	')'
+															}"
+														></div>
 														<!-- Avatar col -->
 														<b-col
 															v-if="windowWidth >= 576"
@@ -458,10 +469,6 @@ export default {
 	#topdonator__background {
 		width: 100%;
 		height: 100px;
-		background-image: url('../assets/images/main-bg.png');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
 	}
 }
 

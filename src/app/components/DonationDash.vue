@@ -23,68 +23,51 @@
 												</h4>
 												<hr />
 											</div>
-											<div class="px-0 pb-5 amountSelection">
-												<div class="amountSelection-item">
-													<input
-														id="1Tree"
-														v-model="amountSelectedInput"
-														type="radio"
-														name="amountSelection"
-														value="1"
-														checked
-													/>
-													<label for="1Tree">1 tree</label>
-												</div>
-												<div class="amountSelection-item">
-													<input
-														id="15Trees"
-														v-model="amountSelectedInput"
-														type="radio"
-														name="amountSelection"
-														value="15"
-													/>
-													<label for="15Trees">15 trees</label>
-												</div>
-												<div class="amountSelection-item">
-													<input
-														id="50Trees"
-														v-model="amountSelectedInput"
-														type="radio"
-														name="amountSelection"
-														value="50"
-													/>
-													<label for="50Trees">50 trees</label>
-												</div>
-												<div class="amountSelection-item">
-													<input
-														id="100Trees"
-														v-model="amountSelectedInput"
-														type="radio"
-														name="amountSelection"
-														value="100"
-													/>
-													<label for="100Trees">100 trees</label>
-												</div>
+
+											<div v-if="!isconnected">
+												<b-row>
+													<b-col
+														class="d-flex align-items-center justify-content-start text-left"
+													>
+														<h4 class="font-weight-bold">
+															Connect your wallet and start planting trees!
+														</h4>
+													</b-col>
+													<b-col
+														class="d-flex align-items-center justify-content-center"
+													>
+														<img
+															src="../assets/vectors/tree-3.png"
+															alt=""
+															style="max-width: 90%; max-height: 80%;"
+														/>
+													</b-col>
+												</b-row>
 											</div>
 
-											<div>
-												<hr />
-												<p>Or</p>
+											<div v-else>
+												<b-row>
+													<b-col
+														class="d-flex align-items-center justify-content-start"
+													>
+														<div class="text-left">
+															<h4 class="font-weight-bold">
+																Welcome {{ username }}!
+															</h4>
+															<p>
+																More trees are waiting for you...
+															</p>
+														</div>
+													</b-col>
+													<b-col>
+														<img
+															src="../assets/vectors/trees-1.png"
+															alt=""
+															style="max-width: 100%;"
+														/>
+													</b-col>
+												</b-row>
 											</div>
-
-											<b-form-group
-												id="amountSelectedGroup"
-												class="text-dark font-weight-bold"
-											>
-												<b-form-input
-													id="customAmountInput"
-													v-model="amountSelectedCustomInput"
-													type="number"
-													class="w-100 py-2 px-3 mb-3 DonationInput"
-													placeholder="Enter your amount..."
-													required
-												/>
-											</b-form-group>
 
 											<div>
 												<b-button
@@ -92,6 +75,7 @@
 													block
 													class="py-2"
 													variant="primary"
+													:disabled="!isconnected"
 													@click="onClickNext"
 												>
 													Next
@@ -250,65 +234,76 @@
 										>
 											<b-card-text>Select your favorite crypto!</b-card-text>
 
-											<div class="px-0 pb-5 cryptoSelection">
-												<div class="cryptoSelection-item">
-													<input
-														id="bnb-select"
-														v-model="cryptoSelectionInput"
-														type="radio"
-														name="cryptoSelection"
-														value="1"
-														checked
+											<div class="px-0 pt-3 cryptoSelection">
+												<b-form-group
+													id="amountSelectedGroup"
+													class="text-dark font-weight-bold"
+												>
+													<div class="d-flex justify-content-between">
+														<b-form-select
+															v-model="cryptoSelectForm"
+															size="sm"
+															class="w-25 cryptoSelectForm"
+														>
+															<template #first>
+																<b-form-select-option value="bnb">
+																	<span>
+																		<img
+																			src="../assets/icons/bnb-icon.png"
+																			alt=""
+																			style="width: 10px; height: 10px; position: absolute;"
+																		/>
+																	</span>
+																	BNB
+																</b-form-select-option>
+															</template>
+
+															<b-form-select-option
+																value="dot"
+																class="cryptoOption"
+																>DOT</b-form-select-option
+															>
+															<b-form-select-option value="doge"
+																>DOGE</b-form-select-option
+															></b-form-select
+														>
+														<p class="p-0 m-0">
+															Your balance: <span>0.0002</span>
+														</p>
+													</div>
+													<b-form-input
+														id="customAmountInput"
+														v-model="customAmountCryptoInput"
+														type="number"
+														class="w-100 py-5 px-3 my-2 DonationInput"
+														placeholder="0"
+														required
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
 													/>
-													<label for="bnb-select">
-														<span>
-															<img
-																src="../assets/icons/bnb-icon.png"
-																alt=""
-																class="cryptoSelection-icon"
-															/>
-															BNB
-														</span>
-													</label>
-												</div>
-												<div class="cryptoSelection-item">
-													<input
-														id="dot-select"
-														v-model="cryptoSelectionInput"
-														type="radio"
-														name="cryptoSelection"
-														value="2"
-													/>
-													<label for="dot-select">
-														<span>
-															<img
-																src="../assets/icons/dot-icon.png"
-																alt=""
-																class="cryptoSelection-icon"
-															/>
-															Polkadot
-														</span>
-													</label>
-												</div>
-												<div class="cryptoSelection-item">
-													<input
-														id="doge-select"
-														v-model="cryptoSelectionInput"
-														type="radio"
-														name="cryptoSelection"
-														value="3"
-													/>
-													<label for="doge-select">
-														<span>
-															<img
-																src="../assets/icons/doge-icon.png"
-																alt=""
-																class="cryptoSelection-icon"
-															/>
-															Dogecoin
-														</span>
-													</label>
-												</div>
+												</b-form-group>
+											</div>
+
+											<p>
+												This could be <strong>{{ calcTrees }}</strong> new trees
+												for the next <span>{{ yearsCalc }}</span> years
+											</p>
+
+											<div>
+												<hr />
+												<p>Or</p>
+											</div>
+
+											<div class="mb-4">
+												<b-button
+													id="donateAddresses"
+													block
+													class="py-2"
+													style="outline: none"
+													variant="link"
+													@click="showaddressToDonate()"
+												>
+													Donate through an address
+												</b-button>
 											</div>
 
 											<div class="mb-2">
@@ -322,7 +317,7 @@
 														sendDonation()
 													"
 												>
-													Next
+													Approve it
 												</b-button>
 											</div>
 											<div>
@@ -413,6 +408,209 @@
 				</b-col>
 			</div>
 		</b-container>
+
+		<!-- Addresses to donate modal -->
+		<b-modal
+			id="modal-addressToDonate"
+			v-model="showaddressToDonateState"
+			centered
+			size="lg"
+			header-bg-variant="light"
+			header-text-variant="dark"
+			header-border-variant="light"
+			footer-bg-variant="light"
+			footer-text-variant="dark"
+			footer-border-variant="light"
+		>
+			<template #modal-header>
+				<div class="w-100">
+					<b-button
+						variant="light"
+						size="md"
+						class="float-right"
+						@click="showaddressToDonate()"
+					>
+						<b-icon-x />
+					</b-button>
+				</div>
+			</template>
+			<b-row class="pb-4 px-5">
+				<b-col class="text-center">
+					<h3 class="font-weight-bold">Our address book</h3>
+					<p>To never stop growing this movement</p>
+					<div class="px-5">
+						<small>
+							<strong>Notice:</strong> If you make a donation of any amount to
+							any of the following addresses. It will be completely
+							<strong>Anonymous</strong>.
+						</small>
+					</div>
+				</b-col>
+			</b-row>
+			<b-row class="pb-4 px-5">
+				<b-col class="text-center">
+					<b-tabs content-class="mt-5" fill pills>
+						<b-tab active>
+							<template #title>
+								<img
+									src="../assets/icons/btc-icon.png"
+									alt=""
+									style="width: 15px; height: 15px;"
+								/>
+								<strong>BTC</strong>
+							</template>
+
+							<p>Bitcoin Address</p>
+							<img
+								src="../assets/QR/qr.png"
+								alt=""
+								style="max-width: 500px; max-height: 500px;"
+							/>
+							<b-button
+								pill
+								size="sm"
+								variant="outline-dark"
+								class="font-weight-light py-2 px-3 my-3"
+								@click="
+									copyAddress('0xb37ecc72b98d7004c284fda84315eac16903bda3')
+								"
+							>
+								0xb37ecc72b98d7004c284fda84315eac16903bda3
+								<span class="pl-1"><b-icon-clipboard /></span>
+							</b-button>
+							<div>
+								<small>
+									<strong>Remember:</strong> You only have to send
+									<strong>BTC</strong> to this address. If you send
+									<br />
+									another token, we will not receive it and will be lost.
+								</small>
+							</div>
+						</b-tab>
+						<b-tab>
+							<template #title>
+								<img
+									src="../assets/icons/bnb-icon.png"
+									alt=""
+									style="width: 15px; height: 15px;"
+								/>
+								<strong>BNB</strong>
+							</template>
+							<p>Binance Smart Chain (BSC)</p>
+							<img
+								src="../assets/QR/qr.png"
+								alt=""
+								style="max-width: 500px; max-height: 500px;"
+							/>
+							<b-button
+								pill
+								size="sm"
+								variant="outline-dark"
+								class="font-weight-light py-2 px-3 my-3"
+								@click="
+									copyAddress('0xb37ecc72b98d7004c284fda84315eac16903bda3')
+								"
+							>
+								0xb37ecc72b98d7004c284fda84315eac16903bda3
+								<span class="pl-1"><b-icon-clipboard /></span>
+							</b-button>
+							<div>
+								<small>
+									<strong>Remember:</strong> You only have to send
+									<strong>BNB</strong> to this address. If you send
+									<br />
+									another token, we will not receive it and will be lost.
+								</small>
+							</div></b-tab
+						>
+						<b-tab>
+							<template #title>
+								<img
+									src="../assets/icons/eth-icon.png"
+									alt=""
+									style="width: 15px; height: 15px;"
+								/>
+								<strong>ETH</strong>
+							</template>
+							<p>Ethereum Mainnet (ERC-20)</p>
+							<img
+								src="../assets/QR/qr.png"
+								alt=""
+								style="max-width: 500px; max-height: 500px;"
+							/>
+							<b-button
+								pill
+								size="sm"
+								variant="outline-dark"
+								class="font-weight-light py-2 px-3 my-3"
+								@click="
+									copyAddress('0xb37ecc72b98d7004c284fda84315eac16903bda3')
+								"
+							>
+								0xb37ecc72b98d7004c284fda84315eac16903bda3
+								<span class="pl-1"><b-icon-clipboard /></span>
+							</b-button>
+							<div>
+								<small>
+									<strong>Remember:</strong> You only have to send
+									<strong>ETH</strong> to this address. If you send
+									<br />
+									another token, we will not receive it and will be lost.
+								</small>
+							</div></b-tab
+						>
+						<b-tab disabled
+							><template #title>
+								<img
+									src="../assets/icons/doge-icon.png"
+									alt=""
+									style="width: 15px; height: 15px;"
+								/>
+								<strong>DOGE</strong>
+							</template>
+							<p>Ethereum Mainnet (ERC-20)</p>
+							<img
+								src="../assets/QR/qr.png"
+								alt=""
+								style="max-width: 500px; max-height: 500px;"
+							/>
+							<b-button
+								pill
+								size="sm"
+								variant="outline-dark"
+								class="font-weight-light py-2 px-3 my-3"
+								@click="
+									copyAddress('0xb37ecc72b98d7004c284fda84315eac16903bda3')
+								"
+							>
+								0xb37ecc72b98d7004c284fda84315eac16903bda3
+								<span class="pl-1"><b-icon-clipboard /></span>
+							</b-button>
+							<div>
+								<small>
+									<strong>Remember:</strong> You only have to send
+									<strong>DOGE</strong> to this address. If you send
+									<br />
+									another token, we will not receive it and will be lost.
+								</small>
+							</div></b-tab
+						>
+					</b-tabs>
+				</b-col>
+			</b-row>
+			<template #modal-footer>
+				<div class="w-100">
+					<b-button
+						variant="dark"
+						size="md"
+						class="float-right"
+						@click="showaddressToDonate()"
+					>
+						Close
+					</b-button>
+				</div>
+			</template>
+		</b-modal>
 	</div>
 </template>
 
@@ -428,9 +626,8 @@ export default {
 			max_step: 5,
 
 			// Amount group
-			amountSelected: '',
-			amountSelectedInput: '',
-			amountSelectedCustomInput: '',
+			cryptoSelectForm: 'bnb',
+			customAmountCryptoInput: null,
 
 			// Name group
 			NameInput: '',
@@ -458,7 +655,22 @@ export default {
 			return Math.round(100 / this.max_step) * this.currentStep
 		},
 
-		...mapState(['donator'])
+		...mapState([
+			'donator',
+			'showaddressToDonateState',
+			'isconnected',
+			'username'
+		]),
+
+		yearsCalc() {
+			return Math.floor(Math.random() * (15 - 5) + 5)
+		},
+
+		calcTrees() {
+			return Math.round(
+				this.customAmountCryptoInput * 0.05 * 12 * this.yearsCalc
+			).toLocaleString('en-US')
+		}
 	},
 	watch: {
 		AgreeCheck() {
@@ -476,18 +688,6 @@ export default {
 				this.NameInput = ''
 				this.NameInputDisabled = false
 			}
-		},
-		amountSelectedCustomInput() {
-			if (this.amountSelectedCustomInput !== '') {
-				this.amountSelectedInput = ''
-				this.amountSelected = this.amountSelectedCustomInput
-			}
-		},
-		amountSelectedInput() {
-			if (this.amountSelectedInput !== '') {
-				this.amountSelectedCustomInput = ''
-				this.amountSelected = this.amountSelectedInput
-			}
 		}
 	},
 	methods: {
@@ -500,8 +700,18 @@ export default {
 		onClickFirst() {
 			this.currentStep = 1
 		},
+		copyAddress(add) {
+			navigator.clipboard.writeText(add).then(
+				() => {
+					console.log('copied')
+				},
+				() => {
+					console.log('not copied')
+				}
+			)
+		},
 
-		...mapActions(['exportDonatorData', 'sendDonation'])
+		...mapActions(['exportDonatorData', 'sendDonation', 'showaddressToDonate'])
 	}
 }
 </script>
@@ -538,10 +748,6 @@ export default {
 	border-radius: 25px;
 }
 
-.cryptoSelection-icon {
-	max-width: 30px;
-}
-
 .DonationInput {
 	background-color: rgb(240, 240, 240);
 	color: rgb(127, 127, 127);
@@ -555,87 +761,21 @@ export default {
 	}
 }
 
-.amountSelection {
-	width: 100%;
-	justify-content: center;
-	display: inline-flex;
-	flex-wrap: wrap;
-
-	input[type='radio'] {
-		opacity: 0;
-		visibility: hidden;
-		width: 0;
-		&:checked + label {
-			color: white;
-			background-color: $success;
-			border-color: $success;
-		}
-	}
-
-	label {
-		width: 100%;
-		display: inline-block;
-		color: rgb(127, 127, 127);
-		font-weight: 800;
-		background-color: rgb(240, 240, 240);
-		padding: 15px 10px;
-		cursor: pointer;
-		border: 1px solid gray;
-		border-radius: 25px;
-	}
-
-	input[type='text'] {
-		width: 60%;
-	}
-
-	.amountSelection-item {
-		width: 45%;
-		height: 70px;
-		margin: 0 5px;
-	}
+.cryptoSelection-icon {
+	max-width: 30px;
 }
 
 .cryptoSelection {
 	width: 100%;
-	justify-content: center;
-	display: inline-flex;
-	flex-wrap: wrap;
 
-	input[type='radio'] {
-		opacity: 0;
-		visibility: hidden;
-		width: 0;
-		&:checked + label {
-			color: white;
-			background-color: $success;
-			border-color: $success;
+	.cryptoSelectForm {
+		border: none;
+		outline: none;
 
-			.cryptoSelection-icon {
-				filter: brightness(0) invert(1);
-			}
+		&:focus {
+			border: none;
+			box-shadow: none;
 		}
-	}
-
-	label {
-		width: 100%;
-		display: inline-block;
-		color: rgb(127, 127, 127);
-		font-weight: 800;
-		background-color: rgb(240, 240, 240);
-		padding: 15px 10px;
-		cursor: pointer;
-		border: 1px solid gray;
-		border-radius: 25px;
-	}
-
-	input[type='text'] {
-		width: 60%;
-	}
-
-	.cryptoSelection-item {
-		width: 100%;
-		height: 70px;
-		margin: 0 5px;
 	}
 }
 
