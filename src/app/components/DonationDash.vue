@@ -24,9 +24,49 @@
 												<hr />
 											</div>
 
-											<div>
-												<hr />
-												<p>Or</p>
+											<div v-if="!isconnected">
+												<b-row>
+													<b-col
+														class="d-flex align-items-center justify-content-start text-left"
+													>
+														<h4 class="font-weight-bold">
+															Connect your wallet and start planting trees!
+														</h4>
+													</b-col>
+													<b-col
+														class="d-flex align-items-center justify-content-center"
+													>
+														<img
+															src="../assets/vectors/tree-3.png"
+															alt=""
+															style="max-width: 90%; max-height: 80%;"
+														/>
+													</b-col>
+												</b-row>
+											</div>
+
+											<div v-else>
+												<b-row>
+													<b-col
+														class="d-flex align-items-center justify-content-start"
+													>
+														<div class="text-left">
+															<h4 class="font-weight-bold">
+																Welcome {{ username }}!
+															</h4>
+															<p>
+																More trees are waiting for you...
+															</p>
+														</div>
+													</b-col>
+													<b-col>
+														<img
+															src="../assets/vectors/trees-1.png"
+															alt=""
+															style="max-width: 100%;"
+														/>
+													</b-col>
+												</b-row>
 											</div>
 
 											<div>
@@ -35,6 +75,7 @@
 													block
 													class="py-2"
 													variant="primary"
+													:disabled="!isconnected"
 													@click="onClickNext"
 												>
 													Next
@@ -614,7 +655,12 @@ export default {
 			return Math.round(100 / this.max_step) * this.currentStep
 		},
 
-		...mapState(['donator', 'showaddressToDonateState']),
+		...mapState([
+			'donator',
+			'showaddressToDonateState',
+			'isconnected',
+			'username'
+		]),
 
 		yearsCalc() {
 			return Math.floor(Math.random() * (15 - 5) + 5)
