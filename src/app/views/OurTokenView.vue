@@ -28,7 +28,23 @@
 			<b-row class="mb-3">
 				<b-col class="text-center">
 					<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+						<span>
+							<img
+								src="../assets/vectors/leave-5.png"
+								alt=""
+								style="width: 30px"
+								class="pb-2"
+							/>
+						</span>
 						Where to buy?
+						<span>
+							<img
+								src="../assets/vectors/leave-5.png"
+								alt=""
+								style="width: 30px; transform: scaleX(-1);"
+								class="pb-2"
+							/>
+						</span>
 					</h3>
 					<p class="font-weight-light w-50 mx-auto">
 						You can buy our token on the following deFi dapps. Please use the
@@ -61,7 +77,23 @@
 			<b-row class="mb-5">
 				<b-col class="text-center">
 					<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+						<span>
+							<img
+								src="../assets/vectors/leave-5.png"
+								alt=""
+								style="width: 30px"
+								class="pb-2"
+							/>
+						</span>
 						Tokenomics
+						<span>
+							<img
+								src="../assets/vectors/leave-5.png"
+								alt=""
+								style="width: 30px; transform: scaleX(-1);"
+								class="pb-2"
+							/>
+						</span>
 					</h3>
 					<p class="font-weight-light w-50 mx-auto">
 						Strongest direction with our community, expecting years of growth.

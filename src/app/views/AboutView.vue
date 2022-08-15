@@ -29,7 +29,25 @@
 			</b-row>
 			<!-- Members section -->
 			<b-row class="pb-4 pt-5">
-				<h2 class="font-weight-bold text-center w-100">Members</h2>
+				<h3 class="font-weight-bold text-center w-100">
+					<span>
+						<img
+							src="../assets/vectors/leave-5.png"
+							alt=""
+							style="width: 30px"
+							class="pb-2"
+						/>
+					</span>
+					Members
+					<span>
+						<img
+							src="../assets/vectors/leave-5.png"
+							alt=""
+							style="width: 30px; transform: scaleX(-1);"
+							class="pb-2"
+						/>
+					</span>
+				</h3>
 			</b-row>
 			<b-row class="py-5">
 				<b-col cols="12" sm="12" md="8" lg="4" class="memberCard">
@@ -116,31 +134,31 @@ export default {
 	margin: 5px auto;
 }
 
-		.trees-section{
-			.trees{
-				width: 60%;
-				position: relative;
-			}
-			.crypto{
-				width: 100px;
-				position: absolute;
-				right: 70px;
-				top: -50px;
-			}
-		}
+.trees-section {
+	.trees {
+		width: 60%;
+		position: relative;
+	}
+	.crypto {
+		width: 100px;
+		position: absolute;
+		right: 70px;
+		top: -50px;
+	}
+}
 
-		.contact{
-			background-color: #262626;
-			color: white;
-		}
+.contact {
+	background-color: #262626;
+	color: white;
+}
 
-		.address{
-			background-color: #EBEBEB80;
-		}
+.address {
+	background-color: #ebebeb80;
+}
 
-		.roadmap{
-			img{
-				width: 100px;
-			}
-		}
+.roadmap {
+	img {
+		width: 100px;
+	}
+}
 </style>
