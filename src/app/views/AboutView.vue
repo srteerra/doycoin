@@ -156,6 +156,51 @@
 				</b-col>
 			</b-row>
 		</b-container>
+
+		<!-- Give us a coffe secton -->
+
+		<b-container class="coffee mx-auto pb-lg-5">
+			<b-row class="mb-2">
+				<b-col class="text-center">
+					<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+						<span>
+							<img
+								src="../assets/vectors/leave-5.png"
+								alt=""
+								style="width: 30px"
+								class="pb-2"
+							/>
+						</span>
+						Give us a coffee
+						<span>
+							<img
+								src="../assets/vectors/leave-5.png"
+								alt=""
+								style="width: 30px; transform: scaleX(-1);"
+								class="pb-2"
+							/>
+						</span>
+					</h3>
+					<p class="font-weight-light">
+						If you'd like to donate to the Devs, send ETH, SHIB, USDT here.
+						Thank you for your support!
+					</p>
+				</b-col>
+			</b-row>
+			<b-row class="mb-5">
+				<b-col>
+					<b-button
+						id="devAdd"
+						size="md"
+						class="py-4 px-3 my-3 w-100 d-inline-block text-truncate font-weight-bold"
+						@click="copyAddress('0xb37ecc72b98d7004c284fda84315eac16903bda3')"
+					>
+						0xc351155C80aCD043BD5F8FE7ffc8536af1fF9375
+						<span class="pl-1"><b-icon-clipboard /></span>
+					</b-button>
+				</b-col>
+			</b-row>
+		</b-container>
 	</div>
 </template>
 
@@ -227,5 +272,9 @@ export default {
 	.right-ul {
 		text-align: right;
 	}
+}
+
+.coffee {
+	margin: 200px 0;
 }
 </style>
