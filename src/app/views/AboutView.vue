@@ -29,10 +29,12 @@
 			</b-row>
 			<!-- Members section -->
 			<b-row class="pb-4 pt-5">
-				<h2 class="font-weight-bold text-center w-100">Members</h2>
+				<h2 class="font-weight-bold text-center w-100">
+					Members
+				</h2>
 			</b-row>
 			<b-row class="py-5">
-				<b-col cols="12" sm="12" md="8" lg="4" class="memberCard">
+				<b-col cols="12" sm="12" md="8" lg="4" class="my-2">
 					<MemberCard
 						nickName="Carlos Sanchez"
 						position="CTO"
@@ -41,7 +43,7 @@
 						instaURL="https://www.instagram.com/"
 					/>
 				</b-col>
-				<b-col cols="12" sm="12" md="8" lg="4" class="memberCard">
+				<b-col cols="12" sm="12" md="8" lg="4" class="my-2">
 					<MemberCard
 						nickName="Angel Lopez"
 						position="CEO/Founder"
@@ -50,7 +52,7 @@
 						instaURL="https://www.instagram.com/"
 					/>
 				</b-col>
-				<b-col cols="12" sm="12" md="8" lg="4" class="memberCard">
+				<b-col cols="12" sm="12" md="8" lg="4" class="my-2">
 					<MemberCard
 						nickName="Jonathan Ocampo"
 						position="CSO"
@@ -67,6 +69,11 @@
 				<b-row class="my-5">
 					<b-col cols="12" md="12" lg="6" class="mb-5">
 						<h2 class="font-weight-bold">Get in touch</h2>
+						<img
+							class="contact-stack-img"
+							src="../assets/vectors/stack-1.png"
+							alt="stack"
+						/>
 						<p>
 							Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
 							nisi eaque! Assumenda quos cum perferendis provident aperiam earum
@@ -82,17 +89,73 @@
 				</b-row>
 			</b-container>
 		</section>
-		<!-- our blog section -->
-		<b-row class="py-5">
-			<b-col class="pt-5">
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-					doloremque culpa id magni quos itaque quasi similique voluptas atque.
-					Ea odit excepturi repudiandae error itaque. Asperiores tempora eius
-					qui sequi!
-				</p>
-			</b-col>
-		</b-row>
+		<!-- Roadmap section -->
+		<b-container class="roadmap">
+			<b-row class="pt-5">
+				<b-col cols="12" md="6" class="stage-content my-3">
+					<img src="../assets/vectors/tree-5.png" alt="tree-5" />
+					<ul class="mx-3">
+						<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+							Stage 1
+						</h3>
+						<li>Pancakeswap Launch</li>
+						<li>Launch of Socials</li>
+						<li>Launch of Dapp v1.0</li>
+						<li>Organic Growth</li>
+						<li>Swing Trading</li>
+					</ul>
+				</b-col>
+				<b-col cols="12" md="6"></b-col>
+			</b-row>
+			<b-row class="pt-5">
+				<b-col cols="12" md="6"></b-col>
+				<b-col cols="12" md="6" class="stage-content right-ul my-3">
+					<ul class="mx-3">
+						<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+							Stage 2
+						</h3>
+						<li>Twitter marketing</li>
+						<li>+500 holders</li>
+						<li>Disord server</li>
+						<li>Sponsorship Crypto Events</li>
+						<li>Interactive campaign</li>
+					</ul>
+					<img src="../assets/vectors/tree-10.png" alt="tree-10" />
+				</b-col>
+			</b-row>
+			<b-row class="pt-5">
+				<b-col cols="12" md="6" class="stage-content my-3">
+					<img src="../assets/vectors/tree-3.png" alt="tree-3" />
+					<ul class="mx-3">
+						<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+							Stage 3
+						</h3>
+						<li>Mobile App</li>
+						<li>+1000 holders</li>
+						<li>Listing on exchanges</li>
+						<li>NFT Platform</li>
+						<li>Official merch</li>
+					</ul>
+				</b-col>
+				<b-col cols="12" md="6"> </b-col>
+			</b-row>
+			<b-row class="pt-5">
+				<b-col cols="12" md="6"> </b-col>
+				<b-col cols="12" md="6" class="stage-content right-ul my-3">
+					<ul class="mx-3">
+						<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+							Stage 4
+						</h3>
+						<li>Rebranding</li>
+						<li>+5000 holders</li>
+						<li>Launch of Dapp v2.0</li>
+						<li>Massive marketing</li>
+						<li>Diversity Funding</li>
+					</ul>
+					<img src="../assets/vectors/tree-1.png" alt="tree-1" />
+				</b-col>
+			</b-row>
+		</b-container>
 	</div>
 </template>
 
@@ -112,35 +175,57 @@ export default {
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.memberCard {
-	margin: 5px auto;
+.title-vector {
+	width: 70px;
+	padding-bottom: 40px;
 }
 
-		.trees-section{
-			.trees{
-				width: 60%;
-				position: relative;
-			}
-			.crypto{
-				width: 100px;
-				position: absolute;
-				right: 70px;
-				top: -50px;
-			}
-		}
+#mirror {
+	transform: scaleX(-1);
+}
 
-		.contact{
-			background-color: #262626;
-			color: white;
-		}
+.trees-section {
+	.trees {
+		width: 60%;
+		position: relative;
+	}
+	.crypto {
+		width: 100px;
+		position: absolute;
+		right: 70px;
+		top: -50px;
+	}
+}
 
-		.address{
-			background-color: #EBEBEB80;
-		}
+.contact {
+	background-color: #262626;
+	color: white;
+	margin-top: 200px;
+	.contact-stack-img {
+		width: 200px;
+		position: absolute;
+		top: -263px;
+	}
+}
 
-		.roadmap{
-			img{
-				width: 100px;
-			}
+.address {
+	background-color: #ebebeb80;
+}
+
+.roadmap {
+	img {
+		width: 200px;
+		height: 200px;
+	}
+	.stage-content {
+		display: flex;
+		align-items: center;
+		ul {
+			display: inline-block;
 		}
+	}
+	.right-ul {
+		text-align: right;
+	}
+}
 </style>
