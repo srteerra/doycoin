@@ -127,7 +127,7 @@
 						<li>
 							<div>
 								<div class="d-flex align-items-center">
-									<h4 class="font-weight-bold pr-2 m-0">5%</h4>
+									<h4 class="font-weight-bold pr-2 m-0">10%</h4>
 									<span class="Rdot" style="background-color: #8DCE63;"></span>
 								</div>
 								<p>Developers</p>
@@ -136,7 +136,7 @@
 						<li>
 							<div>
 								<div class="d-flex align-items-center">
-									<h4 class="font-weight-bold pr-2 m-0">5%</h4>
+									<h4 class="font-weight-bold pr-2 m-0">20%</h4>
 									<span class="Rdot" style="background-color: #689354;"></span>
 								</div>
 								<p>Community royalties</p>
@@ -145,7 +145,7 @@
 						<li>
 							<div>
 								<div class="d-flex align-items-center">
-									<h4 class="font-weight-bold pr-2 m-0">5%</h4>
+									<h4 class="font-weight-bold pr-2 m-0">60%</h4>
 									<span class="Rdot" style="background-color: #ADD692;"></span>
 								</div>
 								<p>Liquidity pool</p>
@@ -181,8 +181,8 @@
 						</span>
 					</h3>
 					<p class="font-weight-light">
-						Only this the <span class="font-weight-bold">dev address</span>,
-						please verify it before making any transaction.
+						Only this the BSC <span class="font-weight-bold">dev wallet</span>,
+						if you want to buy us a coffee. THANKS!
 					</p>
 				</b-col>
 			</b-row>
