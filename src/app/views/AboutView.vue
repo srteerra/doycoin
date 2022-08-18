@@ -29,11 +29,29 @@
 			</b-row>
 			<!-- Members section -->
 			<b-row class="pb-4 pt-5">
-				<h2 class="font-weight-bold text-center w-100">
+				<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+					<span>
+						<img
+							src="../assets/vectors/leave-5.png"
+							alt=""
+							style="width: 30px"
+							class="pb-2"
+						/>
+					</span>
+
 					Members
-				</h2>
+
+					<span>
+						<img
+							src="../assets/vectors/leave-5.png"
+							alt=""
+							style="width: 30px; transform: scaleX(-1);"
+							class="pb-2"
+						/>
+					</span>
+				</h3>
 			</b-row>
-			<b-row class="py-5">
+			<b-row class="py-5 members">
 				<b-col cols="12" sm="12" md="8" lg="4" class="my-2">
 					<MemberCard
 						nickName="Carlos Sanchez"
@@ -90,14 +108,33 @@
 			</b-container>
 		</section>
 		<!-- Roadmap section -->
-		<b-container class="roadmap">
-			<b-row class="pt-5">
-				<b-col cols="12" md="6" class="stage-content my-3">
+		<b-container class="mt-5">
+			<h3 class="text-dark font-weight-bold text-center py-5">
+				<span>
+					<img
+						src="../assets/vectors/leave-5.png"
+						alt=""
+						style="width: 30px"
+						class="pb-2"
+					/>
+				</span>
+				Roadmap
+				<span>
+					<img
+						src="../assets/vectors/leave-5.png"
+						alt=""
+						style="width: 30px; transform: scaleX(-1);"
+						class="pb-2"
+					/>
+				</span>
+			</h3>
+			<b-row class="roadmap pt-5 my-3">
+				<b-col cols="12" md="12" xl="6" class="stage-content">
 					<img src="../assets/vectors/tree-5.png" alt="tree-5" />
 					<ul class="mx-3">
-						<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+						<h4 class="font-weight-bold">
 							Stage 1
-						</h3>
+						</h4>
 						<li>Pancakeswap Launch</li>
 						<li>Launch of Socials</li>
 						<li>Launch of Dapp v1.0</li>
@@ -105,15 +142,15 @@
 						<li>Swing Trading</li>
 					</ul>
 				</b-col>
-				<b-col cols="12" md="6"></b-col>
+				<b-col cols="12" md="12" xl="6"></b-col>
 			</b-row>
-			<b-row class="pt-5">
-				<b-col cols="12" md="6"></b-col>
-				<b-col cols="12" md="6" class="stage-content right-ul my-3">
-					<ul class="mx-3">
-						<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+			<b-row class="roadmap pt-5 my-3">
+				<b-col cols="12" md="12" xl="6"></b-col>
+				<b-col cols="12" md="12" xl="6" class="stage-content">
+					<ul class="mx-3 text-right">
+						<h4 class="font-weight-bold">
 							Stage 2
-						</h3>
+						</h4>
 						<li>Twitter marketing</li>
 						<li>+500 holders</li>
 						<li>Disord server</li>
@@ -123,13 +160,13 @@
 					<img src="../assets/vectors/tree-10.png" alt="tree-10" />
 				</b-col>
 			</b-row>
-			<b-row class="pt-5">
-				<b-col cols="12" md="6" class="stage-content my-3">
+			<b-row class="roadmap pt-5 my-3">
+				<b-col cols="12" md="12" xl="6" class="stage-content">
 					<img src="../assets/vectors/tree-3.png" alt="tree-3" />
 					<ul class="mx-3">
-						<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+						<h4 class="font-weight-bold">
 							Stage 3
-						</h3>
+						</h4>
 						<li>Mobile App</li>
 						<li>+1000 holders</li>
 						<li>Listing on exchanges</li>
@@ -137,15 +174,15 @@
 						<li>Official merch</li>
 					</ul>
 				</b-col>
-				<b-col cols="12" md="6"> </b-col>
+				<b-col cols="12" md="12" xl="6"> </b-col>
 			</b-row>
-			<b-row class="pt-5">
-				<b-col cols="12" md="6"> </b-col>
-				<b-col cols="12" md="6" class="stage-content right-ul my-3">
-					<ul class="mx-3">
-						<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+			<b-row class="roadmap pt-5 my-3">
+				<b-col cols="12" md="12" xl="6"> </b-col>
+				<b-col cols="12" md="12" xl="6" class="stage-content mx-auto">
+					<ul class="mx-3 text-right">
+						<h4 class="font-weight-bold">
 							Stage 4
-						</h3>
+						</h4>
 						<li>Rebranding</li>
 						<li>+5000 holders</li>
 						<li>Launch of Dapp v2.0</li>
@@ -210,6 +247,19 @@ import MemberCard from '../components/MemberCard.vue'
 export default {
 	components: {
 		MemberCard
+	},
+	methods: {
+		copyAddress(add) {
+			navigator.clipboard.writeText(add).then(
+				() => {
+					console.log('copied')
+				},
+
+				() => {
+					console.log('not copied')
+				}
+			)
+		}
 	}
 }
 </script>
@@ -220,13 +270,9 @@ export default {
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
-.title-vector {
-	width: 70px;
-	padding-bottom: 40px;
-}
-
-#mirror {
-	transform: scaleX(-1);
+.members {
+	display: flex;
+	justify-content: center;
 }
 
 .trees-section {
@@ -253,10 +299,6 @@ export default {
 	}
 }
 
-.address {
-	background-color: #ebebeb80;
-}
-
 .roadmap {
 	img {
 		width: 200px;
@@ -265,16 +307,25 @@ export default {
 	.stage-content {
 		display: flex;
 		align-items: center;
-		ul {
-			display: inline-block;
-		}
-	}
-	.right-ul {
-		text-align: right;
+		justify-content: center;
 	}
 }
 
 .coffee {
 	margin: 200px 0;
+}
+
+@media (max-width: 500px) {
+	.stage-content {
+		img {
+			display: none;
+		}
+		ul {
+			padding: 0;
+		}
+		* {
+			text-align: center;
+		}
+	}
 }
 </style>
