@@ -1,5 +1,5 @@
 # :deciduous_tree:  DoyCoin
-#### A decetralized application where you can plant trees with your Crypto!
+#### A decetralized web application where you can plant trees with your Crypto!
 
 ![](https://img.shields.io/github/stars/srteerra/doycoin)![](https://img.shields.io/github/forks/srteerra/doycoin)
 

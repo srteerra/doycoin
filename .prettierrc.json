@@ -1,3 +1,5 @@
+// These are some code rules
+
 {
 	"singleQuote": true,
 	"semi": false,

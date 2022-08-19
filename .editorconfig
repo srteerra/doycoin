@@ -1,4 +1,6 @@
 # Editor configuration, see https://editorconfig.org
+# Modify it in case
+
 root = true
 
 [*]
