@@ -146,7 +146,9 @@
 						variant="primary"
 						size="md"
 						class="float-right mr-2"
-						@click=";(editProfileModal = false), saveChangesButton()"
+						@click=";(editProfileModal = false), updateAccount({
+							newUsername: newUsername
+						})"
 					>
 						Save
 					</b-button>
@@ -157,7 +159,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { mapState } from 'vuex'
 
 export default {
@@ -422,6 +424,7 @@ export default {
 		this.newCountry = this.$store.state.userCountry
 	},
 	methods: {
+		...mapActions(['updateAccount']),
 		copyMyAddress(add) {
 			navigator.clipboard.writeText(add)
 		}
