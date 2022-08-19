@@ -6,6 +6,7 @@ public/
 .env
 .env.local
 .env.*.local
+deploy.sh
 
 # Log files
 npm-debug.log*

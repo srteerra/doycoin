@@ -5,7 +5,23 @@
 			<b-row class="pt-0 pt-md-5">
 				<b-col class="text-center">
 					<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
+						<span>
+							<img
+								src="../assets/vectors/leave-5.png"
+								alt=""
+								style="width: 30px"
+								class="pb-2"
+							/>
+						</span>
 						Leaderboard
+						<span>
+							<img
+								src="../assets/vectors/leave-5.png"
+								alt=""
+								style="width: 30px; transform: scaleX(-1);"
+								class="pb-2"
+							/>
+						</span>
 					</h3>
 				</b-col>
 			</b-row>

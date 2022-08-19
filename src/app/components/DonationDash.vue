@@ -23,7 +23,6 @@
 												</h4>
 												<hr />
 											</div>
-
 											<div v-if="!isconnected">
 												<b-row>
 													<b-col
@@ -43,6 +42,23 @@
 														/>
 													</b-col>
 												</b-row>
+												<div>
+													<hr />
+													<p>Or</p>
+												</div>
+
+												<div class="mb-4">
+													<b-button
+														id="donateAddresses"
+														block
+														class="py-2"
+														style="outline: none"
+														variant="link"
+														@click="showaddressToDonate()"
+													>
+														Donate through an address
+													</b-button>
+												</div>
 											</div>
 
 											<div v-else>
@@ -68,7 +84,6 @@
 													</b-col>
 												</b-row>
 											</div>
-
 											<div>
 												<b-button
 													id="nextStepButton"

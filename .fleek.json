@@ -1,3 +1,5 @@
+// This is the configuration for Fleek service
+
 {
   "build": {
     "baseDir": ".",

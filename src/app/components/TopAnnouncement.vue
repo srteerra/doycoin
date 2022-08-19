@@ -5,7 +5,7 @@
 			<b-col class="text-white d-flex justify-content-center">
 				<p class="mx-auto m-0 p-0 font-weight-regular text-center">
 					<b-icon-tree-fill /> Please make sure you're visiting
-					<strong>https://doycoin.com</strong> - verify this site.
+					<strong>https://doycoin.site</strong> - verify this site.
 				</p>
 				<b-button
 					class="text-end"
