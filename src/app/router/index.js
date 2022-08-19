@@ -24,6 +24,12 @@ const routes = [
 			import(/* webpackChunkName:"profile" */ '../views/ProfileView')
 	},
 	{
+		path: '/learn',
+		name: 'learn',
+		component: () =>
+			import(/* webpackChunkName:"profile" */ '../views/LearnView')
+	},
+	{
 		path: '/token',
 		name: 'token',
 		component: () =>

@@ -56,7 +56,7 @@
 					<MemberCard
 						nickName="Carlos Sanchez"
 						position="CTO"
-						facebookURL="https://www.instagram.com/"
+						githubURL="https://www.instagram.com/"
 						twitterURL="https://www.instagram.com/"
 						instaURL="https://www.instagram.com/"
 					/>
@@ -65,7 +65,7 @@
 					<MemberCard
 						nickName="Angel Lopez"
 						position="CEO/Founder"
-						facebookURL="https://www.instagram.com/"
+						githubURL="https://www.instagram.com/"
 						twitterURL="https://www.instagram.com/"
 						instaURL="https://www.instagram.com/"
 					/>
@@ -74,7 +74,7 @@
 					<MemberCard
 						nickName="Jonathan Ocampo"
 						position="CSO"
-						facebookURL="https://www.instagram.com/"
+						githubURL="https://www.instagram.com/"
 						twitterURL="https://www.instagram.com/"
 						instaURL="https://www.instagram.com/"
 					/>
@@ -135,11 +135,22 @@
 						<h4 class="font-weight-bold">
 							Stage 1
 						</h4>
-						<li>Pancakeswap Launch</li>
-						<li>Launch of Socials</li>
-						<li>Launch of Dapp v1.0</li>
-						<li>Organic Growth</li>
-						<li>Swing Trading</li>
+						<li>
+							<b-icon icon="circle" class="mr-2"></b-icon>Pancakeswap Launch
+						</li>
+						<li>
+							<b-icon icon="check-circle-fill" class="mr-2"></b-icon>Launch of
+							Socials
+						</li>
+						<li>
+							<b-icon icon="check-circle-fill" class="mr-2"></b-icon>Launch of
+							Dapp v1.0
+						</li>
+						<li>
+							<b-icon icon="check-circle-fill" class="mr-2"></b-icon>Organic
+							Growth
+						</li>
+						<li><b-icon icon="circle" class="mr-2"></b-icon>Swing Trading</li>
 					</ul>
 				</b-col>
 				<b-col cols="12" md="12" xl="6"></b-col>
@@ -151,11 +162,18 @@
 						<h4 class="font-weight-bold">
 							Stage 2
 						</h4>
-						<li>Twitter marketing</li>
-						<li>+500 holders</li>
-						<li>Disord server</li>
-						<li>Sponsorship Crypto Events</li>
-						<li>Interactive campaign</li>
+						<li>
+							<b-icon icon="circle" class="mr-2"></b-icon>Twitter marketing
+						</li>
+						<li><b-icon icon="circle" class="mr-2"></b-icon>+500 holders</li>
+						<li><b-icon icon="circle" class="mr-2"></b-icon>Discord server</li>
+						<li>
+							<b-icon icon="circle" class="mr-2"></b-icon>Sponsorship Crypto
+							Events
+						</li>
+						<li>
+							<b-icon icon="circle" class="mr-2"></b-icon>Interactive campaign
+						</li>
 					</ul>
 					<img src="../assets/vectors/tree-10.png" alt="tree-10" />
 				</b-col>
@@ -167,11 +185,13 @@
 						<h4 class="font-weight-bold">
 							Stage 3
 						</h4>
-						<li>Mobile App</li>
-						<li>+1000 holders</li>
-						<li>Listing on exchanges</li>
-						<li>NFT Platform</li>
-						<li>Official merch</li>
+						<li><b-icon icon="circle" class="mr-2"></b-icon>Mobile App</li>
+						<li><b-icon icon="circle" class="mr-2"></b-icon>+1000 holders</li>
+						<li>
+							<b-icon icon="circle" class="mr-2"></b-icon>Listing on exchanges
+						</li>
+						<li><b-icon icon="circle" class="mr-2"></b-icon>NFT Platform</li>
+						<li><b-icon icon="circle" class="mr-2"></b-icon>Official merch</li>
 					</ul>
 				</b-col>
 				<b-col cols="12" md="12" xl="6"> </b-col>
@@ -183,11 +203,17 @@
 						<h4 class="font-weight-bold">
 							Stage 4
 						</h4>
-						<li>Rebranding</li>
-						<li>+5000 holders</li>
-						<li>Launch of Dapp v2.0</li>
-						<li>Massive marketing</li>
-						<li>Diversity Funding</li>
+						<li><b-icon icon="circle" class="mr-2"></b-icon>Rebranding</li>
+						<li><b-icon icon="circle" class="mr-2"></b-icon>+5000 holders</li>
+						<li>
+							<b-icon icon="circle" class="mr-2"></b-icon>Launch of Dapp v2.0
+						</li>
+						<li>
+							<b-icon icon="circle" class="mr-2"></b-icon>Massive marketing
+						</li>
+						<li>
+							<b-icon icon="circle" class="mr-2"></b-icon>Diversity Funding
+						</li>
 					</ul>
 					<img src="../assets/vectors/tree-1.png" alt="tree-1" />
 				</b-col>

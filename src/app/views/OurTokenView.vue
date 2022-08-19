@@ -214,8 +214,9 @@
 					</h3>
 
 					<p class="font-weight-light">
-						Only this the BSC <span class="font-weight-bold">dev wallet</span>,
-						if you want to buy us a coffee. THANKS!
+						Only this is the
+						<span class="font-weight-bold">official address</span>, please
+						verify it before making any purchase.
 					</p>
 				</b-col>
 			</b-row>
