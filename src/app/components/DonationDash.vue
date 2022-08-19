@@ -23,7 +23,6 @@
 												</h4>
 												<hr />
 											</div>
-
 											<div v-if="!isconnected">
 												<b-row>
 													<b-col
@@ -85,7 +84,6 @@
 													</b-col>
 												</b-row>
 											</div>
-
 											<div>
 												<b-button
 													id="nextStepButton"
