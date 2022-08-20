@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 import { client } from '../../lib/sanityClient'
 import imageUrlBuilder from '@sanity/image-url'
-import { dispatch } from 'rxjs/internal-compatibility'
+// import { dispatch } from 'rxjs/internal-compatibility'
 
 // Get a pre-configured url-builder from your sanity client
 const builder = imageUrlBuilder(client)
@@ -142,6 +142,19 @@ export const actions = {
 	},
 	async removeNotification({ commit }, notification) {
 		commit('REMOVE_NOTIFICATION', notification)
+	},
+	async updateAccount({ commit, getters }, payload) {
+		client
+			.patch(getters.getAddress) // Document ID to patch
+			.set({userName: payload.newUsername}) // Shallow merge
+			.commit() // Perform the patch and return a promise
+			.then((updatedAcc) => {
+				console.log('Hurray, the acc is updated! New document:')
+				console.log(updatedAcc)
+			})
+			.catch((err) => {
+				console.error('Oh no, the update failed: ', err.message)
+			})
 	},
 	async test({ dispatch }) {
 		dispatch('addNotification', {
