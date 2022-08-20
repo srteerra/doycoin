@@ -705,6 +705,9 @@ export default {
 			}
 		}
 	},
+	mounted() {
+		this.NameInput = this.$store.state.username
+	},
 	methods: {
 		onClickNext() {
 			this.currentStep++
