@@ -147,14 +147,6 @@ export const actions = {
 	},
 	async updateAccount({ commit, getters, dispatch }, payload) {
 		if (payload.avatar) {
-			// client.assets
-			// 	.upload('file', payload.avatar)
-			// 	.then((document) => {
-			// 		console.log('The file was uploaded!', document)
-			// 	})
-			// 	.catch((error) => {
-			// 		console.error('Upload failed:', error.message)
-			// 	})
 			client.assets
 				.upload('image', payload.avatar)
 				.then(imageAsset => {
