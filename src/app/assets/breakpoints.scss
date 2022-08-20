@@ -1,0 +1,19 @@
+@media (max-width: 500px) {
+	.stage-content {
+		img {
+			display: none;
+		}
+		ul {
+			padding: 0;
+		}
+		* {
+			text-align: center;
+		}
+	}
+}
+
+@media (max-width: 720px) {
+	.contact-plant img{
+		display: none;
+	}
+}
