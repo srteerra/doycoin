@@ -340,18 +340,4 @@ export default {
 .coffee {
 	margin: 200px 0;
 }
-
-@media (max-width: 500px) {
-	.stage-content {
-		img {
-			display: none;
-		}
-		ul {
-			padding: 0;
-		}
-		* {
-			text-align: center;
-		}
-	}
-}
 </style>
