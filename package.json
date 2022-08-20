@@ -51,11 +51,13 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@emailjs/browser": "^3.6.2",
     "@metamask/detect-provider": "^1.2.0",
     "@popperjs/core": "^2.11.4",
     "@sanity/client": "^3.3.0",
     "@sanity/image-url": "^1.0.1",
     "animate.css": "^4.1.1",
+    "aos": "^2.3.4",
     "bootstrap-vue": "^2.21.2",
     "chart.js": "^3.9.1",
     "connect-history-api-fallback": "^1.6.0",
