@@ -2,6 +2,8 @@
 /* eslint-disable no-undef */
 import { client } from '../../lib/sanityClient'
 import imageUrlBuilder from '@sanity/image-url'
+import { basename } from 'path'
+
 // import { dispatch } from 'rxjs/internal-compatibility'
 
 // Get a pre-configured url-builder from your sanity client
@@ -143,17 +145,65 @@ export const actions = {
 	async removeNotification({ commit }, notification) {
 		commit('REMOVE_NOTIFICATION', notification)
 	},
-	async updateAccount({ commit, getters }, payload) {
+	async updateAccount({ commit, getters, dispatch }, payload) {
+		if (payload.avatar) {
+			// client.assets
+			// 	.upload('file', payload.avatar)
+			// 	.then((document) => {
+			// 		console.log('The file was uploaded!', document)
+			// 	})
+			// 	.catch((error) => {
+			// 		console.error('Upload failed:', error.message)
+			// 	})
+			client.assets
+				.upload('image', payload.avatar)
+				.then(imageAsset => {
+					// Here you can decide what to do with the returned asset document.
+					// If you want to set a specific asset field you can to the following:
+					return client
+						.patch(getters.getAddress)
+						.set({
+							userAvatar: {
+								_type: 'image',
+								asset: {
+									_type: 'reference',
+									_ref: imageAsset._id
+								}
+							}
+						})
+						.commit()
+						.then((res) => {
+							console.log(res)
+							commit('SET_AVATAR', {avatar: builder.image(res.userAvatar).url()})
+						})
+				})
+				.then(() => {
+					console.log('Done!')
+				})
+		}
+
 		client
 			.patch(getters.getAddress) // Document ID to patch
-			.set({userName: payload.newUsername}) // Shallow merge
-			.commit() // Perform the patch and return a promise
+			.set({userName: payload.name, userCountry: payload.country})
+			.commit()
 			.then((updatedAcc) => {
 				console.log('Hurray, the acc is updated! New document:')
 				console.log(updatedAcc)
+				console.log(updatedAcc.userName)
+				console.log(updatedAcc.userCountry)
+				commit('SET_USERNAME', {name: updatedAcc.userName})
+				commit('SET_USER_COUNTRY', {country: updatedAcc.userCountry})
+				dispatch('addNotification', {
+					type: 'success',
+					message: 'Profile updated!'
+				})
 			})
 			.catch((err) => {
 				console.error('Oh no, the update failed: ', err.message)
+				dispatch('addNotification', {
+					type: 'danger',
+					message: 'Oh no, the update failed.'
+				})
 			})
 	},
 	async test({ dispatch }) {
