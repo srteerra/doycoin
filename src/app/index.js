@@ -90,5 +90,17 @@ ethereum.on('disconnect', error => {
 // On Chain change
 ethereum.on('chainChanged', _chainId => {
 	console.log(_chainId)
-	window.location.reload()
+	if (_chainId === '0x38') {
+		try {
+			store.dispatch('updateBalance')
+			store.commit('SET_NET', parseInt(_chainId, 16))
+		} catch (error) {
+			console.log(error)
+		}
+	} else {
+		console.log('change your chain')
+		store.commit('CLEAR_BALANCE')
+		store.commit('SET_NET', parseInt(_chainId, 16))
+	}
+	// window.location.reload()
 })

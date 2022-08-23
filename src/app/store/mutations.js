@@ -78,6 +78,32 @@ export const IS_CONNECTED = (state, status) => {
 	state.isconnected = status
 }
 
+export const SET_BALANCE = (state, payload) => {
+	state.balanceOf = payload.balance
+}
+
+export const CLEAR_BALANCE = (state) => {
+	state.balanceOf = 0
+}
+
+export const SET_CONTRACT = (state, payload) => {
+	state.contract = payload
+}
+
+export const SET_NET = (state, payload) => {
+	state.netID = payload
+}
+
+export const CHANGE_CRYPTO = (state, payload) => {
+	state.selectedCypto = payload.crypto
+
+	if (payload.crypto === 'DOGE') {
+		state.contract = state.babyDoge
+	} else if (payload.crypto === 'BNB') {
+		state.contract = state.elon
+	}
+}
+
 export const LOADING_DATA = (state, status) => {
 	state.fetchingData = status
 }
@@ -88,6 +114,10 @@ export const SHOW_NOWALLET_NOTIFICATION = state => {
 
 export const SHOW_ADDRESS_TO_DONATE = state => {
 	state.showaddressToDonateState = !state.showaddressToDonateState
+}
+
+export const SHOW_CHANGE_NETWORK = state => {
+	state.showpleaseChangeNetState = !state.showpleaseChangeNetState
 }
 
 export const PUSH_NOTIFICATION = (state, payload) => {

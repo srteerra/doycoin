@@ -21,6 +21,18 @@ export const getProvider = state => {
 	return state.provider
 }
 
+export const getNetID = state => {
+	return state.netID
+}
+
+export const getContract = state => {
+	return state.contract
+}
+
+export const getBalanceOf = state => {
+	return state.balanceOf
+}
+
 export const getAvatar = state => {
 	return state.avatar
 }

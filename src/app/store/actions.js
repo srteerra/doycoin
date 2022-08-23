@@ -13,6 +13,16 @@ const Web3 = require('web3')
 const web3 = new Web3(Web3.givenProvider || 'ws://localhost:8546')
 const ethereum = window.ethereum
 
+const artifact = require('../../../build/contracts/DoycoinTest.json')
+
+const net = await web3.eth.net.getId()
+
+// let tokenContract = new web3.eth.Contract(artifact.abi, artifact.networks[netID].address)
+
+// var contractAddress = '0xd3ecC6a4ce1a9fAEC1AA5E30B55f8a1a4b84F938' // ELON
+// var contractAddress = '0x635Cd5EDf4C9F178d8357480821e54F12c709E9A' // DYC
+// var contractAddress = '0xc748673057861a797275CD8A068AbB95A902e8de' // BABY DOGE
+
 export const actions = {
 	async showDonateModal(context) {
 		context.commit('SHOW_DONATE')
@@ -55,6 +65,19 @@ export const actions = {
 						commit('DISCONNECT_BUTTON', false) // Disconnect button enabled on nav
 						commit('LOADING_DATA', false) // Loading data off
 						commit('SHOW_CONNECT')
+						commit('CHANGE_CRYPTO', {crypto: 'BNB'})
+						console.log(net)
+						commit('SET_NET', net)
+
+						if (getters.netID === 56) {
+							try {
+								dispatch('updateBalance')
+							} catch (error) {
+								console.log(error)
+							}
+						} else {
+							console.log('change your chain')
+						}
 
 						const userDoc = {
 							_type: 'users',
@@ -125,22 +148,90 @@ export const actions = {
 	},
 	async sendDonation({ getters }) {
 		console.log(getters.getAddress)
-		console.log(process.env.MAIN_ACC)
 
-		web3.eth
-			.sendTransaction({
-				from: getters.getAddress,
-				to: '0xB37ECC72B98d7004c284fDa84315EaC16903Bda3',
-				gas: '30400', // 30400
-				chain: '56',
-				value: web3.utils.toWei('1')
+		// web3.eth
+		// 	.sendTransaction({
+		// 		from: getters.getAddress,
+		// 		to: '0x6FB305Bb2497Ccfdc026A09333C852c9D64636F0',
+		// 		// gas: '30400', // 30400
+		// 		// chain: '56',
+		// 		// value: web3.utils.toWei('1')
+		// 		value: 1000000000
+		// 	})
+		// 	.then(res => {
+		// 		console.log(res)
+		// 	})
+
+		// const balanceDY = await DYContract.methods.balanceOf(getters.getAddress).call()
+		// console.log(balanceDY)
+
+		// DYContract.methods.transfer('0x6FB305Bb2497Ccfdc026A09333C852c9D64636F0', 10000).send({
+		// 	from: frmo
+		// })
+
+		// let USDTContract = new web3.eth.Contract(artifact.abi, contractAddress, {from: frmo})
+
+
+
+
+
+		tokenContract.methods.transfer('0xB37ECC72B98d7004c284fDa84315EaC16903Bda3', 100000).send({
+			from: getters.getAddress
+		})
+	},
+	async updateBalance({ commit, getters }) {
+		var tokenContract = new web3.eth.Contract(artifact.abi, getters.getContract)
+
+		function addTrailingZeros(number,numZeros){
+			var numberOfZeros = '0'.repeat(numZeros)
+			return (number + numberOfZeros)
+		};
+
+		console.log(addTrailingZeros(10,3))
+
+		try {
+			var balance = tokenContract.methods.balanceOf(getters.getAddress).call().then(res => {
+				console.log('balance: ',res)
+				return res
 			})
-			.then(res => {
-				console.log(res)
+
+			var decimal = tokenContract.methods.decimals().call().then(res => {
+				console.log('decimal: ',res)
+				return res
 			})
+
+			tokenContract.methods.name().call().then(res => console.log('tokenName: ',res))
+
+			tokenContract.methods.symbol().call().then(res => console.log('tokenSymbol: ',res))
+
+			var adjustedBalance = await balance / Math.pow(10, await decimal)
+			console.log('adjustedBalance: ',adjustedBalance)
+
+			commit('SET_BALANCE', {balance: adjustedBalance})
+		} catch (error) {
+			console.log(error)
+		}
+	},
+	async selectCrypto({ commit, dispatch, getters }, payload) {
+		if (getters.getNetID === 56) {
+			try {
+				commit('CHANGE_CRYPTO', payload)
+				dispatch('updateBalance')
+			} catch (error) {
+				console.log(error)
+			}
+		} else {
+			console.log('change your chain')
+		}
 	},
 	async addNotification({ commit }, payload) {
 		commit('PUSH_NOTIFICATION', payload)
+	},
+	async changeNetwork() {
+		window.ethereum.request({
+			method: 'wallet_switchEthereumChain',
+			params: [{ chainId: '0x38' }], // chainId must be in hexadecimal numbers
+		})
 	},
 	async removeNotification({ commit }, notification) {
 		commit('REMOVE_NOTIFICATION', notification)

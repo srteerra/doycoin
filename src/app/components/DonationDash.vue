@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-parsing-error -->
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
 	<div id="DonationDash" class="px-0 px-sm-4">
@@ -255,36 +256,25 @@
 													class="text-dark font-weight-bold"
 												>
 													<div class="d-flex justify-content-between">
-														<b-form-select
-															v-model="cryptoSelectForm"
-															size="sm"
-															class="w-25 cryptoSelectForm"
-														>
-															<template #first>
-																<b-form-select-option value="bnb">
-																	<span>
-																		<img
-																			src="../assets/icons/bnb-icon.png"
-																			alt=""
-																			style="width: 10px; height: 10px; position: absolute;"
-																		/>
-																	</span>
-																	BNB
-																</b-form-select-option>
+														<b-dropdown size="md" class="m-2" variant="link" toggle-class="text-decoration-none">
+															<template #button-content>
+																<span><img :src="require('../assets/icons/' + selectedCypto + '-icon.png')" alt="" style="max-width: 25px;"/></span>
+																{{ selectedCypto }}
 															</template>
-
-															<b-form-select-option
-																value="dot"
-																class="cryptoOption"
-																>DOT</b-form-select-option
-															>
-															<b-form-select-option value="doge"
-																>DOGE</b-form-select-option
-															></b-form-select
-														>
-														<p class="p-0 m-0">
-															Your balance: <span>0.0002</span>
-														</p>
+															<b-dropdown-item-button v-if="selectedCypto !== 'BNB'" @click="selectCrypto({crypto: 'BNB'})">
+																<span><img src="../assets/icons/BNB-icon.png" alt="" style="max-width: 25px;"/></span>
+																BNB
+															</b-dropdown-item-button>
+															<b-dropdown-item-button v-if="selectedCypto !== 'DOGE'" @click="selectCrypto({crypto: 'DOGE'})">
+																<span><img src="../assets/icons/DOGE-icon.png" alt="" style="max-width: 25px;"/></span>
+																DOGE
+															</b-dropdown-item-button>
+														</b-dropdown>
+														<div class="d-flex align-items-center">
+															<p class="p-0 m-0">
+																Your balance: <span>{{ balanceOf }}</span>
+															</p>
+														</div>
 													</div>
 													<b-form-input
 														id="customAmountInput"
@@ -505,7 +495,7 @@
 						<b-tab>
 							<template #title>
 								<img
-									src="../assets/icons/bnb-icon.png"
+									src="../assets/icons/BNB-icon.png"
 									alt=""
 									style="width: 15px; height: 15px;"
 								/>
@@ -577,7 +567,7 @@
 						<b-tab disabled
 							><template #title>
 								<img
-									src="../assets/icons/doge-icon.png"
+									src="../assets/icons/DOGE-icon.png"
 									alt=""
 									style="width: 15px; height: 15px;"
 								/>
@@ -641,7 +631,6 @@ export default {
 			max_step: 5,
 
 			// Amount group
-			cryptoSelectForm: 'bnb',
 			customAmountCryptoInput: null,
 
 			// Name group
@@ -674,7 +663,9 @@ export default {
 			'donator',
 			'showaddressToDonateState',
 			'isconnected',
-			'username'
+			'username',
+			'balanceOf',
+			'selectedCypto'
 		]),
 
 		yearsCalc() {
@@ -729,7 +720,7 @@ export default {
 			)
 		},
 
-		...mapActions(['exportDonatorData', 'sendDonation', 'showaddressToDonate'])
+		...mapActions(['exportDonatorData', 'sendDonation', 'showaddressToDonate', 'updateBalance', 'selectCrypto'])
 	}
 }
 </script>
