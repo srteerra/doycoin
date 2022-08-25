@@ -29,6 +29,18 @@ export const getContract = state => {
 	return state.contract
 }
 
+export const getCryptoVSPair = state => {
+	if (state.selectedPair === 'USD') {
+		return state.cryptoPrice.usd_price
+	} else if (state.selectedPair === 'EUR') {
+		return state.cryptoPrice.eur_price
+	} else if (state.selectedPair === 'MXN') {
+		return state.cryptoPrice.mxn_price
+	} else {
+		console.log('error dual pairs')
+	}
+}
+
 export const getBalanceOf = state => {
 	return state.balanceOf
 }

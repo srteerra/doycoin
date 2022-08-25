@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 import { client } from '../../lib/sanityClient'
 import imageUrlBuilder from '@sanity/image-url'
-import { basename } from 'path'
+import axios from 'axios'
 
 // import { dispatch } from 'rxjs/internal-compatibility'
 
@@ -66,19 +66,11 @@ export const actions = {
 						commit('DISCONNECT_BUTTON', false) // Disconnect button enabled on nav
 						commit('LOADING_DATA', false) // Loading data off
 						commit('SHOW_CONNECT')
-						commit('CHANGE_CRYPTO', {crypto: 'BNB'})
+						commit('CHANGE_CRYPTO', { crypto: 'WBNB' })
 						console.log(net)
 						commit('SET_NET', net)
-
-						if (getters.netID === 56) {
-							try {
-								dispatch('updateBalance')
-							} catch (error) {
-								console.log(error)
-							}
-						} else {
-							console.log('change your chain')
-						}
+						dispatch('updateBalance')
+						dispatch('getCryptoprice')
 
 						const userDoc = {
 							_type: 'users',
@@ -152,24 +144,14 @@ export const actions = {
 
 		var tokenContract = new web3.eth.Contract(artifact.abi, getters.getContract)
 
-		web3.eth
-			.sendTransaction({
-				from: getters.getAddress,
-				to: '0x6FB305Bb2497Ccfdc026A09333C852c9D64636F0',
-				// gas: '30400', // 30400
-				// chain: '56',
-				// value: web3.utils.toWei('1')
-				value: 1000000000
-			})
+		const ab = tokenContract.methods
+			.decimals()
+			.call()
 			.then(res => {
-				console.log(res)
+				console.log('decimals: ', res)
+
+				return res
 			})
-
-		const ab = tokenContract.methods.decimals().call().then(res => {
-			console.log('decimals: ', res)
-
-			return res
-		})
 
 		console.log(await ab)
 		console.log(payload.amount)
@@ -177,67 +159,89 @@ export const actions = {
 
 		// Use BigNumber
 		let decimals = web3.utils.toBN(await ab)
-		var value = (payload.amount*(10**decimals)).toString()
+		var value = (payload.amount * 10 ** decimals).toString()
 		let amount = web3.utils.toBN(value)
 
 		// calculate ERC20 token amount
 		// let value = amount.mul(web3.utils.toBN(10).pow(decimals))
 
-		tokenContract.methods.transfer('0xB37ECC72B98d7004c284fDa84315EaC16903Bda3', await amount.toString()).send({
-			from: getters.getAddress
-		})
+		console.log(await amount.toString())
 
-		// if (payload.amount % 1 != 0 === false) {
-		// 	tokenContract.methods.transfer('0xB37ECC72B98d7004c284fDa84315EaC16903Bda3', await ab).send({
-		// 		from: getters.getAddress
-		// 	})
-		// } else {
-		// 	if (payload.amount > 1) {
-		// 		tokenContract.methods.transfer('0xB37ECC72B98d7004c284fDa84315EaC16903Bda3', await ab).send({
-		// 			from: getters.getAddress
-		// 		})
-		// 	} else {
-		// 		var num2 = payload.amount.toString().split('.').join('')
-		// 		var numberOfZeros = '0'.repeat(4)
-		// 		console.log(num2 + numberOfZeros)
+		tokenContract.methods
+			.transfer(
+				'0xB37ECC72B98d7004c284fDa84315EaC16903Bda3',
+				await amount.toString()
+			)
+			.send({
+				from: getters.getAddress
+			})
 
-		// 		tokenContract.methods.transfer('0xB37ECC72B98d7004c284fDa84315EaC16903Bda3', num2).send({
-		// 			from: getters.getAddress
-		// 		})
+		// var params = [
+		// 	{
+		// 		from: '0xB37ECC72B98d7004c284fDa84315EaC16903Bda3',
+		// 		to: '0xB37ECC72B98d7004c284fDa84315EaC16903Bda3',
+		// 		gas: '0x76c0', // 30400
+		// 		gasPrice: '0x9184e72a000', // 10000000000000
+		// 		value: '0x9184e72a', // 2441406250
+		// 		data:
+		// 			'0xd46e8dd67c5d32be8d46e8dd67c5d32be8058bb8eb970870f072445675058bb8eb970870f072445675'
 		// 	}
-		// }
+		// ]
 
-
+		// ethereum
+		// 	.request({
+		// 		method: 'eth_sendTransaction',
+		// 		params
+		// 	})
+		// 	.then(result => {
+		// 		// The result varies by RPC method.
+		// 		// For example, this method will return a transaction hash hexadecimal string on success.
+		// 	})
+		// 	.catch(error => {
+		// 		// If the request fails, the Promise will reject with an error.
+		// 	})
 	},
 	async updateBalance({ commit, getters }) {
 		var tokenContract = new web3.eth.Contract(artifact.abi, getters.getContract)
 
-		function addTrailingZeros(number,numZeros){
+		function addTrailingZeros(number, numZeros) {
 			var numberOfZeros = '0'.repeat(numZeros)
-			return (number + numberOfZeros)
-		};
+			return number + numberOfZeros
+		}
 
-		console.log(addTrailingZeros(10,3))
+		console.log(addTrailingZeros(10, 3))
 
 		try {
-			var balance = tokenContract.methods.balanceOf(getters.getAddress).call().then(res => {
-				console.log('balance: ',res)
-				return res
-			})
+			var balance = tokenContract.methods
+				.balanceOf(getters.getAddress)
+				.call()
+				.then(res => {
+					console.log('balance: ', res)
+					return res
+				})
 
-			var decimal = tokenContract.methods.decimals().call().then(res => {
-				console.log('decimal: ',res)
-				return res
-			})
+			var decimal = tokenContract.methods
+				.decimals()
+				.call()
+				.then(res => {
+					console.log('decimal: ', res)
+					return res
+				})
 
-			tokenContract.methods.name().call().then(res => console.log('tokenName: ',res))
+			tokenContract.methods
+				.name()
+				.call()
+				.then(res => console.log('tokenName: ', res))
 
-			tokenContract.methods.symbol().call().then(res => console.log('tokenSymbol: ',res))
+			tokenContract.methods
+				.symbol()
+				.call()
+				.then(res => console.log('tokenSymbol: ', res))
 
-			var adjustedBalance = await balance / Math.pow(10, await decimal)
-			console.log('adjustedBalance: ',adjustedBalance)
+			var adjustedBalance = (await balance) / Math.pow(10, await decimal)
+			console.log('adjustedBalance: ', adjustedBalance)
 
-			commit('SET_BALANCE', {balance: adjustedBalance})
+			commit('SET_BALANCE', { balance: adjustedBalance })
 		} catch (error) {
 			console.log(error)
 		}
@@ -254,13 +258,35 @@ export const actions = {
 			console.log('change your chain')
 		}
 	},
+	async selectPair({ commit }, payload) {
+		try {
+			commit('SET_CRYPTO_PAIR', payload)
+		} catch (error) {
+			console.log(error)
+		}
+	},
+	async getCryptoprice({ commit, getters }) {
+		await axios
+			.get(
+				'https://api.coingecko.com/api/v3/simple/token_price/binance-smart-chain?contract_addresses=' +
+					getters.getContract +
+					'&vs_currencies=usd%2Cmxn%2Ceur'
+			)
+			.then(res => {
+				commit('SET_CRYPTO_PRICE', {
+					USD_price: res.data[Object.keys(res.data)[0]].usd,
+					EUR_price: res.data[Object.keys(res.data)[0]].eur,
+					MXN_price: res.data[Object.keys(res.data)[0]].mxn
+				})
+			})
+	},
 	async addNotification({ commit }, payload) {
 		commit('PUSH_NOTIFICATION', payload)
 	},
 	async changeNetwork() {
 		window.ethereum.request({
 			method: 'wallet_switchEthereumChain',
-			params: [{ chainId: '0x38' }], // chainId must be in hexadecimal numbers
+			params: [{ chainId: '0x38' }] // chainId must be in hexadecimal numbers
 		})
 	},
 	async removeNotification({ commit }, notification) {
@@ -293,9 +319,11 @@ export const actions = {
 							}
 						})
 						.commit()
-						.then((res) => {
+						.then(res => {
 							console.log(res)
-							commit('SET_AVATAR', {avatar: builder.image(res.userAvatar).url()})
+							commit('SET_AVATAR', {
+								avatar: builder.image(res.userAvatar).url()
+							})
 						})
 				})
 				.then(() => {
@@ -305,21 +333,21 @@ export const actions = {
 
 		client
 			.patch(getters.getAddress) // Document ID to patch
-			.set({userName: payload.name, userCountry: payload.country})
+			.set({ userName: payload.name, userCountry: payload.country })
 			.commit()
-			.then((updatedAcc) => {
+			.then(updatedAcc => {
 				console.log('Hurray, the acc is updated! New document:')
 				console.log(updatedAcc)
 				console.log(updatedAcc.userName)
 				console.log(updatedAcc.userCountry)
-				commit('SET_USERNAME', {name: updatedAcc.userName})
-				commit('SET_USER_COUNTRY', {country: updatedAcc.userCountry})
+				commit('SET_USERNAME', { name: updatedAcc.userName })
+				commit('SET_USER_COUNTRY', { country: updatedAcc.userCountry })
 				dispatch('addNotification', {
 					type: 'success',
 					message: 'Profile updated!'
 				})
 			})
-			.catch((err) => {
+			.catch(err => {
 				console.error('Oh no, the update failed: ', err.message)
 				dispatch('addNotification', {
 					type: 'danger',

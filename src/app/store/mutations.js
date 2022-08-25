@@ -82,7 +82,7 @@ export const SET_BALANCE = (state, payload) => {
 	state.balanceOf = payload.balance
 }
 
-export const CLEAR_BALANCE = (state) => {
+export const CLEAR_BALANCE = state => {
 	state.balanceOf = 0
 }
 
@@ -94,19 +94,33 @@ export const SET_NET = (state, payload) => {
 	state.netID = payload
 }
 
+export const SET_CRYPTO_PAIR = (state, payload) => {
+	state.selectedPair = payload
+}
+
+export const SET_CRYPTO_PRICE = (state, payload) => {
+	state.cryptoPrice = {
+		usd_price: payload.USD_price,
+		eur_price: payload.EUR_price,
+		mxn_price: payload.MXN_price
+	}
+}
+
 export const CHANGE_CRYPTO = (state, payload) => {
 	state.selectedCypto = payload.crypto
 
 	if (payload.crypto === 'DOGE') {
 		state.contract = state.dogecoin
-	} else if (payload.crypto === 'BNB') {
-		state.contract = state.elon
+	} else if (payload.crypto === 'WBNB') {
+		state.contract = state.wbnb
 	} else if (payload.crypto === 'ETH') {
 		state.contract = state.eth
 	} else if (payload.crypto === 'USDC') {
 		state.contract = state.usdc
 	} else if (payload.crypto === 'BUSD') {
 		state.contract = state.busd
+	} else if (payload.crypto === 'SHIB') {
+		state.contract = state.shib
 	}
 }
 
