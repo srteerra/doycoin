@@ -78,6 +78,52 @@ export const IS_CONNECTED = (state, status) => {
 	state.isconnected = status
 }
 
+export const SET_BALANCE = (state, payload) => {
+	state.balanceOf = payload.balance
+}
+
+export const CLEAR_BALANCE = state => {
+	state.balanceOf = 0
+}
+
+export const SET_CONTRACT = (state, payload) => {
+	state.contract = payload
+}
+
+export const SET_NET = (state, payload) => {
+	state.netID = payload
+}
+
+export const SET_CRYPTO_PAIR = (state, payload) => {
+	state.selectedPair = payload
+}
+
+export const SET_CRYPTO_PRICE = (state, payload) => {
+	state.cryptoPrice = {
+		usd_price: payload.USD_price,
+		eur_price: payload.EUR_price,
+		mxn_price: payload.MXN_price
+	}
+}
+
+export const CHANGE_CRYPTO = (state, payload) => {
+	state.selectedCypto = payload.crypto
+
+	if (payload.crypto === 'DOGE') {
+		state.contract = state.dogecoin
+	} else if (payload.crypto === 'WBNB') {
+		state.contract = state.wbnb
+	} else if (payload.crypto === 'ETH') {
+		state.contract = state.eth
+	} else if (payload.crypto === 'USDC') {
+		state.contract = state.usdc
+	} else if (payload.crypto === 'BUSD') {
+		state.contract = state.busd
+	} else if (payload.crypto === 'SHIB') {
+		state.contract = state.shib
+	}
+}
+
 export const LOADING_DATA = (state, status) => {
 	state.fetchingData = status
 }
@@ -88,6 +134,10 @@ export const SHOW_NOWALLET_NOTIFICATION = state => {
 
 export const SHOW_ADDRESS_TO_DONATE = state => {
 	state.showaddressToDonateState = !state.showaddressToDonateState
+}
+
+export const SHOW_CHANGE_NETWORK = state => {
+	state.showpleaseChangeNetState = !state.showpleaseChangeNetState
 }
 
 export const PUSH_NOTIFICATION = (state, payload) => {

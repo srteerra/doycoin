@@ -96,9 +96,10 @@
 					>
 						<img
 							id="principal-logo"
-							src="../assets/logos/horizontal-black.png"
+							src="../assets/logos/icon-black.png"
 							alt=""
 							srcset=""
+							style="max-width: 50px;"
 						/>
 						<img
 							id="secundary-logo"
@@ -108,6 +109,27 @@
 						/>
 					</b-row>
 				</b-col>
+			</b-row>
+			<b-row class="mt-5 text-center text-lg-left">
+				<p class="w-100">Powered by</p>
+			</b-row>
+			<b-row
+				class="d-flex align-items-center justify-content-center justify-content-lg-start"
+			>
+				<a href="https://www.coingecko.com/" target="_blank">
+					<img
+						src="../assets/logos/coingecko-logo.png"
+						alt=""
+						class="poweredLogos m-3 ml-lg-0"
+					/>
+				</a>
+				<a href="https://www.binance.com/en" target="_blank">
+					<img
+						src="../assets/logos/bsc-logo.png"
+						alt=""
+						class="poweredLogos m-3 ml-lg-5"
+					/>
+				</a>
 			</b-row>
 		</b-container>
 	</footer>
@@ -128,5 +150,14 @@ export default {
 footer {
 	background-color: $secondary;
 	z-index: 20px;
+}
+
+.poweredLogos {
+	max-width: 250px;
+	transition: 0.1s ease-in;
+
+	&:hover {
+		opacity: 50%;
+	}
 }
 </style>
