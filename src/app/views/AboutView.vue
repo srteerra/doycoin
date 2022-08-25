@@ -28,7 +28,7 @@
 				</b-col>
 			</b-row>
 			<!-- Members section -->
-			<b-row class="pb-4 pt-5">
+			<b-row class="pb-4 pt-5" data-aos="fade-right">
 				<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
 					<span>
 						<img
