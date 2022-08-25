@@ -21,6 +21,30 @@ export const getProvider = state => {
 	return state.provider
 }
 
+export const getNetID = state => {
+	return state.netID
+}
+
+export const getContract = state => {
+	return state.contract
+}
+
+export const getCryptoVSPair = state => {
+	if (state.selectedPair === 'USD') {
+		return state.cryptoPrice.usd_price
+	} else if (state.selectedPair === 'EUR') {
+		return state.cryptoPrice.eur_price
+	} else if (state.selectedPair === 'MXN') {
+		return state.cryptoPrice.mxn_price
+	} else {
+		console.log('error dual pairs')
+	}
+}
+
+export const getBalanceOf = state => {
+	return state.balanceOf
+}
+
 export const getAvatar = state => {
 	return state.avatar
 }

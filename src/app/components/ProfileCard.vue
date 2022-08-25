@@ -1,7 +1,16 @@
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
 	<div id="profile__container" class="shadow-lg">
-		<div class="profile__background" />
+		<div
+			class="profile__background"
+			:style="{
+				'background-repeat': 'no-repeat',
+				'background-position': 'center',
+				'background-size': 'cover',
+				'background-image':
+					'url(' + require('../assets/images/bg-user.png') + ')'
+			}"
+		/>
 		<div class="profile__desc">
 			<div>
 				<b-avatar
@@ -86,6 +95,7 @@
 										:maxlength="maxLengthUsername"
 										type="text"
 										class="w-100 py-2 px-3 mb-4"
+										placeholder="Enter a new username"
 										required
 									/>
 								</b-form-group>
@@ -146,9 +156,14 @@
 						variant="primary"
 						size="md"
 						class="float-right mr-2"
-						@click=";(editProfileModal = false), updateAccount({
-							newUsername: newUsername
-						})"
+						@click="
+							;(editProfileModal = false),
+								updateAccount({
+									name: newUsername,
+									country: newCountry,
+									avatar: newAvatar
+								})
+						"
 					>
 						Save
 					</b-button>
@@ -419,7 +434,7 @@ export default {
 		...mapState(['username', 'userCountry', 'fetchingData']),
 		...mapGetters(['getUsername', 'getAvatar', 'getAddress', 'getAddressShort'])
 	},
-	beforeUpdate() {
+	mounted() {
 		this.newUsername = this.$store.state.username
 		this.newCountry = this.$store.state.userCountry
 	},
@@ -441,10 +456,10 @@ export default {
 
 	.profile__background {
 		height: 50%;
-		background-image: url('../assets/images/bg-user.png');
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
+		// background-image: url('../assets/images/bg-user.png');
+		// background-repeat: no-repeat;
+		// background-position: center;
+		// background-size: cover;
 		border-top-left-radius: 35px;
 		border-top-right-radius: 35px;
 	}
