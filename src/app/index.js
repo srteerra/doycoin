@@ -21,6 +21,7 @@ const builder = imageUrlBuilder(client)
 const provider = await detectEthereumProvider()
 const ethereum = window.ethereum
 
+
 console.log('providers:', ethereum)
 console.log('provider:', provider)
 

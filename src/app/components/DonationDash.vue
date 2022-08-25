@@ -256,17 +256,29 @@
 													class="text-dark font-weight-bold"
 												>
 													<div class="d-flex justify-content-between">
-														<b-dropdown size="md" class="m-2" variant="link" toggle-class="text-decoration-none">
+														<b-dropdown size="md" class="my-2" variant="link" toggle-class="text-decoration-none">
 															<template #button-content>
-																<span><img :src="require('../assets/icons/' + selectedCypto + '-icon.png')" alt="" style="max-width: 25px;"/></span>
+																<span class="pr-1"><img :src="require('../assets/icons/' + selectedCypto + '-icon.png')" alt="" style="max-width: 25px;"/></span>
 																{{ selectedCypto }}
 															</template>
-															<b-dropdown-item-button v-if="selectedCypto !== 'BNB'" @click="selectCrypto({crypto: 'BNB'})">
-																<span><img src="../assets/icons/BNB-icon.png" alt="" style="max-width: 25px;"/></span>
+															<b-dropdown-item-button v-if="selectedCypto !== 'BNB'" class="py-1" @click="selectCrypto({crypto: 'BNB'})">
+																<span class="pr-1"><img src="../assets/icons/BNB-icon.png" alt="" style="max-width: 25px;"/></span>
 																BNB
 															</b-dropdown-item-button>
-															<b-dropdown-item-button v-if="selectedCypto !== 'DOGE'" @click="selectCrypto({crypto: 'DOGE'})">
-																<span><img src="../assets/icons/DOGE-icon.png" alt="" style="max-width: 25px;"/></span>
+															<b-dropdown-item-button v-if="selectedCypto !== 'ETH'" class="py-1"  @click="selectCrypto({crypto: 'ETH'})">
+																<span class="pr-1"><img src="../assets/icons/ETH-icon.png" alt="" style="max-width: 25px;"/></span>
+																ETH
+															</b-dropdown-item-button>
+															<b-dropdown-item-button v-if="selectedCypto !== 'USDC'" class="py-1"  @click="selectCrypto({crypto: 'USDC'})">
+																<span class="pr-1"><img src="../assets/icons/USDC-icon.png" alt="" style="max-width: 25px;"/></span>
+																USDC
+															</b-dropdown-item-button>
+															<b-dropdown-item-button v-if="selectedCypto !== 'BUSD'" class="py-1"  @click="selectCrypto({crypto: 'BUSD'})">
+																<span class="pr-1"><img src="../assets/icons/BUSD-icon.png" alt="" style="max-width: 25px;"/></span>
+																BUSD
+															</b-dropdown-item-button>
+															<b-dropdown-item-button v-if="selectedCypto !== 'DOGE'" class="py-1"  @click="selectCrypto({crypto: 'DOGE'})">
+																<span class="pr-1"><img src="../assets/icons/DOGE-icon.png" alt="" style="max-width: 25px;"/></span>
 																DOGE
 															</b-dropdown-item-button>
 														</b-dropdown>
@@ -276,7 +288,7 @@
 															</p>
 														</div>
 													</div>
-													<b-form-input
+													<!-- <b-form-input
 														id="customAmountInput"
 														v-model="customAmountCryptoInput"
 														type="number"
@@ -284,7 +296,18 @@
 														placeholder="0"
 														required
 														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+													/> -->
+													<div class="customAmountCryptoInput__cont my-2">
+														<b-form-input
+														id="customAmountInput"
+														v-model="customAmountCryptoInput"
+														type="number"
+														class="w-100 DonationInput"
+														placeholder="0"
+														required
 													/>
+													<b-button pill size="sm" variant="outline-primary" class="customAmountCryptoInput__max" @click="setMaxAmount()">MAX</b-button>
+													</div>
 												</b-form-group>
 											</div>
 
@@ -317,12 +340,13 @@
 													block
 													class="py-2"
 													variant="primary"
+													:disabled="donateBtnState"
 													@click="
 														onClickNext()
-														sendDonation()
+														sendDonation({amount: customAmountCryptoInput})
 													"
 												>
-													Approve it
+													Donate
 												</b-button>
 											</div>
 											<div>
@@ -531,7 +555,7 @@
 						<b-tab>
 							<template #title>
 								<img
-									src="../assets/icons/eth-icon.png"
+									src="../assets/icons/ETH-icon.png"
 									alt=""
 									style="width: 15px; height: 15px;"
 								/>
@@ -651,7 +675,7 @@ export default {
 			AnonymousCheck: [],
 
 			// Buttons state
-			AgreeBtn: true
+			AgreeBtn: true,
 		}
 	},
 	computed: {
@@ -667,6 +691,19 @@ export default {
 			'balanceOf',
 			'selectedCypto'
 		]),
+
+		donateBtnState() {
+			if (!this.customAmountCryptoInput) {
+				return true
+			} else if (parseFloat(this.customAmountCryptoInput) <= 0) {
+				return true
+			} else if (this.customAmountCryptoInput > this.balanceOf) {
+				return true
+			} else {
+				console.log(this.balanceOf)
+				return false
+			}
+		},
 
 		yearsCalc() {
 			return Math.floor(Math.random() * (15 - 5) + 5)
@@ -720,6 +757,10 @@ export default {
 			)
 		},
 
+		setMaxAmount() {
+			this.customAmountCryptoInput = this.balanceOf
+		},
+
 		...mapActions(['exportDonatorData', 'sendDonation', 'showaddressToDonate', 'updateBalance', 'selectCrypto'])
 	}
 }
@@ -757,18 +798,36 @@ export default {
 	border-radius: 25px;
 }
 
-.DonationInput {
+.customAmountCryptoInput__cont {
+	display: flex;
+	padding: 30px 20px;
 	background-color: rgb(240, 240, 240);
 	color: rgb(127, 127, 127);
 	border: 1px solid gray;
 	border-radius: 25px;
 	overflow: hidden;
-	&:focus {
-		color: rgb(69, 69, 69);
-		font-weight: 700;
+
+	.DonationInput {
+		background-color: rgb(240, 240, 240);
 		border: none;
+		outline: none;
+		&:focus {
+			color: rgb(69, 69, 69);
+			font-weight: 700;
+			border: none;
+			outline:none !important;
+			outline-width: 0 !important;
+			box-shadow: none;
+			-moz-box-shadow: none;
+			-webkit-box-shadow: none;
+		}
+	}
+
+	.customAmountCryptoInput__max {
+		width: 150px;
 	}
 }
+
 
 .cryptoSelection-icon {
 	max-width: 30px;

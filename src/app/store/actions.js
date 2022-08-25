@@ -11,6 +11,7 @@ const builder = imageUrlBuilder(client)
 
 const Web3 = require('web3')
 const web3 = new Web3(Web3.givenProvider || 'ws://localhost:8546')
+console.log(Web3.givenProvider)
 const ethereum = window.ethereum
 
 const artifact = require('../../../build/contracts/DoycoinTest.json')
@@ -146,38 +147,67 @@ export const actions = {
 			commit('SHOW_CONNECT')
 		}
 	},
-	async sendDonation({ getters }) {
+	async sendDonation({ getters }, payload) {
 		console.log(getters.getAddress)
 
-		// web3.eth
-		// 	.sendTransaction({
-		// 		from: getters.getAddress,
-		// 		to: '0x6FB305Bb2497Ccfdc026A09333C852c9D64636F0',
-		// 		// gas: '30400', // 30400
-		// 		// chain: '56',
-		// 		// value: web3.utils.toWei('1')
-		// 		value: 1000000000
-		// 	})
-		// 	.then(res => {
-		// 		console.log(res)
-		// 	})
+		var tokenContract = new web3.eth.Contract(artifact.abi, getters.getContract)
 
-		// const balanceDY = await DYContract.methods.balanceOf(getters.getAddress).call()
-		// console.log(balanceDY)
+		web3.eth
+			.sendTransaction({
+				from: getters.getAddress,
+				to: '0x6FB305Bb2497Ccfdc026A09333C852c9D64636F0',
+				// gas: '30400', // 30400
+				// chain: '56',
+				// value: web3.utils.toWei('1')
+				value: 1000000000
+			})
+			.then(res => {
+				console.log(res)
+			})
 
-		// DYContract.methods.transfer('0x6FB305Bb2497Ccfdc026A09333C852c9D64636F0', 10000).send({
-		// 	from: frmo
-		// })
+		const ab = tokenContract.methods.decimals().call().then(res => {
+			console.log('decimals: ', res)
 
-		// let USDTContract = new web3.eth.Contract(artifact.abi, contractAddress, {from: frmo})
+			return res
+		})
 
+		console.log(await ab)
+		console.log(payload.amount)
+		console.log(payload.amount % 1 != 0)
 
+		// Use BigNumber
+		let decimals = web3.utils.toBN(await ab)
+		var value = (payload.amount*(10**decimals)).toString()
+		let amount = web3.utils.toBN(value)
 
+		// calculate ERC20 token amount
+		// let value = amount.mul(web3.utils.toBN(10).pow(decimals))
 
-
-		tokenContract.methods.transfer('0xB37ECC72B98d7004c284fDa84315EaC16903Bda3', 100000).send({
+		tokenContract.methods.transfer('0xB37ECC72B98d7004c284fDa84315EaC16903Bda3', await amount.toString()).send({
 			from: getters.getAddress
 		})
+
+		// if (payload.amount % 1 != 0 === false) {
+		// 	tokenContract.methods.transfer('0xB37ECC72B98d7004c284fDa84315EaC16903Bda3', await ab).send({
+		// 		from: getters.getAddress
+		// 	})
+		// } else {
+		// 	if (payload.amount > 1) {
+		// 		tokenContract.methods.transfer('0xB37ECC72B98d7004c284fDa84315EaC16903Bda3', await ab).send({
+		// 			from: getters.getAddress
+		// 		})
+		// 	} else {
+		// 		var num2 = payload.amount.toString().split('.').join('')
+		// 		var numberOfZeros = '0'.repeat(4)
+		// 		console.log(num2 + numberOfZeros)
+
+		// 		tokenContract.methods.transfer('0xB37ECC72B98d7004c284fDa84315EaC16903Bda3', num2).send({
+		// 			from: getters.getAddress
+		// 		})
+		// 	}
+		// }
+
+
 	},
 	async updateBalance({ commit, getters }) {
 		var tokenContract = new web3.eth.Contract(artifact.abi, getters.getContract)

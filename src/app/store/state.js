@@ -15,6 +15,10 @@ export default {
 
 	babyDoge: '0xc748673057861a797275CD8A068AbB95A902e8de',
 	elon: '0xd3ecC6a4ce1a9fAEC1AA5E30B55f8a1a4b84F938',
+	eth: '0x2170Ed0880ac9A755fd29B2688956BD959F933F8',
+	busd: '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
+	usdc: '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
+	dogecoin: '0xbA2aE424d960c26247Dd6c32edC70B295c744C43',
 
 	// Btn states
 	connectBtnState: false,

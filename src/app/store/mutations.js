@@ -98,9 +98,15 @@ export const CHANGE_CRYPTO = (state, payload) => {
 	state.selectedCypto = payload.crypto
 
 	if (payload.crypto === 'DOGE') {
-		state.contract = state.babyDoge
+		state.contract = state.dogecoin
 	} else if (payload.crypto === 'BNB') {
 		state.contract = state.elon
+	} else if (payload.crypto === 'ETH') {
+		state.contract = state.eth
+	} else if (payload.crypto === 'USDC') {
+		state.contract = state.usdc
+	} else if (payload.crypto === 'BUSD') {
+		state.contract = state.busd
 	}
 }
 
