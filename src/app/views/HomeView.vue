@@ -53,7 +53,7 @@
 						</b-row>
 						<b-row>
 							<b-col class="text-center px-0">
-								<DonationDash />
+								<DonationDash data-aos="zoom-in" data-aos-delay="200" />
 							</b-col>
 						</b-row>
 					</b-col>

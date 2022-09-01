@@ -2,7 +2,12 @@
 	<div>
 		<b-container class="mb-5">
 			<b-row class="py-5">
-				<b-col cols="12" md="6" class="text-center text-md-left">
+				<b-col
+					cols="12"
+					md="6"
+					class="text-center text-md-left"
+					data-aos="zoom-in"
+				>
 					<h2 class="font-weight-bold pb-3">Learn</h2>
 
 					<p class="font-weight-light">
@@ -14,7 +19,7 @@
 			</b-row>
 			<b-row>
 				<b-col class="d-inline-flex justify-content-center flex-wrap">
-					<div class="learn__card my-5">
+					<div class="learn__card my-5" data-aos="fade-up">
 						<div class="learn__head">
 							<h4 class="font-weight-bold">What is our procces?</h4>
 							<img
@@ -35,7 +40,7 @@
 							>
 						</div>
 					</div>
-					<div class="learn__card my-5">
+					<div class="learn__card my-5" data-aos="fade-up" data-aos-delay="200">
 						<div class="learn__head">
 							<h4 class="font-weight-bold">Where do all the funds go?</h4>
 							<img

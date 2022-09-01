@@ -12,10 +12,17 @@
 						src="../assets/vectors/coin-flip.png"
 						alt=""
 						style="width: 100%;max-width: 250px;"
+						data-aos="flip-right"
+						data-aos-duration="1000"
 					/>
 				</b-col>
 
-				<b-col cols="12" md="7" class="text-center text-md-left">
+				<b-col
+					cols="12"
+					md="7"
+					class="text-center text-md-left"
+					data-aos="fade-left"
+				>
 					<h2 class="font-weight-bold">About Doycoin Token</h2>
 
 					<p class="font-weight-light">
@@ -59,7 +66,11 @@
 				</b-col>
 			</b-row>
 
-			<b-row class="mb-5 px-5 d-flex flex-wrap justify-content-center explaces">
+			<b-row
+				class="mb-5 px-5 d-flex flex-wrap justify-content-center explaces"
+				data-aos="zoom-in"
+				data-aos-delay="200"
+			>
 				<img
 					id="pancakeL"
 					src="../assets/logos/pancakeswap-logo.png"
@@ -120,7 +131,7 @@
 					<ul
 						class="d-flex p-0 flex-wrap justify-content-center justify-content-lg-start text-center text-lg-left tokenomics__list flex-lg-column align-self-lg-center"
 					>
-						<li>
+						<li data-aos="fade-up">
 							<div>
 								<div class="d-flex align-items-center">
 									<h4 class="font-weight-bold pr-2 m-0">5%</h4>
@@ -132,7 +143,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li data-aos="fade-up" data-aos-delay="200">
 							<div>
 								<div class="d-flex align-items-center">
 									<h4 class="font-weight-bold pr-2 m-0">5%</h4>
@@ -144,7 +155,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li data-aos="fade-up" data-aos-delay="300">
 							<div>
 								<div class="d-flex align-items-center">
 									<h4 class="font-weight-bold pr-2 m-0">10%</h4>
@@ -156,7 +167,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li data-aos="fade-up" data-aos-delay="400">
 							<div>
 								<div class="d-flex align-items-center">
 									<h4 class="font-weight-bold pr-2 m-0">20%</h4>
@@ -168,7 +179,7 @@
 							</div>
 						</li>
 
-						<li>
+						<li data-aos="fade-up" data-aos-delay="500">
 							<div>
 								<div class="d-flex align-items-center">
 									<h4 class="font-weight-bold pr-2 m-0">60%</h4>
@@ -183,12 +194,20 @@
 				</b-col>
 
 				<b-col cols="12" lg="6" class="d-flex justify-content-center">
-					<canvas id="tokenChart"></canvas>
+					<canvas
+						id="tokenChart"
+						data-aos="zoom-in"
+						data-aos-delay="300"
+					></canvas>
 				</b-col>
 			</b-row>
 		</b-container>
 
-		<b-container class="my-5 pb-lg-5">
+		<b-container
+			class="my-5 pb-lg-5"
+			data-aos="zoom-in"
+			data-aos-duration="1000"
+		>
 			<b-row class="mb-2">
 				<b-col class="text-center">
 					<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">

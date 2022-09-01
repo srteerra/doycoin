@@ -39,6 +39,8 @@
 													id="leadboard__item"
 													:key="topDonator.id"
 													class="shadow-lg py-4 mb-4"
+													data-aos="zoom-in"
+													data-aos-duration="2000"
 												>
 													<b-row class="px-4 px-sm-5 leadboard__item__content">
 														<div
@@ -142,6 +144,8 @@
 													id="leadboard__item"
 													:key="topdonators.id"
 													class="shadow-lg py-4 mb-4"
+													data-aos="fade-right"
+													data-aos-duration="1000"
 												>
 													<b-row class="px-4 px-sm-5 leadboard__item__content">
 														<!-- Avatar col -->

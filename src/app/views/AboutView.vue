@@ -3,7 +3,7 @@
 		<b-container class="py-5">
 			<!-- First section -->
 			<b-row class="pb-5 trees-section">
-				<b-col cols="12" md="6" class="mb-5">
+				<b-col cols="12" md="6" class="mb-5" data-aos="fade-right">
 					<h2 class="font-weight-bold pb-4">About us</h2>
 					<p>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
@@ -18,7 +18,7 @@
 						tempora eius qui sequi!
 					</p>
 				</b-col>
-				<b-col cols="12" md="6" class="text-center mt-5">
+				<b-col cols="12" md="6" class="text-center mt-5" data-aos="fade-left">
 					<img src="../assets/images/trees.png" alt="trees" class="trees" />
 					<img
 						src="../assets/icons/cryptos-icon 1.png"
@@ -28,7 +28,7 @@
 				</b-col>
 			</b-row>
 			<!-- Members section -->
-			<b-row class="pb-4 pt-5" data-aos="fade-right">
+			<b-row class="pb-4 pt-5">
 				<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
 					<span>
 						<img
@@ -52,7 +52,7 @@
 				</h3>
 			</b-row>
 			<b-row class="py-5 members">
-				<b-col cols="12" sm="12" md="8" lg="4" class="my-2">
+				<b-col cols="12" sm="12" md="8" lg="4" class="my-2" data-aos="fade-up">
 					<MemberCard
 						nickName="Carlos Sanchez"
 						position="CTO"
@@ -61,7 +61,15 @@
 						instaURL="https://www.instagram.com/"
 					/>
 				</b-col>
-				<b-col cols="12" sm="12" md="8" lg="4" class="my-2">
+				<b-col
+					cols="12"
+					sm="12"
+					md="8"
+					lg="4"
+					class="my-2"
+					data-aos="fade-up"
+					data-aos-delay="200"
+				>
 					<MemberCard
 						nickName="Angel Lopez"
 						position="CEO/Founder"
@@ -70,7 +78,15 @@
 						instaURL="https://www.instagram.com/"
 					/>
 				</b-col>
-				<b-col cols="12" sm="12" md="8" lg="4" class="my-2">
+				<b-col
+					cols="12"
+					sm="12"
+					md="8"
+					lg="4"
+					class="my-2"
+					data-aos="fade-up"
+					data-aos-delay="300"
+				>
 					<MemberCard
 						nickName="Jonathan Ocampo"
 						position="CSO"
@@ -85,7 +101,7 @@
 		<section class="contact py-3">
 			<b-container>
 				<b-row class="my-5">
-					<b-col cols="12" md="12" lg="6" class="mb-5">
+					<b-col cols="12" md="12" lg="6" class="mb-5" data-aos="zoom-in">
 						<h2 class="font-weight-bold">Get in touch</h2>
 						<img
 							class="contact-stack-img"
@@ -99,7 +115,14 @@
 							incidunt officiis hic!
 						</p>
 					</b-col>
-					<b-col cols="12" md="12" lg="6" class="text-center my-auto">
+					<b-col
+						cols="12"
+						md="12"
+						lg="6"
+						class="text-center my-auto"
+						data-aos="zoom-in"
+						data-aos-duration="1000"
+					>
 						<b-button pill variant="success" class="p-3 w-50 font-weight-bold"
 							>Contact us</b-button
 						>
@@ -129,7 +152,13 @@
 				</span>
 			</h3>
 			<b-row class="roadmap pt-5 my-3">
-				<b-col cols="12" md="12" xl="6" class="stage-content">
+				<b-col
+					cols="12"
+					md="12"
+					xl="6"
+					class="stage-content"
+					data-aos="zoom-in"
+				>
 					<img src="../assets/vectors/tree-5.png" alt="tree-5" />
 					<ul class="mx-3">
 						<h4 class="font-weight-bold">
@@ -157,7 +186,13 @@
 			</b-row>
 			<b-row class="roadmap pt-5 my-3">
 				<b-col cols="12" md="12" xl="6"></b-col>
-				<b-col cols="12" md="12" xl="6" class="stage-content">
+				<b-col
+					cols="12"
+					md="12"
+					xl="6"
+					class="stage-content"
+					data-aos="zoom-in"
+				>
 					<ul class="mx-3 text-right">
 						<h4 class="font-weight-bold">
 							Stage 2
@@ -179,7 +214,13 @@
 				</b-col>
 			</b-row>
 			<b-row class="roadmap pt-5 my-3">
-				<b-col cols="12" md="12" xl="6" class="stage-content">
+				<b-col
+					cols="12"
+					md="12"
+					xl="6"
+					class="stage-content"
+					data-aos="zoom-in"
+				>
 					<img src="../assets/vectors/tree-3.png" alt="tree-3" />
 					<ul class="mx-3">
 						<h4 class="font-weight-bold">
@@ -198,7 +239,13 @@
 			</b-row>
 			<b-row class="roadmap pt-5 my-3">
 				<b-col cols="12" md="12" xl="6"> </b-col>
-				<b-col cols="12" md="12" xl="6" class="stage-content mx-auto">
+				<b-col
+					cols="12"
+					md="12"
+					xl="6"
+					class="stage-content mx-auto"
+					data-aos="zoom-in"
+				>
 					<ul class="mx-3 text-right">
 						<h4 class="font-weight-bold">
 							Stage 4
@@ -222,7 +269,11 @@
 
 		<!-- Give us a coffe secton -->
 
-		<b-container class="coffee mx-auto pb-lg-5">
+		<b-container
+			class="coffee mx-auto pb-lg-5"
+			data-aos="zoom-in"
+			data-aos-duration="1000"
+		>
 			<b-row class="mb-2">
 				<b-col class="text-center">
 					<h3 class="text-dark font-weight-bold mx-auto pt-5 pt-sm-0">
